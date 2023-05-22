@@ -696,71 +696,78 @@ $$x \in \{ A \} \iff x = A$$
 	Таким образом, ни порядок элементов, ни количество их вхождений не охватываются понятием множества. Далее мы увидим, что есть способы выразить эти идеи косвенно.
 \end{exm}
 
-\paragraph{Subset specification.}  Let us recall that we write $\phi(x)$ if $x$ satisfies a property (or predicate) $\phi$. For example, $\mbox{even}(2)$ means that the number $2$ satisfies the property to be even, i.\,e., $2$ is even. Let $A$ be a set and $\phi$ be some property. Then there exists a set $\{ x \in A \mid \phi(x) \}$ such that
+\paragraph{Выделение подмножества.} Вспомним, что мы пишем $\phi(x)$, если $x$ удовлетворяет свойству (предикату) $\phi$. Например, $\mbox{чётно}(2)$ означает, что число $2$ удовлетворяет свойству быть чётным, то есть $2$ чётно. Пусть $A$ --- множество, а $\phi$ --- некоторое свойство. Тогда существует множество $\{ x \in A \mid \phi(x) \}$ такое, что
 $$y \in \{ x \in A \mid \phi(x) \} \iff y \in A \wedge \phi(y)$$
-for all $y$. In other words, we pick up and put together all the elements of $A$ satisfying $\phi$.  Clearly, $\{ x \in A \mid \phi(x) \} \sbs A$.
+для любого $y$. Другими словами, мы берём и объединяем все элементы $A$, удовлетворяющие $\phi$.  Очевидно, что $\{ x \in A \mid \phi(x) \} \sbs A$.
 
-Symbols like $\{x \in A \mid \phi(x)\}$ are widely known as \emph{set-builder notation}.
+Записи вида $\{x \in A \mid \phi(x)\}$ известны под названием \emph{set-builder notation}.
 
 \begin{exm}
-	The set
-	$\{ x \in \N \mid x\ \mbox{is even} \}$
-	is the set of all even natural numbers.
+	Множество
+	$\{ x \in \N \mid x\ \mbox{чётно} \}$
+	есть множество всех чётных натуральных чисел.
 \end{exm}
 
-But what if $\phi$ is a property satisfied by no set? Namely, consider the set
+Но что если $\phi$ --- свойство, которым не обладает ни одно множество? А именно, рассмотрим множество
 $$\void = \{ x \in \N \mid x \neq x \}.$$
-By Corollary~\ref{ch0:id}, $x = x$ for each $x$. By definition, $x \neq x$ for each $x \in \void$. Hence, \emph{there is no $x$ such that $x \in \void$}. A set $E$ is called \emph{empty} (or \emph{void}) if $x \notin E$ for all $x$. Thus, the set $\void$ is empty. Is there any other empty set?
+По следствию~\ref{ch0:id} $x = x$ для любого $x$. По определению $x \neq x$ для всякого $x \in \void$. Значит, \emph{не существует такого $x$, что $x \in \void$}. Множество $E$ называется \emph{пустым}, если $x \notin E$ для любого $x$. Тогда множество $\void$ пустое. Существует ли какое-нибудь другое пустое множество?
 \begin{lemma}\label{ch0:empty}\rule{1pt}{0pt}
 	\begin{enumerate}
-		\item If $E$ is an empty set, then $E \sbs A$ for each set $A$.
-		\item If sets $E_1$ and $E_2$ are empty, then $E_1 = E_2$.
+		\item Если $E$ --- пустое множество, то $E \sbs A$ для любого множества $A$.
+		\item Если множества $E_1$ и $E_2$ пустые, то $E_1 = E_2$.
 	\end{enumerate}
 \end{lemma} 
 \begin{proof}
-	The second statement follows from the first one by Lemma~\ref{ch0:subset}. Let us prove the first statement. For each $x$, we have $x \notin E$. So if we suppose that $x \in E$, we immediately get a falsity, a contradiction. By the logical convention, \emph{from a falsity it follows everything}. Thus, we can safely conclude that $x \in A$ (as well as $1 = 2$, etc.) when $x \in E$.
+	Второе утверждение следует из первого по лемме~\ref{ch0:subset}. Докажем первое утверждение. Для любого $x$ имеем $x \notin E$. Тогда если мы предположим, что $x \in E$, то мы непременно получим ложь, противоречие. Согласно законам логики, \emph{из лжи следует всё что угодно}. Поэтому мы имеем полное право заключить, что $x \in A$ (равно как и $1 = 2$ и т. д.), когда $x \in E$.
 \end{proof}
 \begin{corr}
-	The set $\void$ is the unique empty set.
+	Множество $\void$ --- единственное пустое множество.
 \end{corr}
 
-\paragraph{Sets and predicates.}
-As we have just seen, the subset specification principle allows to form a set of all those elements of some given set $A$ which satisfy a predicate $\phi$. This is one of the most important ideas behind sets indeed. Often, we will replace predicates with sets in mathematical arguments.
+\paragraph{Множества и предикаты.}
+Как мы только что увидели, принцип выделения подмножества позволяет определить множество всех элементов некоторого данного множества $A$, которые удовлетворяют предикату $\phi$. В сущности, это одна из важнейших идей теории множеств. Зачастую в математических высказываниях мы будем заменять предикаты множествами.
+%As we have just seen, the subset specification principle allows to form a set of all those elements of some given set $A$ which satisfy a predicate $\phi$. This is one of the most important ideas behind sets indeed. Often, we will replace predicates with sets in mathematical arguments.
 
-For example, assume that we want to formalize the statement ``every even number equals the sum of two odd numbers''. Stating from the formalization $$\forall x\, \bigl(x\ \mbox{is even}\ \to \exists y \exists z\, (y\ \mbox{is odd} \wedge z\ \mbox{is odd}\ \wedge x = y + z)\bigr),$$
-we may transform it to
+Например, представьте себе, что мы хотим формализовать высказывание <<каждое чётное число равно сумме двух нечётных чисел>>. Отталкиваясь от формализации $$\forall x\, \bigl(x\ \mbox{чётно}\ \to \exists y \exists z\, (y\ \mbox{нечётно} \wedge z\ \mbox{нечётно}\ \wedge x = y + z)\bigr),$$
+%For example, assume that we want to formalize the statement ``every even number equals the sum of two odd numbers''. Stating from the formalization $$\forall x\, \bigl(x\ \mbox{is even}\ \to \exists y \exists z\, (y\ \mbox{is odd} \wedge z\ \mbox{is odd}\ \wedge x = y + z)\bigr),$$
+мы можем преобразовать её в
 $$\forall x\, \bigl(x \in A \to \exists y \exists z\, (y \in B \wedge z \in B \wedge x = y + z)\bigr),$$
-where $A$ and $B$ stand for the sets of even and odd numbers, respectively. Please notice how ``satisfying a predicate'' has been replaced by ``belonging to a set'' here. Usually, they would employ a more concise notation (so called \emph{bounded quantifiers}) in this case:
+где $A$ и $B$ --- множества чётных и нечётных чисел соответственно. Обратите внимание на то, как <<соответствие предикату>> было здесь заменено на <<принадлежность множеству>>. Обычно в таком случае используют более компактную запись (с помощью так называемых \emph{ограниченных кванторов}):
+%where $A$ and $B$ stand for the sets of even and odd numbers, respectively. Please notice how ``satisfying a predicate'' has been replaced by ``belonging to a set'' here. Usually, they would employ a more concise notation (so called \emph{bounded quantifiers}) in this case:
 $$\forall x \in A\, \exists y \in B\,  \exists z \in B\, (x = y + z)$$
-(to be read as ``for each $x$ from $A$ there exist $y$ and $z$ from $B$ such that\dots''---which sounds very intuitive and natural, does not it?).
+(читать как <<для любого $x$ из $A$ существуют $y$ и $z$ из $B$ такие, что \dots>> --- что звучит вполне понятно и естественно, не так ли?).
+%(to be read as ``for each $x$ from $A$ there exist $y$ and $z$ from $B$ such that\dots''---which sounds very intuitive and natural, does not it?).
 
-Bounded quantifiers come in many varieties ($\forall x \in A$, $\forall x < 10$, $\exists x > 10$, etc.) but it is important to realize that \emph{bounded universal} quantifier means \emph{implication}, while \emph{bounded existential} quantifier means \emph{conjunction}. Formally,
-$$\forall x \in A\ \phi \equiv \forall x\, (x \in A \to \phi)\qquad\mbox{and}\qquad\exists x \in A\ \phi \equiv \exists x\, (x \in A \wedge \phi).$$
+Ограниченные кванторы имеют много разновидностей ($\forall x \in A$, $\forall x < 10$, $\exists x > 10$ и др.), но важно понимать, что \emph{ограниченный квантор всеобщности} подразумевает \emph{импликацию}, а \emph{ограниченный квантор существования} подразумевает \emph{конъюнкцию}. Формально,
+%Bounded quantifiers come in many varieties ($\forall x \in A$, $\forall x < 10$, $\exists x > 10$, etc.) but it is important to realize that \emph{bounded universal} quantifier means \emph{implication}, while \emph{bounded existential} quantifier means \emph{conjunction}. Formally,
+$$\forall x \in A\ \phi \equiv \forall x\, (x \in A \to \phi)\qquad\mbox{и}\qquad\exists x \in A\ \phi \equiv \exists x\, (x \in A \wedge \phi).$$
 \begin{exc}
-	Prove that $\forall x \in A\ \phi$ is true whereas $\exists x \in A\ \phi$ is false for $A = \void$ and whatever statement $\phi$.
+	Докажите, что $\forall x \in A\ \phi$ истинно, а $\exists x \in A\ \phi$ ложно для $A = \void$ и любого утверждения $\phi$.
 \end{exc}
 \begin{exc}
-	Prove that $\neg\forall x \in A\ \phi \equiv \exists x\in A\ \neg\phi$ and $\neg\exists x \in A\ \phi \equiv \forall x\in A\ \neg\phi$ for every set $A$ and statement $\phi$.
+	Докажите, что $\neg\forall x \in A\ \phi \equiv \exists x\in A\ \neg\phi$ и $\neg\exists x \in A\ \phi \equiv \forall x\in A\ \neg\phi$ для любых множества $A$ и утверждения $\phi$.
 \end{exc}
 
-\paragraph{Russell's Paradox.} Clearly, we can only specify subsets of a given set $A$ via $\{x \in A \mid \phi(x) \}$. But could not we put together \emph{all} $x$ in existence (i.\,e.\ not only from $A$) such that $x$ satisfies $\phi$? Historically, this was the first intuition backing the notion of set: any collection of objects having something in common or satisfying some property.
+\paragraph{Парадокс Рассела.} Очевидно, с помощью $\{x \in A \mid \phi(x) \}$ мы можем выделять лишь подмножества данного множества $A$. Но не могли бы мы объединить \emph{все} возможные $x$ (то есть не только из $A$) такие, что $x$ удовлетворяет $\phi$? Исторически, именно такая идея изначально стояла за понятием множества: любой набор объектов, имеющих что-то общее или удовлетворяющих какому-то общему свойству.
+%Clearly, we can only specify subsets of a given set $A$ via $\{x \in A \mid \phi(x) \}$. But could not we put together \emph{all} $x$ in existence (i.\,e.\ not only from $A$) such that $x$ satisfies $\phi$? Historically, this was the first intuition backing the notion of set: any collection of objects having something in common or satisfying some property.
 
-As we shall see in a moment, this intuition proves to be logically inconsistent. 
-\begin{lemma}[``Russell's Paradox'']
-	There is no set $R$ such that
+Как мы сейчас увидим, эта интуитивная идея оказывается логически противоречивой.
+%As we shall see in a moment, this intuition proves to be logically inconsistent. 
+\begin{lemma}[``Парадокс Рассела'']
+	Не существует такого множества $R$, что
 	$$\forall x\, (x \in R \iff x \notin x).$$
 \end{lemma}
 \begin{proof}
-	Suppose there is such a set $R$. At first, assume $R \notin R$. By the constraint on $R$, this implies $R \in R$. By contradiction, $R \notin R$ must be false, so we have proved $R \in R$ (assuming the existence of $R$). But then $R \notin R$ by the same constraint on $R$. Thus, the assumption that such $R$ exists is contradictory. Hence, it does not exist.
+	Допустим, что такое множество $R$ существует. Для начала предположим $R \notin R$. По определению $R$ из этого следует $R \in R$. В силу полученного противоречия неверно, что $R \notin R$, то есть мы доказали, что $R \in R$ (допустив существование $R$). Но в этом случае $R \notin R$ всё по тому же определению $R$. Таким образом, предположение о существовании $R$ приводит к противоречию. Значит, такого множества не существует.
 \end{proof}
 
-So, one cannot define a set $\{x \mid x \notin x \}$ comprising \emph{all} sets $x$ satisfying quite a natural condition $x \notin x$. This very fact was seen as paradoxical and counter-intuitive.
+Таким образом, мы не можем определить множество $\{x \mid x \notin x \}$ как содержащее \emph{все} множества $x$, которые удовлетворяют вполне естественному условию $x \notin x$. Именно этот факт был сочтён парадоксальным и противоречащим интуиции.
 
 \mcomm{In view of the Axiom of Foundation, $R$ is \emph{the set of all sets}, which does not thus exist. The Instructor might ask the students to prove the latter statement \emph{without} that axiom and might then explain why proofs from \emph{weaker} assumptions (even the ``axioms'') are usually worth looking for.}
 \begin{exc}
-	There is no set $V$ such that
+	Не существует такого множества $V$, что
 	$\forall x\, (x \in V).$
-	In other words, there is no set of all sets. Try not to use the Axiom of Foundation.
+	Другими словами, не существует множества всех множеств. Постарайтесь не использовать аксиому основания.
 \end{exc}
 %\begin{proof}
 %This is immediate by the Axiom of Foundation. Indeed, $x \notin x$ for any $x$ thereby. One the other hand, $V \in V$ must hold. Hence a contradiction.
@@ -792,25 +799,25 @@ So, one cannot define a set $\{x \mid x \notin x \}$ comprising \emph{all} sets 
 %
 %Vacuous truths are closely connected with Lemma~\ref{ch0:empty}. The latter states that $\void \sbs A$ for any set $A$. This can be rephrased as $\forall x \in \void\, (x \in A)$, which is a vacuous truth.
 
-\paragraph{Power set.} Let $A$ be a set. Then there exists a set $\mP(A)$ such that
+\paragraph{Множество всех подмножеств.} Пусть $A$ --- некоторое множество. Тогда существует множество $\mP(A)$ такое, что
 $$x \in \mP(A) \iff x \sbs A$$
-for all $x$. In other words, $\mP(A)$ is the set of all \emph{subsets} of the set $A$.
+для любого $x$. Другими словами, $\mP(A)$ --- множество всех \emph{подмножеств} множества $A$.
 
-As $\void \sbs A$, $\void \in \mP(A)$ for any set $A$. We have $\mP(\void) = \{\void\}$, $\mP(1) = \{\void, \{1\} \}$, and $\mP(\{1,2\}) = \{\void, \{1\}, \{2\}, \{1,2\}\}$. Note that $\{1,2\}$ has $2$ elements, while $\mP(\{1,2\})$ has $4 = 2^2$ elements, $\mP(\void)$ has $1 = 2^0$ elements, and $\mP(\{1\})$ has $2 = 2^1$ elements. This analogy between power sets and numeric \emph{powers} of $2$ is not a coincidence.
+Поскольку $\void \sbs A$, $\void \in \mP(A)$ для любого множества $A$. Отметим, что $\mP(\void) = \{\void\}$, $\mP(1) = \{\void, \{1\} \}$ и $\mP(\{1,2\}) = \{\void, \{1\}, \{2\}, \{1,2\}\}$. Легко видеть, что $\{1,2\}$ состоит из $2$ элементов, а $\mP(\{1,2\})$ состоит из $4 = 2^2$ элементов; $\mP(\void)$ состоит из $1 = 2^0$ элементов; $\mP(\{1\})$ состоит из $2 = 2^1$ элементов. Такая аналогия между множествами всех подмножеств и степенями $2$ --- не совпадение.
 
 \mcomm{Clearly, every formal proof that the set $\{1,2\}$ has just those subsets as specified above boils down to an exhaustive search argument (for one must at least write all the subsets down). It might be beneficial to draw the tree of all subsets for a small size example, yet we skip such formal proofs in general.}
 
 \begin{exm}
-	If $\mP(X) = \mP(Y)$ then $X  = Y$, and vice versa.
+	Если $\mP(X) = \mP(Y)$, то $X  = Y$, и наоборот.
 	
-	Indeed, suppose that $\mP(X) = \mP(Y)$. We have $X \sbs X$, that is, $X \in \mP(X)$. By the assumption, $X \in \mP(Y)$, whence $X \sbs Y$.  By a similar argument, $Y \sbs X$. Then we get $X = Y$ by Lemma~\ref{ch0:subset}.
+	В самом деле, допустим $\mP(X) = \mP(Y)$. Так как $X \sbs X$, то $X \in \mP(X)$. По предположению $X \in \mP(Y)$, откуда $X \sbs Y$. В силу аналогичных рассуждений, $Y \sbs X$. Тогда получаем $X = Y$ по лемме~\ref{ch0:subset}.
 	
-	Now suppose that $X = Y$. Consider an arbitrary $a \in \mP(X)$. Then $a \sbs X = Y$, which yields $a \sbs Y$ by Lemma~\ref{ch0:subset}, hence $a \in \mP(Y)$. So, $\mP(X) \sbs \mP(Y)$. The other inclusion is similar.
+	Теперь допустим $X = Y$. Рассмотрим произвольный $a \in \mP(X)$. Тогда $a \sbs X = Y$, откуда $a \sbs Y$ по лемме~\ref{ch0:subset}, откуда $a \in \mP(Y)$. Тогда $\mP(X) \sbs \mP(Y)$. Обратное включение аналогично.
 \end{exm}
 
-\paragraph{Union.} Let $A$ be a set. Then there exists a set $\cup A$ such that
+\paragraph{Объединение.} Пусть $A$ --- некоторое множество. Тогда существует множество $\cup A$ такое, что
 $$x \in \cup A \iff \exists \alpha\ (x \in \alpha \wedge \alpha \in A)$$
-for all $x$. Thus, $\cup A$ is the set of elements of elements of the set $A$.
+для любого $x$. Таким образом, $\cup A$ есть множество всех элементов элементов множества $A$.
 
 \mcomm{This concept is most likely unknown for most students; so they may need some time to grasp it. In our practice, drawing (potentially) infinite families of planar figures and highlighting their unions with color prove beneficial.
 	\medskip\\
@@ -819,11 +826,11 @@ for all $x$. Thus, $\cup A$ is the set of elements of elements of the set $A$.
 		$x \in A \cup B \iff x \in A \vee x \in B$ for all $x$}. This version is sufficient for most of this Course's developments. Countable unions pose a noticeable exception; they are yet neither frequent, nor crucial, nor hard to explain as most students will consider them ``natural'' and ``logical''.}
 
 \begin{exm}\label{sets:fin_union}
-	We have $\cup \void = \void$. Indeed, if $x \in \cup \void$, then $x \in \alpha \in \void$ for some set $\alpha$; but $\alpha \in \void$ is impossible, hence a contradiction; thus, no $x$ can be an element of $\cup \void$; therefore, the set $\cup \void$ is empty. By Lemma~\ref{ch0:empty}, $\void$ is the only empty set.
+	$\cup \void = \void$. В самом деле, если $x \in \cup \void$, то $x \in \alpha \in \void$ для некоторого множества $\alpha$; однако $\alpha \in \void$ невозможно, откуда получаем противоречие; таким образом, ни один $x$ не может быть элементом $\cup \void$; тогда $\cup \void$ пустое. По лемме~\ref{ch0:empty} $\void$ --- единственное пустое множество.
 	
-	For any $A$, $\cup \{ A \} = A$. We see that $x \in \cup \{ A\} \iff \exists \alpha\ x \in \alpha \in \{ A \}$, while $\alpha \in \{A \}$ means that $\alpha = A$. So, $x \in \cup \{ A\} \iff \exists \alpha\ x \in \alpha = A \iff x \in A$. (For the last equivalence, one can put $\alpha = A$).
+	Для любого $A$: $\cup \{ A \} = A$. Понятно, что $x \in \cup \{ A\} \iff \exists \alpha\ x \in \alpha \in \{ A \}$, а $\alpha \in \{A \}$ означает, что $\alpha = A$. Тогда $x \in \cup \{ A\} \iff \exists \alpha\ x \in \alpha = A \iff x \in A$. (Для последней эквивалентности можно положить $\alpha = A$).
 	
-	If $A = \{ \{1,2,3\}, \{1\}, \{2,4\}\}$, then for any $x$,
+	Если $A = \{ \{1,2,3\}, \{1\}, \{2,4\}\}$, то для любого $x$
 	$$
 	\begin{array}{rcl}
 		x \in \cup A &\iff& \exists \alpha\ (x \in \alpha \wedge \alpha \in A)\\
@@ -836,37 +843,37 @@ for all $x$. Thus, $\cup A$ is the set of elements of elements of the set $A$.
 		&\iff& x \in \{1,2,3,4\}.\\
 	\end{array}
 	$$
-	Thus, $\cup A = \{1,2,3,4\}$.
+	Таким образом, $\cup A = \{1,2,3,4\}$.
 	
 	\mcomm{For the above argument, the Instructor might wish to explain a few logical equivalences: $\exists x\, (A \vee B) \equiv \exists x\, A \vee \exists x\, B$ and $\exists x\, (A(x) \wedge x = t) \equiv A(t)$.}
 \end{exm}
 
 \begin{exm}
-	Let $S$ be the set of all segments of length $1$ in the line $\R$. (Let's recall that a \emph{segment} is a set of the form $[a,b] = \{ x \in \R \mid a \leq x \leq b \}$ for some numbers $a, b \in \R$. Clearly, $[a,b] = \void$ if $b < a$. Assume that $a \leq b$. Then the number $b - a \geq 0$ is called the \emph{length} of the segment $[a,b]$. Easily, the length of $[a,b]$ equals $1$ iff $b = a + 1$.)
+	Пусть $S$ --- множество всех отрезков длины $1$ на прямой $\R$. (Вспомним, что \emph{отрезок}~--- множество вида $[a,b] = \{ x \in \R \mid a \leq x \leq b \}$ для некоторых чисел $a, b \in \R$. Очевидно, $[a,b] = \void$, если $b < a$. Пусть $a \leq b$. Тогда число $b - a \geq 0$ называется \emph{длиной} отрезка $[a,b]$. Понятно, что длина $[a,b]$ равна $1$ тогда и только тогда, когда $b = a + 1$.)
 	
-	Obviously, $S = \{ X \in \mP(\R) \mid \exists a \in \R\ X = [a, a + 1] \}$. Less accurately, the set $S$ can also be denoted by $\{ [a,a + 1] \mid a \in \R \}$. What is the set $\cup S$? Let us show that $\cup S = \R$.
+	Ясно, что $S = \{ X \in \mP(\R) \mid \exists a \in \R\ X = [a, a + 1] \}$. Менее строго множество $S$ может быть также записано как $\{ [a,a + 1] \mid a \in \R \}$. Что представляет собою множество $\cup S$? Покажем, что $\cup S = \R$.
 	
-	If $x \in \cup S$, then $x \in X \in S$ for some $X$, or equivalently, $x \in [a, a + 1]$ for some $a \in \R$. By the definition of segment, it should be that $x \in \R$.
+	Если $x \in \cup S$, то $x \in X \in S$ для некоторого $X$, или, эквивалентно, $x \in [a, a + 1]$ для некоторого $a \in \R$. По определению отрезка получаем $x \in \R$.
 	
-	For the other direction, suppose $x \in \R$. There exists a segment from $S$ covering (i.\,e. containing) $x$---in fact, infinitely many such segments. Indeed, we have $x \leq x \leq x + 1$,  $x - \frac{1}{2} \leq x \leq x + \frac{1}{2}$, and so on. Thus, $x \in [x, x + 1] \in S$, whence $x \in \cup S$.
+	Для доказательства в другую сторону рассмотрим $x \in \R$. Существует отрезок из $S$, покрывающий (то есть содержащий) $x$ --- фактически, таких отрезков бесконечно много. В самом деле, $x \leq x \leq x + 1$,  $x - \frac{1}{2} \leq x \leq x + \frac{1}{2}$ и так далее. Таким образом, $x \in [x, x + 1] \in S$, откуда $x \in \cup S$.
 \end{exm}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics*[width=0.6\textwidth]{union.pdf}
-	\caption{A union in the plane. The highlighted area $\cup C$, which is a set of plane \emph{points}, is the union of a set of \emph{circles} $C$. In particular, $C$ is finite while $\cup C$ is infinite.}
+	\caption{Объединение на плоскости. Закрашенная область $\cup C$, представляющая собой множество \emph{точек} плоскости, является объединением множества \emph{кругов} $C$. В частности, $C$ конечно, в то время как $\cup C$ бесконечно.}
 \end{figure}
 
 
 \begin{exm}
-	If $X \sbs Y$, then $\cup X \sbs \cup Y$.
+	Если $X \sbs Y$, то $\cup X \sbs \cup Y$.
 	
-	Consider an arbitrary $a \in \cup X$. By definition, we get $a \in A$ for some $A \in X$. From our assumption, it follows that $A \in Y$. Thus, $\exists a\ a \in A \in Y$, which means $a \in \cup Y$. Generalizing, we obtain that $a \in \cup X$ implies $a \in \cup Y$ for \emph{any} $a$, i.\,e., $\cup X \sbs \cup Y$.
+	Рассмотрим произвольный $a \in \cup X$. По определению имеем $a \in A$ для некоторого $A \in X$. Из нашего условия следует, что $A \in Y$. Тогда $\exists a\ a \in A \in Y$, что означает $a \in \cup Y$. Таким образом, мы получили, что из $a \in \cup X$ следует $a \in \cup Y$ для \emph{любого} $a$, то есть $\cup X \sbs \cup Y$.
 \end{exm}
 
-\paragraph{Algebra of sets.} For arbitrary sets $A$ and $B$, by $A \cup B$ we denote the set $\cup\{A, B\}$, which is called the \emph{union of the sets $A$ and $B$}. Arguing similarly to Example~\ref{sets:fin_union}, it is easy to prove that
+\paragraph{Алгебра множеств.} Для произвольных множеств $A$ и $B$ обозначим $A \cup B$ множество $\cup\{A, B\}$, которое называется \emph{объединением множеств $A$ и $B$}. Рассуждая аналогично примеру~\ref{sets:fin_union}, легко доказать, что
 $$x \in A \cup B \iff x \in A \vee x \in B$$
-for any $x$. Indeed,
+для любого $x$. В самом деле,
 $$
 \begin{array}{rcl}
 	x \in A \cup B &\iff& x \in \cup\{ A, B \}\\
@@ -877,19 +884,19 @@ $$
 	&\iff& x \in A  \vee   x \in B.\\
 \end{array}
 $$
-\noindent Also, we define the \emph{intersection}
+\noindent Также определим \emph{пересечение}
 $$A \cap B = \{ x\in A \mid x \in B\}$$
-and the \emph{difference}
+и \emph{разность}
 $$A \setminus B = \{x \in A \mid x \notin B\}$$
-of sets $A$ and $B$. Clearly,
+множеств $A$ и $B$. Очевидно,
 $$x \in A \cap B \iff x \in A \wedge x \in B$$
-for any $x$. We say that the set $A$ \emph{intersects} $B$ if $A \cap B \neq \void$. Otherwise, these sets are called \emph{disjoint}.
+для любого $x$. Говорят, что множество $A$ \emph{пересекается} с $B$, если $A \cap B \neq \void$. В противном случае множества называются \emph{непересекающимися}.
 
 \begin{lemma}\label{ch0:l3}
-	For any sets $A$ and $B$, one has $A \cap B \sbs X \sbs A \cup B$ if $X \in \{A,B\}$. Also, $A \setminus B \sbs A$ and $(A \setminus B) \cap B = \void$.
+	Для любых множеств $A$ и $B$ имеем $A \cap B \sbs X \sbs A \cup B$, если $X \in \{A,B\}$. Также $A \setminus B \sbs A$ и $(A \setminus B) \cap B = \void$.
 \end{lemma}
 \begin{lemma}\label{ch0:lattice}
-	For any sets $A$ and $B$, the following statements are equivalent:
+	Для любых множеств $A$ и $B$ следующие условия эквивалентны:
 	\begin{enumerate}
 		\item $A \sbs B$;
 		\item $A \cap B = A$;
@@ -897,28 +904,28 @@ for any $x$. We say that the set $A$ \emph{intersects} $B$ if $A \cap B \neq \vo
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
-	It suffices to show that the first one implies the second, the second implies the third, and the third one implies the first statement.
+	Достаточно показать, что первое условие влечёт второе, второе влечёт третье, а третье влечёт первое.
 	
-	Suppose that $A \sbs B$. By Lemma~\ref{ch0:l3}, we get $A \cap B \sbs A$. Let us check if $A \sbs A \cap B$. Consider an arbitrary $x \in A$. Then $x \in B$ as $A \sbs B$. Hence, $x \in A \cap B$. By Lemma~\ref{ch0:subset}, from $A \cap B \sbs A$ and $A \sbs A \cap B$ it follows that $A \cap B = A$.
+	Допустим $A \sbs B$. По лемме~\ref{ch0:l3} имеем $A \cap B \sbs A$. Проверим, что $A \sbs A \cap B$. Рассмотрим произвольный $x \in A$. Тогда $x \in B$, так как $A \sbs B$. Отсюда $x \in A \cap B$. По лемме~\ref{ch0:subset} из $A \cap B \sbs A$ и $A \sbs A \cap B$ следует, что $A \cap B = A$.
 	
-	Now assume that $A \cap B = A$. By Lemma~\ref{ch0:l3}, $B \sbs A \cup B$. It remains to prove that $A \cup B \sbs B$. If $x \in A \cup B$, then $x \in A$ or $x \in B$. In the former case, obtain $x \in A \cap B$ from $A = A \cap B$, whence $x \in B$. In the latter one, $x \in B$ is immediate.
+	Теперь допустим $A \cap B = A$. По лемме~\ref{ch0:l3} $B \sbs A \cup B$. Осталось доказать, что $A \cup B \sbs B$. Если $x \in A \cup B$, то $x \in A$ или $x \in B$. В первом случае получим $x \in A \cap B$ из $A = A \cap B$, откуда $x \in B$. Во втором случае сразу же получим $x \in B$.
 	
-	Finally, suppose that $A \cup B = B$. By Lemma~\ref{ch0:l3}, we have $A \sbs A \cup B$. By assumption, we get $A \cup B \sbs B$, hence $A \sbs B$.
+	Наконец, допустим $A \cup B = B$. По лемме~\ref{ch0:l3} имеем $A \sbs A \cup B$. По предположению получаем $A \cup B \sbs B$, откуда $A \sbs B$.
 \end{proof}
 
-Sometimes, all the sets we consider are subsets of some fixed set $U$, which is called \emph{the universe} (for this particular case). If a universe $U$ has been specified (or is clear from the context), for any $A \sbs U$ we define the set
+Иногда все множества, которые мы рассматриваем, являются подмножествами некоторого множества $U$, которое называется \emph{универсальным} (для данного конкретного случая). Если универсальное множество $U$ известно (или понятно из контекста), то для любого $A \sbs U$ мы можем определить множество
 $$\bar A = U \setminus A,$$
-which is called the \emph{complement} of $A$ (to $U$). Obviously, $A \setminus B = A \cap \bar B$ for every $A, B \sbs U$.
+которое называется \emph{дополнением} $A$ (до $U$). Очевидно, $A \setminus B = A \cap \bar B$ для любых $A, B \sbs U$.
 
 \mcomm{Some students mistake this `universe' for ``the set of all sets''. The Instructor should discourage this misconception.}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics*[width=0.6\textwidth]{set_algebra.pdf}
-	\caption{\emph{Euler diagrams} for set algebra operations. Sets are identified with planar figures and their elements---with points of the plane. However useful they are, no such diagram \emph{proves} anything.}
+	\caption{\emph{Диаграммы Эйлера} для операций алгебры множеств. Множества отождествляются с фигурами на плоскости, а их элементы --- с точками плоскости. Как это ни наглядно, никакие диаграммы \emph{не являются доказательством} чего бы то ни было.}
 \end{figure}
 
-\begin{thm}[Set algebra identities]\label{ch0:boolean} For all sets $U$ and $A, B, C \sbs U$,
+\begin{thm}[Тождества алгебры множеств]\label{ch0:boolean} Для любых множеств $U$ и $A, B, C \sbs U$
 	\begin{enumerate}
 		\item $A \cap B = B \cap A$; $A \cup B = B \cup A$;
 		\item $(A \cap B) \cap C = A \cap (B \cap C)$; $(A \cup B) \cup C = A \cup (B \cup C)$;
@@ -932,9 +939,10 @@ which is called the \emph{complement} of $A$ (to $U$). Obviously, $A \setminus B
 	\end{enumerate}
 \end{thm}
 \begin{proof}
-	The proof for the theorem is just a rephrasing of logical equivalences for conjunction, disjunction, and negation, which follow from the respective truth tables.
+	Доказательство этой теоремы представляет собою переписывание логических эквивалентностей для конъюнкции, дизъюнкции и отрицания, которые следуют из соответствующих таблиц истинности.
+	%The proof for the theorem is just a rephrasing of logical equivalences for conjunction, disjunction, and negation, which follow from the respective truth tables.
 	
-	Let us check, say, whether $\overline{A \cap B} = \bar A \cup \bar B$. For every $x$, one has
+	Проверим, например, что $\overline{A \cap B} = \bar A \cup \bar B$. Для любого $x$ имеем
 	\begin{multline*}
 		x \in \overline{A \cap B} \iff x \in U \wedge \neg (x \in A \cap B) \iff x \in U \wedge \neg (x \in A \wedge x \in B) \iff\\
 		x \in U \wedge (\neg x \in A \vee \neg x \in B) \iff (x \in U \wedge \neg x \in A) \vee (x \in U \wedge \neg x \in B) \iff\\
@@ -949,13 +957,14 @@ which is called the \emph{complement} of $A$ (to $U$). Obviously, $A \setminus B
 \end{proof}
 
 \begin{rem}
-	As $(A \cap B) \cap C = A \cap (B \cap C)$, we can omit parentheses in expressions like $A_1 \cap A_2 \cap \ldots \cap A_n$. Of course, the same applies for the union as well.
+	Так как $(A \cap B) \cap C = A \cap (B \cap C)$, мы можем опускать скобки в выражениях вида $A_1 \cap A_2 \cap \ldots \cap A_n$. Разумеется, это же верно и для объединения.
 \end{rem}
 
-When studying set identities, one often uses complement without any explanations. Say, in the example following, one can put $U = \cup\{A, B, C\}$ for \emph{any} choice of the sets $A, B, C$.
+При рассмотрении тождеств алгебры множеств дополнения зачастую используются без всяких объяснений. Например, в нижеследующем примере можно положить $U = \cup\{A, B, C\}$ для \emph{любого} выбора множеств $A, B, C$.
+%When studying set identities, one often uses complement without any explanations. Say, in the example following, one can put $U = \cup\{A, B, C\}$ for \emph{any} choice of the sets $A, B, C$.
 
 \begin{exm}
-	Let us show that $A \setminus (B \setminus C) = (A \setminus B) \cup (A \cap C)$ using the identities already known. Indeed,
+	Покажем, что $A \setminus (B \setminus C) = (A \setminus B) \cup (A \cap C)$, используя уже известные тождества. В самом деле,
 	\begin{multline*}
 		A \setminus (B \setminus C) = A \cap \overline{B \cap \bar C} = A \cap (\bar B \cup \bar{\bar C}) =\\
 		A \cap (\bar B \cup C) = (A \cap \bar B) \cup (A \cap C) = (A \setminus B) \cup (A \cap C).
@@ -963,13 +972,13 @@ When studying set identities, one often uses complement without any explanations
 \end{exm}
 
 \begin{exm}\label{L2:cup_sup}
-	For every sets $A, B, C$, if $A \sbs C$ and $B \sbs C$, then $A \cup B \sbs C$.
+	Для любых множеств $A, B, C$, если $A \sbs C$ и $B \sbs C$, то $A \cup B \sbs C$.
 	
-	By the assumption and Lemma~\ref{ch0:lattice}, obtain $C = A \cup C$ and $C = B \cup C$. Now, substitute $B \cup C$ for the second occurrence of $C$ in the first equality. Then $C = A \cup (B \cup C)$. But $A \cup (B \cup C) = (A \cup B) \cup C$ by Theorem~\ref{ch0:boolean}, hence $C = (A \cup B) \cup C$. This yields that $A \cup B \sbs C$ in view of Lemma~\ref{ch0:lattice}.
+	По предположению и лемме~\ref{ch0:lattice}, получим $C = A \cup C$ и $C = B \cup C$. Теперь подставим $B \cup C$ вместо второго $C$ в первом равенстве: $C = A \cup (B \cup C)$. Но $A \cup (B \cup C) = (A \cup B) \cup C$ по теореме~\ref{ch0:boolean}, откуда $C = (A \cup B) \cup C$. Тогда получаем $A \cup B \sbs C$ в силу леммы~\ref{ch0:lattice}.
 \end{exm}
 
 \begin{exc}
-	Prove that if $C \sbs A$ and $C \sbs B$, then $C \sbs A \cap B$.
+	Докажите, что если $C \sbs A$ и $C \sbs B$, то $C \sbs A \cap B$.
 \end{exc}
 
 \paragraph{Cartesian product.} Most branches of mathematics employ ordered ``pairs'', ``triplets'' etc. E.\,g., points of the plain are routinely identified with their coordinates, whose order does matter. Indeed, $(0,1)$ and $(1,0)$ are \emph{distinct} points. While sets themselves do not respect any ``order of the elements'' (as $\{2,3\} = \{3,2\}$), ordered pairs can be easily modeled using sets.
