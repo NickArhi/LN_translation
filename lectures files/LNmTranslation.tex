@@ -669,7 +669,7 @@ $$A \sbs B \iff \forall x\, (x \in A \ply x \in B).$$
 	\end{enumerate}
 \end{corr}
 
-А существуют ли вообще множества? Очевидно, что если бы их не существовало, то наша модель была бы бессмысленной. Обойдёмся без формального обоснования и просто примем, что существуют известные множества $\N = \{0,1,2,\ldots \}$ натуральных, $\Z$ целых, $\Q$ рациональных и $\R$ вещественных чисел. Разумеется, их элементы сами должны быть множествами. Так, $1$ и $2$ суть некоторые множества. \emph{Мы опускаем их определения}, хотя и принимаем некоторые элементарные свойства, например $1 \neq 2$. Иными словами, мы \emph{избегаем} использования внутренней структуры натуральных чисел (например, верно ли, что $1 \in 2$, или нет), но считаем известным, что $1 \neq 2$, $2 < 3$, $2 + 3 = 5$ и т. д.
+А существуют ли вообще множества? Очевидно, что если бы их не существовало, то наша модель была бы бессмысленной. Обойдёмся без формального обоснования и просто примем, что существуют известные множества $\N = \{0,1,2,\ldots \}$ натуральных, $\Z$ целых, $\Q$ рациональных и $\R$ вещественных чисел. Разумеется, их элементы сами должны быть множествами. Так, $1$ и $2$ суть некоторые множества. \emph{Мы опускаем их определения}, хотя и принимаем некоторые элементарные свойства, например $1 \neq 2$. Иными словами, мы \emph{избегаем} использования внутренней структуры натуральных чисел (например, верно ли, что $1 \in 2$, или нет), но считаем известным, что $1 \neq 2$, $2 < 3$, $2 + 3 = 5$ и т.\,д.
 
 \mcomm{I usually tell the students that from the standard definition of $\N$ it follows that $0 = \void$ and $n + 1 = \{0,1,\ldots,n\}$ for each $n$; then I ask them not to use these equations in their proofs since we currently have no means to make this \emph{recursive} `definition' rigorous. 
 	\medskip\\
@@ -693,7 +693,7 @@ $$x \in \{ A \} \iff x = A$$
 \begin{exm}
 	$\{2,2,3\} = \{3,2\}$. В самом деле, 
 	$$x \in \{2,2,3\} \iff x = 2 \vee x = 2 \vee x = 3 \iff x = 3 \vee x = 2 \iff x \in \{3,2\}.$$
-	Таким образом, ни порядок элементов, ни количество их вхождений не охватываются понятием множества. Далее мы увидим, что есть способы выразить эти идеи косвенно.
+	Таким образом, ни порядок элементов, ни количество вхождений каждого из них не охватываются понятием множества. Далее мы увидим, что есть способы выразить эти идеи косвенно.
 \end{exm}
 
 \paragraph{Выделение подмножества.} Вспомним, что мы пишем $\phi(x)$, если $x$ удовлетворяет свойству (предикату) $\phi$. Например, $\mbox{чётно}(2)$ означает, что число $2$ удовлетворяет свойству быть чётным, то есть $2$ чётно. Пусть $A$ --- множество, а $\phi$ --- некоторое свойство. Тогда существует множество $\{ x \in A \mid \phi(x) \}$ такое, что
@@ -718,7 +718,7 @@ $$\void = \{ x \in \N \mid x \neq x \}.$$
 	\end{enumerate}
 \end{lemma} 
 \begin{proof}
-	Второе утверждение следует из первого по лемме~\ref{ch0:subset}. Докажем первое утверждение. Для любого $x$ имеем $x \notin E$. Тогда если мы предположим, что $x \in E$, то мы непременно получим ложь, противоречие. Согласно законам логики, \emph{из лжи следует всё что угодно}. Поэтому мы имеем полное право заключить, что $x \in A$ (равно как и $1 = 2$ и т. д.), когда $x \in E$.
+	Второе утверждение следует из первого по лемме~\ref{ch0:subset}. Докажем первое утверждение. Для любого $x$ имеем $x \notin E$. Тогда если мы предположим, что $x \in E$, то мы непременно получим ложь, противоречие. Согласно законам логики, \emph{из лжи следует всё что угодно}. Поэтому мы имеем полное право заключить, что $x \in A$ (равно как и $1 = 2$ и т.\,д.), когда $x \in E$.
 \end{proof}
 \begin{corr}
 	Множество $\void$ --- единственное пустое множество.
@@ -726,20 +726,15 @@ $$\void = \{ x \in \N \mid x \neq x \}.$$
 
 \paragraph{Множества и предикаты.}
 Как мы только что увидели, принцип выделения подмножества позволяет определить множество всех элементов некоторого данного множества $A$, которые удовлетворяют предикату $\phi$. В сущности, это одна из важнейших идей теории множеств. Зачастую в математических высказываниях мы будем заменять предикаты множествами.
-%As we have just seen, the subset specification principle allows to form a set of all those elements of some given set $A$ which satisfy a predicate $\phi$. This is one of the most important ideas behind sets indeed. Often, we will replace predicates with sets in mathematical arguments.
 
 Например, представьте себе, что мы хотим формализовать высказывание <<каждое чётное число равно сумме двух нечётных чисел>>. Отталкиваясь от формализации $$\forall x\, \bigl(x\ \mbox{чётно}\ \to \exists y \exists z\, (y\ \mbox{нечётно} \wedge z\ \mbox{нечётно}\ \wedge x = y + z)\bigr),$$
-%For example, assume that we want to formalize the statement ``every even number equals the sum of two odd numbers''. Stating from the formalization $$\forall x\, \bigl(x\ \mbox{is even}\ \to \exists y \exists z\, (y\ \mbox{is odd} \wedge z\ \mbox{is odd}\ \wedge x = y + z)\bigr),$$
 мы можем преобразовать её в
 $$\forall x\, \bigl(x \in A \to \exists y \exists z\, (y \in B \wedge z \in B \wedge x = y + z)\bigr),$$
 где $A$ и $B$ --- множества чётных и нечётных чисел соответственно. Обратите внимание на то, как <<соответствие предикату>> было здесь заменено на <<принадлежность множеству>>. Обычно в таком случае используют более компактную запись (с помощью так называемых \emph{ограниченных кванторов}):
-%where $A$ and $B$ stand for the sets of even and odd numbers, respectively. Please notice how ``satisfying a predicate'' has been replaced by ``belonging to a set'' here. Usually, they would employ a more concise notation (so called \emph{bounded quantifiers}) in this case:
 $$\forall x \in A\, \exists y \in B\,  \exists z \in B\, (x = y + z)$$
 (читать как <<для любого $x$ из $A$ существуют $y$ и $z$ из $B$ такие, что \dots>> --- что звучит вполне понятно и естественно, не так ли?).
-%(to be read as ``for each $x$ from $A$ there exist $y$ and $z$ from $B$ such that\dots''---which sounds very intuitive and natural, does not it?).
 
 Ограниченные кванторы имеют много разновидностей ($\forall x \in A$, $\forall x < 10$, $\exists x > 10$ и др.), но важно понимать, что \emph{ограниченный квантор всеобщности} подразумевает \emph{импликацию}, а \emph{ограниченный квантор существования} подразумевает \emph{конъюнкцию}. Формально,
-%Bounded quantifiers come in many varieties ($\forall x \in A$, $\forall x < 10$, $\exists x > 10$, etc.) but it is important to realize that \emph{bounded universal} quantifier means \emph{implication}, while \emph{bounded existential} quantifier means \emph{conjunction}. Formally,
 $$\forall x \in A\ \phi \equiv \forall x\, (x \in A \to \phi)\qquad\mbox{и}\qquad\exists x \in A\ \phi \equiv \exists x\, (x \in A \wedge \phi).$$
 \begin{exc}
 	Докажите, что $\forall x \in A\ \phi$ истинно, а $\exists x \in A\ \phi$ ложно для $A = \void$ и любого утверждения $\phi$.
@@ -749,11 +744,10 @@ $$\forall x \in A\ \phi \equiv \forall x\, (x \in A \to \phi)\qquad\mbox{и}\qqu
 \end{exc}
 
 \paragraph{Парадокс Рассела.} Очевидно, с помощью $\{x \in A \mid \phi(x) \}$ мы можем выделять лишь подмножества данного множества $A$. Но не могли бы мы объединить \emph{все} возможные $x$ (то есть не только из $A$) такие, что $x$ удовлетворяет $\phi$? Исторически, именно такая идея изначально стояла за понятием множества: любой набор объектов, имеющих что-то общее или удовлетворяющих какому-то общему свойству.
-%Clearly, we can only specify subsets of a given set $A$ via $\{x \in A \mid \phi(x) \}$. But could not we put together \emph{all} $x$ in existence (i.\,e.\ not only from $A$) such that $x$ satisfies $\phi$? Historically, this was the first intuition backing the notion of set: any collection of objects having something in common or satisfying some property.
 
 Как мы сейчас увидим, эта интуитивная идея оказывается логически противоречивой.
-%As we shall see in a moment, this intuition proves to be logically inconsistent. 
-\begin{lemma}[``Парадокс Рассела'']
+
+\begin{lemma}[<<Парадокс Рассела>>]
 	Не существует такого множества $R$, что
 	$$\forall x\, (x \in R \iff x \notin x).$$
 \end{lemma}
@@ -828,7 +822,7 @@ $$x \in \cup A \iff \exists \alpha\ (x \in \alpha \wedge \alpha \in A)$$
 \begin{exm}\label{sets:fin_union}
 	$\cup \void = \void$. В самом деле, если $x \in \cup \void$, то $x \in \alpha \in \void$ для некоторого множества $\alpha$; однако $\alpha \in \void$ невозможно, откуда получаем противоречие; таким образом, ни один $x$ не может быть элементом $\cup \void$; тогда $\cup \void$ пустое. По лемме~\ref{ch0:empty} $\void$ --- единственное пустое множество.
 	
-	Для любого $A$: $\cup \{ A \} = A$. Понятно, что $x \in \cup \{ A\} \iff \exists \alpha\ x \in \alpha \in \{ A \}$, а $\alpha \in \{A \}$ означает, что $\alpha = A$. Тогда $x \in \cup \{ A\} \iff \exists \alpha\ x \in \alpha = A \iff x \in A$. (Для последней эквивалентности можно положить $\alpha = A$).
+	Для любого $A$: $\cup \{ A \} = A$. Понятно, что $x \in \cup \{ A\} \iff \exists \alpha\ x \in \alpha \in \{ A \}$, а $\alpha \in \{A \}$ означает, что $\alpha = A$. Тогда $x \in \cup \{ A\} \iff \exists \alpha\ x \in \alpha = A \iff x \in A$. (Для последней эквивалентности можно положить $\alpha = A$.)
 	
 	Если $A = \{ \{1,2,3\}, \{1\}, \{2,4\}\}$, то для любого $x$
 	$$
@@ -858,13 +852,6 @@ $$x \in \cup A \iff \exists \alpha\ (x \in \alpha \wedge \alpha \in A)$$
 	Для доказательства в другую сторону рассмотрим $x \in \R$. Существует отрезок из $S$, покрывающий (то есть содержащий) $x$ --- фактически, таких отрезков бесконечно много. В самом деле, $x \leq x \leq x + 1$,  $x - \frac{1}{2} \leq x \leq x + \frac{1}{2}$ и так далее. Таким образом, $x \in [x, x + 1] \in S$, откуда $x \in \cup S$.
 \end{exm}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics*[width=0.6\textwidth]{union.pdf}
-	\caption{Объединение на плоскости. Закрашенная область $\cup C$, представляющая собой множество \emph{точек} плоскости, является объединением множества \emph{кругов} $C$. В частности, $C$ конечно, в то время как $\cup C$ бесконечно.}
-\end{figure}
-
-
 \begin{exm}
 	Если $X \sbs Y$, то $\cup X \sbs \cup Y$.
 	
@@ -891,6 +878,13 @@ $$A \setminus B = \{x \in A \mid x \notin B\}$$
 множеств $A$ и $B$. Очевидно,
 $$x \in A \cap B \iff x \in A \wedge x \in B$$
 для любого $x$. Говорят, что множество $A$ \emph{пересекается} с $B$, если $A \cap B \neq \void$. В противном случае множества называются \emph{непересекающимися}.
+
+% Пришлось переместить эту картинку, чтобы определение не разбивалось ею на две части.
+\begin{figure}[h]
+	\centering
+	\includegraphics*[width=0.6\textwidth]{union.pdf}
+	\caption{Объединение на плоскости. Закрашенная область $\cup C$, представляющая собой множество \emph{точек} плоскости, является объединением множества \emph{кругов} $C$. В частности, $C$ конечно, в то время как $\cup C$ бесконечно.}
+\end{figure}
 
 \begin{lemma}\label{ch0:l3}
 	Для любых множеств $A$ и $B$ имеем $A \cap B \sbs X \sbs A \cup B$, если $X \in \{A,B\}$. Также $A \setminus B \sbs A$ и $(A \setminus B) \cap B = \void$.
@@ -940,7 +934,6 @@ $$\bar A = U \setminus A,$$
 \end{thm}
 \begin{proof}
 	Доказательство этой теоремы представляет собою переписывание логических эквивалентностей для конъюнкции, дизъюнкции и отрицания, которые следуют из соответствующих таблиц истинности.
-	%The proof for the theorem is just a rephrasing of logical equivalences for conjunction, disjunction, and negation, which follow from the respective truth tables.
 	
 	Проверим, например, что $\overline{A \cap B} = \bar A \cup \bar B$. Для любого $x$ имеем
 	\begin{multline*}
@@ -961,7 +954,6 @@ $$\bar A = U \setminus A,$$
 \end{rem}
 
 При рассмотрении тождеств алгебры множеств дополнения зачастую используются без всяких объяснений. Например, в нижеследующем примере можно положить $U = \cup\{A, B, C\}$ для \emph{любого} выбора множеств $A, B, C$.
-%When studying set identities, one often uses complement without any explanations. Say, in the example following, one can put $U = \cup\{A, B, C\}$ for \emph{any} choice of the sets $A, B, C$.
 
 \begin{exm}
 	Покажем, что $A \setminus (B \setminus C) = (A \setminus B) \cup (A \cap C)$, используя уже известные тождества. В самом деле,
@@ -981,125 +973,124 @@ $$\bar A = U \setminus A,$$
 	Докажите, что если $C \sbs A$ и $C \sbs B$, то $C \sbs A \cap B$.
 \end{exc}
 
-\paragraph{Cartesian product.} Most branches of mathematics employ ordered ``pairs'', ``triplets'' etc. E.\,g., points of the plain are routinely identified with their coordinates, whose order does matter. Indeed, $(0,1)$ and $(1,0)$ are \emph{distinct} points. While sets themselves do not respect any ``order of the elements'' (as $\{2,3\} = \{3,2\}$), ordered pairs can be easily modeled using sets.
+\paragraph{Декартово произведение.} Многие разделы математики оперируют такими понятиями, как упорядоченные <<пары>>, <<тройки>> и т.\,д. Например, точки плоскости обычно отождествляют с их координатами, порядок которых имеет значение. В самом деле, $(0,1)$ и $(1,0)$ суть \emph{различные} точки. Несмотря на то, что множества сами по себе не отражают никакого <<порядка элементов>> (например, $\{2,3\} = \{3,2\}$), упорядоченные пары легко смоделировать с помощью множеств.
 
-For arbitrary sets $a$ and $b$ consider the set
+Для произвольных множеств $a$ и $b$ рассмотрим множество
 $$(a,b) = \{\{a\}, \{a, b\}\},$$
-which is called an \emph{(ordered) pair} of sets $a$ и $b$. The main property of such a pair is the following
+которое называется \emph{(упорядоченной) парой} множеств $a$ и $b$. Ключевое свойство таких пар есть следующее:
 \begin{lemma}\label{ch0:pair}
-	For all sets $a, b, c, d$, 
+	Для любых множеств $a, b, c, d$, 
 	$$(a, b) = (c, d) \iff a = c \wedge b = d.$$
 \end{lemma}
 \begin{proof}
-	Assume that $\{\{a\}, \{a, b\}\} = \{\{c\}, \{c, d\}\}$. Then $\{a\} \in \{\{c\}, \{c, d\}\}$, i.\,e., $\{a\} = \{c\}$ or $\{a\} = \{c, d\}$. In the first case, $a \in \{c\}$, hence $a = c$. In the second case, $c \in \{a\}$ and $c = a$ again. Thus, $a = c$.
+	Предположим, что $\{\{a\}, \{a, b\}\} = \{\{c\}, \{c, d\}\}$. Тогда $\{a\} \in \{\{c\}, \{c, d\}\}$, то есть $\{a\} = \{c\}$ или $\{a\} = \{c, d\}$. В первом случае $a \in \{c\}$, откуда $a = c$. Во втором случае $c \in \{a\}$ и опять $c = a$. Таким образом, $a = c$.
 	
-	From the assumption, it also follows that $\{a, b\} = \{c\}$ or $\{a, b\} = \{c, d\}$. 
+	Из предположения также следует, что $\{a, b\} = \{c\}$ или $\{a, b\} = \{c, d\}$. 
 	
-	In the former case, $b \in \{c\}$, whence $b = c = a$. By the assumption, $\{c,d\} = \{a\}$ or $\{c,d\} = \{a,b\}$. Therefore, $d = a$ or $d = b$. Anyway, $b = d$.
+	В первом случае $b \in \{c\}$, откуда $b = c = a$. По предположению $\{c,d\} = \{a\}$ или $\{c,d\} = \{a,b\}$. Тогда $d = a$ или $d = b$. В любом случае $b = d$.
 	
-	Now suppose that $\{a, b\} = \{c, d\}$. If $d = b$, there is nothing to prove. Otherwise, $d = a = c$, i.\,e., $\{a, b\} = \{d\}$, whence $b = d$ again.
+	Теперь рассмотрим случай $\{a, b\} = \{c, d\}$. Если $d = b$, доказывать нечего. В противном случае $d = a = c$, то есть $\{a, b\} = \{d\}$, откуда $b = d$.
 	
-	For the other implication, it suffices to recall that equal sets are fully interchangeable; so, from $(a, b) = (a, b)$, $a = c$ and $b = d$, it follows that $(a, b) = (c, d)$.
+	Для импликации в обратную сторону достаточно вспомнить, что равные множества полностью взаимозаменяемы; таким образом, из $(a, b) = (a, b)$, $a = c$ и $b = d$ следует, что $(a, b) = (c, d)$.
 \end{proof}
 \begin{corr}
-	For all sets $a$ and $b$, one has $(a, b) = (b, a)$ iff $a = b$.
+	Для любых множеств $a$ и $b$: $(a, b) = (b, a)$ тогда и только тогда, когда $a = b$.
 \end{corr}
 
 \begin{rem}\label{L4:pair_collect}
-	If $a, b \in X$, then $(a, b) \in \mP (\mP (X))$.
+	Если $a, b \in X$, то $(a, b) \in \mP (\mP (X))$.
 	
-	Indeed, both $\{a\}$ and $\{a,b\}$ are subsets of $X$ and are thus elements of $\mP(X)$. Hence, $(a,b) = \{ \{a\}, \{ a,b\} \} \sbs \mP(X)$.
+	В самом деле, $\{a\}$ и $\{a,b\}$ являются подмножествами $X$ и, следовательно, элементами $\mP(X)$. Тогда $(a,b) = \{ \{a\}, \{ a,b\} \} \sbs \mP(X)$.
 \end{rem}
-\noindent The \emph{Cartesian product} of sets $A$ and $B$ is the set
+\noindent\emph{Декартовым произведением} множеств $A$ и $B$ называется множество
 $$A \times B = \{z \in \mP (\mP (A \cup B)) \mid \exists a \in A\, \exists b \in B\ z = (a, b) \}.$$
-The existence of this set is secured by the subset specification principle. In the above formula, the term $\mP (\mP (A \cup B))$ (denoting the set where $z$ is taken from) is required by the principle. But we can omit it otherwise: for every set $z$,
+Существование такого множества гарантируется принципом выделения подмножества. Этот принцип требует указания множества $\mP (\mP (A \cup B))$ (откуда берутся $z$) в вышеприведённой формуле. Однако мы можем обойтись и без него: для любого множества $z$
 $$z \in A \times B \iff \exists a \in A\, \exists b \in B\ z = (a, b).$$
-Indeed, if the right-hand side holds, one has $a, b \in A \cup B$ and $(a,b) \in \mP (\mP (A \cup B))$ by Remark~\ref{L4:pair_collect}. A less accurate but simpler notation for Cartesian product 
+В самом деле, если верна правая часть, то мы имеем $a, b \in A \cup B$ и $(a,b) \in \mP (\mP (A \cup B))$ по замечанию~\ref{L4:pair_collect}. Менее строгая, но более простая запись декартова произведения
 $$A \times B = \{(a, b) \mid a \in A,\ b \in B\}$$
-is inspired by such considerations.
+вдохновлена именно такими соображениями.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics*[width=0.6\textwidth]{cart_prod.pdf}
-	\caption{A Cartesian product in the space. The set $A \times (B_1 \cup B_2)$ is highlighted.}
+	\caption{Декартово произведение в пространстве. Множество $A \times (B_1 \cup B_2)$ закрашено.}
 \end{figure}
 
 \begin{exm}
-	Clearly, $A \times \void = \void$ for any $A$. Indeed, if $z \in A \times \void$, then $z = (a,b)$ and $b \in \void$ would be true for some sets $a, b$. But the latter is impossible. Hence, $A \times \void$ is empty.
+	Очевидно, $A \times \void = \void$ для любого $A$. В самом деле, если $z \in A \times \void$, то $z = (a,b)$ и $b \in \void$ было бы выполнено для некоторых множеств $a, b$. Однако последнее неверно. Значит, $A \times \void$ пусто.
 \end{exm}
 
 \begin{exm}
-	Let us see why $A \times B$ is not necessarily equal to $B \times A$. Indeed, for $A = \{ x \}$ and $B = \{ y \}$, one has $A \times B = \{(x,y)\}$ and $B \times A = \{(y,x)\}$. Now, consider $x = \void$ and $y = \{ \void \}$. As $\void \in y$, $y$ is non-empty and $y \neq x$. Thus, $(x,y) \neq (y,x)$ by Lemma~\ref{ch0:pair}, hence $A \times B \neq B \times A$.
+	Поймём, почему $A \times B$ не обязательно равно $B \times A$. В самом деле, для $A = \{ x \}$ и $B = \{ y \}$ имеем $A \times B = \{(x,y)\}$ и $B \times A = \{(y,x)\}$. Положим $x = \void$ и $y = \{ \void \}$. Так как $\void \in y$, то $y$ непусто и $y \neq x$. Тогда $(x,y) \neq (y,x)$ по лемме~\ref{ch0:pair}, откуда $A \times B \neq B \times A$.
 \end{exm}
 
-Although $A \times (B \times C) \neq (A \times B) \times C$ generally, we can omit the parentheses in products according to the rule:
+Несмотря на то, что в общем случае $A \times (B \times C) \neq (A \times B) \times C$, мы можем опускать скобки в произведениях, руководствуясь правилом:
 $$A_1 \times A_2 \times A_3 \times \ldots \times A_{n-1} \times A_n = (\ldots ((A_1 \times A_2) \times A_3) \times \ldots \times A_{n-1}) \times A_n.$$
 
 
 \begin{rem}\label{ch0:pair_uniq}
-	If $(x,y) \in A \times B$, then $x \in A$ and $y \in B$ (and vice versa).
+	Если $(x,y) \in A \times B$, то $x \in A$ и $y \in B$ (и наоборот).
 	
-	Indeed, suppose that $(x,y) \in A \times B$. By the definition of product, there are some $a \in A$ and $b \in B$ such that $(x,y) = (a,b)$. By Lemma~\ref{ch0:pair}, get $x = a$ and $y = b$, whence $x \in A$ and $y \in B$.
+	В самом деле, пусть $(x,y) \in A \times B$. По определению произведения существуют $a \in A$ и $b \in B$ такие, что $(x,y) = (a,b)$. По лемме~\ref{ch0:pair} имеем $x = a$ и $y = b$, откуда $x \in A$ и $y \in B$.
 	
-	This statement is not such a trifle as it seems to be. Consider a `sum' of numeric sets to see it. Let $A, B \sbs \N$ and $A + B = \{ a + b \mid a \in A, b \in B \} = \{z \in \N \mid \exists a \in A\, \exists b \in B\  z = a + b\}$. Then $2 + 3 = 4 + 1 \in \{1,4,0\} + \{ 5,1 \}$, despite $2 \notin \{1,4,0\}$ and $3 \notin \{5, 1\}$. 
+	Это утверждение --- не такая уж и мелочь, какой оно может показаться. Чтобы понять это, рассмотрим <<сумму>> числовых множеств. Пусть $A, B \sbs \N$ и $A + B = \{ a + b \mid a \in A, b \in B \} = \{z \in \N \mid \exists a \in A\, \exists b \in B\  z = a + b\}$. Тогда $2 + 3 = 4 + 1 \in \{1,4,0\} + \{ 5,1 \}$, хотя $2 \notin \{1,4,0\}$ и $3 \notin \{5, 1\}$. 
 \end{rem}
 
 \begin{exm}\label{ch0:exm32}
-	For all sets $A, B, C, D$, 
+	Для любых множеств $A, B, C, D$ 
 	$$(A \times B) \cap (C \times D) = (A \cap C) \times (B \cap D).$$
-	Let $z \in (A \times B) \cap (C \times D)$. Then $z \in A \times B$ and $z \in C \times D$.  Hence, $z = (a,b)$ for some $a \in A$ and $b\in B$. From $(a,b) \in C \times D$, obtain $a \in C$ and $b \in D$ by Remark~\ref{ch0:pair_uniq}. We have $a \in A \cap C$ and $b \in B \cap D$, whence $z = (a, b) \in (A \cap C) \times (B \cap D)$.
+	Пусть $z \in (A \times B) \cap (C \times D)$. Тогда $z \in A \times B$ и $z \in C \times D$.  Отсюда $z = (a,b)$ для некоторых $a \in A$ и $b\in B$. Из $(a,b) \in C \times D$ получаем $a \in C$ и $b \in D$ по замечанию~\ref{ch0:pair_uniq}. Имеем $a \in A \cap C$ и $b \in B \cap D$, откуда $z = (a, b) \in (A \cap C) \times (B \cap D)$.
 	
-	For the other inclusion, suppose that $z \in (A \cap C) \times (B \cap D)$. Then there exist $x \in A \cap C$ and $y \in B \cap D$ such that $z = (x, y)$. Since $x \in A$ and $y \in B$, we get $z \in A \times B$. Similarly, $z \in C \times D$.
+	Для обратного включения допустим $z \in (A \cap C) \times (B \cap D)$. Тогда существуют $x \in A \cap C$ и $y \in B \cap D$ такие, что $z = (x, y)$. Так как $x \in A$ и $y \in B$, имеем $z \in A \times B$. Аналогично, $z \in C \times D$.
 \end{exm}
 \mcomm{We will allow more laxity (like in saying ``let $(x, y) \in (A \times B) \cap (C \times D)$'') in treating pairs when the students have clearly understood (hopefully) that one owes all such laxity solely to Lemma~\ref{ch0:pair}.}
 
 \begin{exc}
-	Prove that
+	Докажите, что
 	$(A \cup B) \times C = (A \times C) \cup (B \times C).$
 \end{exc}
 
 \begin{exm}\label{ch0:exm34}
-	Let a set $C$ be non-empty. Then from $A \times C \sbs B \times C$, it follows that $A \sbs B$, and vice versa.
+	Пусть множество $C$ непусто. Тогда из $A \times C \sbs B \times C$ следует, что $A \sbs B$, и наоборот.
 	
-	Suppose that $A \times C \sbs B \times C$ and $a \in A$. As $C \neq \void$, there is some $c_0 \in C$, that satisfies $(a,c_0) \in A \times C$. Hence, $(a,c_0) \in B \times C$ and $a \in B$.
+	Пусть $A \times C \sbs B \times C$ и $a \in A$. Так как $C \neq \void$, существует $c_0 \in C$, для которого $(a,c_0) \in A \times C$. Тогда $(a,c_0) \in B \times C$ и $a \in B$.
 	
-	Now, assume $A \sbs B$. By Lemma~\ref{ch0:lattice}, get $A = A \cap B$, whence $A \times C = A \times (C \cap C) = (A \cap B) \times (C \cap C)$. Applying Example~\ref{ch0:exm32}, obtain
+	Теперь допустим $A \sbs B$. По лемме~\ref{ch0:lattice} имеем $A = A \cap B$, откуда $A \times C = A \times (C \cap C) = (A \cap B) \times (C \cap C)$. Используя пример~\ref{ch0:exm32}, получаем
 	$$A \times C = (A \times C) \cap (B \times C) \sbs B \times C.$$
 \end{exm}
-Note that it is necessary to assume $C \neq \void$ for the first implication. For otherwise, one has $\R \times \void = \void = \N \times \void$ but $\R \not\sbs \N$.
+Обратите внимание на то, что предположение $C \neq \void$ необходимо для первой импликации. В противном случае: $\R \times \void = \void = \N \times \void$, но $\R \not\sbs \N$.
 
 \mcomm{The clear resemblance of this statement to the cancellation laws for numerical multiplication is noteworthy. In this one and many examples that follow, the Instructor should try to persuade the students, that the Cartesian \emph{product} is a ``product'' indeed.}
 
-\paragraph{Cartesian power.} Just like for numerical multiplication, we can define powers in the sense of Cartesian product. For an arbitrary set $A$ and for all natural $n \geq 2$, let
+\paragraph{Декартова степень.} Как и для умножения чисел, определим степень в смысле декартова произведения. Для произвольного множества $A$ и для всех натуральных $n \geq 2$ положим
 $$
 \begin{array}{rcl}
 	A^0 &=& \{\void\};\\
 	A^1 &=& A;\\
-	A^n &=& \underbrace{A \times A \times \ldots \times A}_{n\ \mbox{\scriptsize copies of}\ A}.
+	A^n &=& \underbrace{A \times A \times \ldots \times A}_{n\ \mbox{\scriptsize копий}\ A}.
 \end{array}
 $$
 \mcomm{We do not want any explicit recursion here since we have no Replacement axioms to make it rigorous. We prefer this schematic definition for $n$ running over $\N$.}
 \begin{rem}\label{ch0:cart_pow}
-	Notice that $A^{n+1} = A^n \times A$ for all $n \geq 1$ whereas $A^0$ has exactly \emph{one} element. (Like $x^{n+1} = x^n \cdot x$ and $x^0 = 1$ for any numbers $x$ and $n$ .)
+	Отметим, что $A^{n+1} = A^n \times A$ для любого $n \geq 1$, а $A^0$ содержит ровно \emph{один} элемент. (Подобно тому, как $x^{n+1} = x^n \cdot x$ и $x^0 = 1$ для любых чисел $x$ и $n$.)
 \end{rem}
 
-For $n \geq 2$, the set
+Для $n \geq 2$ множество
 $$(a_1,\ldots, a_{n-1}, a_{n}) = ((\ldots ((a_1,a_2), a_3), \ldots, a_{n-1}), a_{n})$$
-is called the \emph{$n$-tuple} of sets $a_1, \ldots, a_{n-1},$ $a_{n}$. The sets $a_i$ are then called \emph{components} or \emph{coordinates} of the tuple $(a_1,\ldots, a_{n-1}, a_{n})$.
+называется \emph{упорядоченным набором (кортежем) длины $n$} множеств $a_1, \ldots, a_{n-1},$ $a_{n}$. Множества $a_i$ в таком случае называются \emph{компонентами} или \emph{координатами} кортежа $(a_1,\ldots, a_{n-1}, a_{n})$.
 \begin{lemma}\label{L2:l_tuple_id}
-	For any number $n \geq 2$ and sets $a_1, \ldots, a_{n}$, $b_1, \ldots, b_{n}$,
-	$$(a_1,\ldots, a_{n}) = (b_1,\ldots, b_{n}) \iff a_i = b_i\ \mbox{for all}\ i \in \{1,\ldots,n\}.$$
+	Для любого $n \geq 2$ и множеств $a_1, \ldots, a_{n}$, $b_1, \ldots, b_{n}$,
+	$$(a_1,\ldots, a_{n}) = (b_1,\ldots, b_{n}) \iff a_i = b_i\ \mbox{для всех}\ i \in \{1,\ldots,n\}.$$
 \end{lemma}
 \begin{proof}
-	For every $n$, it suffices to apply Lemma~\ref{ch0:pair} $(n-1)$ times.
+	Для любого $n$ достаточно применить лемму~\ref{ch0:pair} $(n-1)$ раз.
 \end{proof}
 
 \begin{rem}
-	Clearly, for every $x$,
+	Очевидно, для любого $x$
 	$$x \in A_1 \times A_2 \times \ldots \times A_n \iff \exists a_1 \in A_1 \ldots \exists a_n \in A_n\ x = (a_1,\ldots,a_n),$$
-	and
-	$$x \in A^n \iff \exists a_1 \in A \ldots \exists a_n \in A\ x = (a_1,\ldots,a_n)$$
-	in particular.
+	и, в частности,
+	$$x \in A^n \iff \exists a_1 \in A \ldots \exists a_n \in A\ x = (a_1,\ldots,a_n).$$
 \end{rem}
 
 \section{Induction on Naturals}
