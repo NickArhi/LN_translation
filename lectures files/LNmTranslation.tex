@@ -1093,121 +1093,121 @@ $$(a_1,\ldots, a_{n-1}, a_{n}) = ((\ldots ((a_1,a_2), a_3), \ldots, a_{n-1}), a_
 	$$x \in A^n \iff \exists a_1 \in A \ldots \exists a_n \in A\ x = (a_1,\ldots,a_n).$$
 \end{rem}
 
-\section{Induction on Naturals}
+\section{Индукция}
 \mcomm{The main goal of this section is to introduce three popular forms of induction principle for $\N$: the most common one, the `Strong' (or `Well-founded' or `Noetherian') induction, and the Least Number principles. Then we prove that all three principles are equivalent to each other. The Instructor should encourage the students to apply these principles as formally as it is reasonably possible at their first steps.}
 
-Let us have a closer look at the set $\N = \{0, 1, 2,\ldots \}$ of \emph{natural numbers}. In fact, we have not yet defined this set accurately, and we will refrain from doing it during this course.\footnote{The standard set-theoretic model for naturals is as follows: $0 = \void,\ 1 = \{0\},\ 2 = \{ 0, 1 \},\ \ldots,\ n + 1 = n \cup \{ n\} = \{0,1,\ldots, n \}$. Then one can define $n < m$ as $n \in m$ and define $n + m$ recursively by the equations $n + 0 = n$ and $n + (m + 1) = (n + m) + 1$. Yet there are still plenty of things to elaborate on.} We have taken the set $\N$ with some `basic properties', like $0 \neq 1$ or even $2 < 3$ and $3 + 2 = 5$. Now we are to analyze the main property of $\N$---that of \emph{induction}.
+Давайте чуть глубже изучим множество $\N = \{0, 1, 2,\ldots \}$ \emph{натуральных чисел}. Фактически, мы не давали строго определения этого множества, и мы воздержимся от этого и впредь на протяжении этого курса.\footnote{Стандартная теоретико-множественная модель натуральных чисел такова: $0 = \void,\ 1 = \{0\},\ 2 = \{ 0, 1 \},\ \ldots,\ n + 1 = n \cup \{ n\} = \{0,1,\ldots, n \}$. Тогда можно определить $n < m$ как $n \in m$, а $n + m$ определить рекуррентно соотношениями $n + 0 = n$ и $n + (m + 1) = (n + m) + 1$. Разумеется, в этой модели многое ещё предстоит продумать.} Рассматривая множество $\N$, мы полагаем известными некоторые его <<базовые свойства>>, например $0 \neq 1$ или даже $2 < 3$ и $3 + 2 = 5$. Сейчас мы рассмотрим главное свойство $\N$ --- свойство \emph{индукции}.
 
-In its most well-known form, the \emph{Induction Principle} says that
+В своей наиболее известной формулировке \emph{принцип математической индукции} гласит, что
 \begin{quote}
-	For an arbitrary predicate $\phi$, if $\phi(0)$ holds and for each $n \in \N$, $\phi(n)$ implies $\phi(n+1)$, then $\phi(n)$ holds for all $n \in \N$.
+	Для произвольного предиката $\phi$, если выполнено $\phi(0)$ и для каждого $n \in \N$ $\phi(n)$ влечёт $\phi(n+1)$, то $\phi(n)$ выполнено для всех $n \in \N$.
 \end{quote}
-One can easily put this into symbols (here $\phi$ is fixed):
+Легко изложить это символьно ($\phi$ здесь фиксирован):
 $$\bigl(\phi(0) \wedge \forall n\in \N \, (\phi(n) \to \phi(n+1))\bigr) \to \forall n \in \N\, \phi(n).$$
-The statement $\phi(0)$ is called the \emph{base step of induction}, while $\forall n \in \N\, (\phi(n) \to \phi(n+1))$ is called the \emph{inductive step}, and the statement $\phi(n)$ for each $n$ is called the \emph{inductive hypothesis} (which is usually shortened to `IH').
+Утверждение $\phi(0)$ называется \emph{базой индукции}, $\forall n \in \N\, (\phi(n) \to \phi(n+1))$ называется \emph{шагом индукции}, а утверждение $\phi(n)$ для каждого $n$ называется \emph{предположением индукции}.
 
 \mcomm{If the Instructor has skipped the chapter on strings, I suggest he proves `intuitive validity' of the Induction Principle similarly to Example~\ref{strings:ind_intuition}.}
 
-\noindent It is possible to rephrase the principle without mentioning any `predicates' but sets:
+\noindent Можно перефразировать этот принцип, используя множества вместо предикатов:
 \begin{quote}
-	For an arbitrary set $X \sbs \N$, if $0 \in X$ and for each $n \in \N$, $n \in X$ implies $n+1 \in X$, then $X = \N$.
+	Для произвольного множества $X \sbs \N$, если $0 \in X$ и для каждого $n \in \N$ $n \in X$ влечёт $n+1 \in X$, то $X = \N$.
 \end{quote}
-Indeed, for each predicate $\phi$, we can consider the subset $X = \{ n \in \N \mid \phi(n) \}$ of $\N$ and, conversely, we can put the predicate $n \in X$ into correspondence with a set $X \sbs \N$. Thus, the new statement of the Principle is equivalent to the original one.
+В самом деле, для каждого предиката $\phi$ мы можем рассмотреть подмножество $X = \{ n \in \N \mid \phi(n) \}$ множества $\N$ и, обратно, предикату $n \in X$ мы можем поставить в соответствие множество $X \sbs \N$. Значит, новая формулировка принципа эквивалентна изначальной.
 
 \mcomm{In practice, the students usually ask me to elaborate on this point. Sometimes, we abandon the `set version' of induction (except for the Least Number Principle, of course) altogether.}
 
 \begin{exm}
-	Let us show that for each natural $n \geq 3$, there are some numbers $a_1,\ldots,a_n \in \N_+$ such that
+	Покажем, что для любого натурального $n \geq 3$ найдутся числа $a_1,\ldots,a_n \in \N_+$ такие, что
 	$$1 = \frac{1}{a_1} + \ldots + \frac{1}{a_n},$$
-	where $a_i \neq a_j$ whenever $i \neq j$.
+	где $a_i \neq a_j$ при $i \neq j$.
 	
-	We give a (too) detailed proof. Consider the set
-	$$X = \{ n \in \N \mid\  n \geq 3 \to \mbox{there exist}\ a_1,\ldots, a_n\ \mbox{as required}\}.$$
+	Дадим (возможно, излишне) подробное доказательство. Рассмотрим множество
+	$$X = \{ n \in \N \mid\  n \geq 3 \to \mbox{существуют требуемые}\ a_1,\ldots, a_n\}.$$
 	\mcomm{The Instructor might prefer a `predicate version' of this inductive proof instead.
 		\medskip\\
 		Many students justly see that the base case here is that of $n = 3$ essentially. Then they try to change \emph{the inductive principle} accordingly rather than the set or predicate in question. In my view, this practice is caused by their aversion to anything else than a simple equation in the inductive statement (like, say, an implication). This is counterproductive and the students should be discouraged from doing so at least in these easy early stage examples. They should be rather taught to adapt to the \emph{principle as it is} and to flexibly change the statement they want. Of course, these requirements may be finally lifted for harder problems and for students able to solve them.}
-	Let us check if $X$ satisfies the assumptions of the Induction Principle. Clearly, $0 \in X$. For an arbitrary $n \in X$, we are to prove that $n + 1 \in X$. This is immediate if $n + 1 < 3$. When $n + 1 = 3$, we get $n+1 \in X$ by the identity
+	Проверим, что $X$ удовлетворяет условию принципа индукции. Очевидно, $0 \in X$. Для произвольного $n \in X$ докажем, что $n + 1 \in X$. Если $n + 1 < 3$, то получаем это сразу. Если $n + 1 = 3$, то имеем $n+1 \in X$ в соответствии с равенством
 	$$1 = \frac{1}{2} + \frac{1}{3} + \frac{1}{6}.$$
-	See that the IH $2 \in X$ is of no use here.\footnote{Evidently, from $1 = \frac{1}{a} + \frac{1}{b}$, it follows that $a = b = 2$.} Essentially, the statement $3 \in X$ is the base step of this induction, but \emph{formally} we are content with the base of $0$.
+	Отметим, что индукционное предположение $2 \in X$ здесь бесполезно.\footnote{Очевидно, из $1 = \frac{1}{a} + \frac{1}{b}$ следует $a = b = 2$.} В сущности, базой данной индукции является утверждение $3 \in X$, но \emph{формально} мы можем обойтись и базой $0$.
 	
-	Finally, suppose that $n + 1 > 3$. Then $n \geq 3$. When combined with $n \in X$, this yields some pairwise distinct numbers $a_1,\ldots, a_n$ s.\,t.\ 
+	Наконец, допустим $n + 1 > 3$. Тогда $n \geq 3$. Поскольку $n \in X$, имеем некоторые попарно различные числа $a_1,\ldots, a_n$ такие, что 
 	$$1 = \frac{1}{a_1} + \ldots + \frac{1}{a_n}.$$
-	Multiply the latter equality by $\frac{1}{2}$, then add $\frac{1}{2}$ to both sides thus obtaining
+	Умножив это равенство на $\frac{1}{2}$ и прибавив затем $\frac{1}{2}$ к обеим частям, получим
 	$$1 = \frac{1}{2} + \frac{1}{2} = \frac{1}{2} + \frac{1}{2a_1} + \ldots + \frac{1}{2a_n}.$$
-	Clearly, we can take $2, 2a_1, \ldots, 2a_n$ as the numbers we are searching for, as soon as we prove them to be pairwise distinct. When $i \neq j$, we have both $a_i \neq a_j$ and $2a_i \neq 2a_j$. But what if $2 = 2 a_i$ for some $i$? Then $\frac{1}{a_i} = 1$, so $n$ cannot be greater than one despite the fact that $n \geq 3$. Hence, this is impossible.
+	Очевидно, мы можем взять числа $2, 2a_1, \ldots, 2a_n$ в качестве искомых, если докажем, что они попарно различны. Если $i \neq j$, то $a_i \neq a_j$ и $2a_i \neq 2a_j$. Но что если $2 = 2 a_i$ для какого-то $i$? Тогда $\frac{1}{a_i} = 1$, откуда $n$ не может быть больше единицы, хотя $n \geq 3$. Следовательно, это невозможно.
 	
-	Both the base and inductive steps have been verified, so we conclude $X = \N$ by the Induction Principle. This means that each natural $n \geq 3$ has got the respective numbers $a_1,\ldots, a_n$.
+	И база индукции, и индукционный переход проверены, поэтому на основании принципа индукции мы можем заключить, что $X = \N$. Это означает, что для любого натурального $n \geq 3$ найдутся соответствующие числа $a_1,\ldots, a_n$.
 \end{exm}
 
-Another popular form of induction is the \emph{Strong Induction Principle}. Basically, it allows us to use not only $\phi(n)$ but all the statements $\phi(0), \phi(1),\ldots, \phi(n)$ together as the inductive hypothesis to draw $\phi(n+1)$ from. Thus,
+Другая распространённая форма индукции --- \emph{принцип сильной индукции}. Он позволяет нам использовать в качестве индукционного предположения не одно лишь $\phi(n)$, а все утверждения $\phi(0), \phi(1),\ldots, \phi(n)$ вместе. Таким образом,
 \begin{quote}
-	For an arbitrary predicate $\phi$, if $\phi(0)$ is true and for every $n \in \N$, $\phi(n+1)$ holds whenever each of $\phi(0), \phi(1) \ldots, \phi(n)$ holds, then $\phi(n)$ is true for all $n \in \N$.
+	Для произвольного предиката $\phi$, если верно $\phi(0)$ и для каждого $n \in \N$ $\phi(n+1)$ выполнено, когда выполнены $\phi(0), \phi(1) \ldots, \phi(n)$, то $\phi(n)$ верно для любого $n \in \N$.
 \end{quote}
-Let us give a more concise rewording of the Principle, eliminating any `predicates' by the way. We call a set $X \sbs \N$ \emph{progressive}, if for each $n \in \N$, from  $\forall m < n\  m \in X$, it follows that $n \in X$.\footnote{Recall that the bounded quantifier $\forall m < n\ \phi$ means $\forall m\ (m < n \to \phi)$.} We write $Prog(X)$ if $X$ is progressive. Then the principle reads this way:
+Сформулируем этот принцип более кратко, опустив заодно всякие <<предикаты>>.  Назовём множество $X \sbs \N$ \emph{прогрессивным}, если для каждого $n \in \N$ из $\forall m < n\  m \in X$ следует $n \in X$.\footnote{Вспомним, что ограниченный квантор $\forall m < n\ \phi$ означает $\forall m\ (m < n \to \phi)$.} Будем писать $Prog(X)$, если $X$ прогрессивно. Тогда принцип можно изложить следующим образом:
 \begin{quote}
-	For an arbitrary set $X \sbs \N$, if $X$ is progressive, then $X = \N$.
+	Для произвольного множества $X \sbs \N$, если $X$ прогрессивно, то $X = \N$.
 \end{quote}
 \mcomm{Of course, the Instructor might prefer to call a \emph{predicate} progressive.}
 
-Informally, a set $X$ is progressive if it `climbs' the set $\N$, `conquering' $n$ as soon as it has `conquered' all lesser numbers. Most strikingly, this form of induction apparently lacks the base step. But this is not the case.
+Интуитивно, множество $X$ прогрессивно, если оно <<распространяется>> на множество $\N$, <<захватывая>> каждое следующее $n$, как только оно <<захватило>> все предыдущие. Что поразительно --- в этой форме индукции, на первый взгляд, отсутствует база. Однако же это не совсем так.
 
 \mcomm{In practice, the students usually wonder where the base case has gone to.}
 \begin{lemma}
-	If $X$ is progressive, then $0 \in X$.
+	Если $X$ прогрессивно, то $0 \in X$.
 \end{lemma}
 \begin{proof}
-	Suppose that for every $n$, $\forall m < n\ m \in X$ implies $n \in X$. Let us specify $n$ as $0$. Consider the assumption $\forall m < 0\  m \in X$, that is, $\forall m\, (m < 0 \to m \in X)$. This statement is vacuously true as $m < 0$ is false for each natural $m$. Hence, $0 \in X$ must be true as well.
+	Пусть для всякого $n$ имеем, что $\forall m < n\ m \in X$ влечёт $n \in X$. Положим в качестве $n$ число $0$. Рассмотрим посылку $\forall m < 0\  m \in X$, то есть $\forall m\, (m < 0 \to m \in X)$. Это утверждение является <<пустой истиной>>, так как $m < 0$ ложно для любого натурального $m$. Следовательно, $0 \in X$ также истинно.
 \end{proof}
 
 
 \begin{exm}
-	Suppose $a + \dfrac{1}{a} \in \mathbb{Z}$ for some number $a \in \mathbb{R}$. Let's show that $a^n + \dfrac{1}{a^n} \in \mathbb{Z}$ for each $n \in \N$.
+	Пусть $a + \dfrac{1}{a} \in \mathbb{Z}$ для некоторого $a \in \mathbb{R}$. Покажем, что $a^n + \dfrac{1}{a^n} \in \mathbb{Z}$ для любого $n \in \N$.
 	
-	It suffices to prove the set $X = \{n \in \N \mid a^n + \dfrac{1}{a^n} \in \mathbb{Z}\}$ to be progressive. Consider an arbitrary $n \in \N$. Assume $m \in X$ for every $m < n$. If $n \geq 2$, then the naturals $n - 1$ and $n - 2$, which are lesser than $n$, belong to $X$. Hence,
+	Достаточно доказать, что множество $X = \{n \in \N \mid a^n + \dfrac{1}{a^n} \in \mathbb{Z}\}$ прогрессивно. Рассмотрим произвольное $n \in \N$. Пусть $m \in X$ для любого $m < n$. Если $n \geq 2$, то натуральные числа $n - 1$ и $n - 2$, которые меньше, чем $n$, принадлежат $X$. Имеем:
 	$$a^n + \dfrac{1}{a^n} = \left (a + \dfrac{1}{a}\right)\left (a^{n-1} + \dfrac{1}{a^{n-1}} \right) - \left (a^{n-2} + \dfrac{1}{a^{n-2}} \right).$$
-	The product and difference of any integers are integer, so $n \in X$. The same is apparent when $n \leq 1$. Thus, we get $Prog(X)$. By the Strong Induction Principle, $X = \N$.
+	Произведение и разность целых чисел есть число целое, поэтому $n \in X$. В случае же $n \leq 1$ это очевидно. Итак, получаем $Prog(X)$. Согласно принципу сильной индукции, $X = \N$.
 	
-	Furthermore, one easily sees that $a^x + \dfrac{1}{a^x} \in \mathbb{Z}$ for all $x \in \mathbb{Z}$ since $a^x + \dfrac{1}{a^x} = a^{|x|} + \dfrac{1}{a^{|x|}}$ and $|x| \in \N$ when $x \in \mathbb{Z}$.
+	Более того, легко видеть, что $a^x + \dfrac{1}{a^x} \in \mathbb{Z}$ для любого $x \in \mathbb{Z}$, поскольку $a^x + \dfrac{1}{a^x} = a^{|x|} + \dfrac{1}{a^{|x|}}$ и $|x| \in \N$, если $x \in \mathbb{Z}$.
 \end{exm}
 
-The last form of induction for us to consider is the \emph{Least Number Principle}, which states:
+Последняя форма индукции, которую мы рассмотрим, --- \emph{принцип наименьшего числа}:
 \begin{quote}
-	For an arbitrary set $X \sbs \N$, if $X \neq \void$, then there exists a least element $\min X$ of $X$.
+	Для произвольного множества $X \sbs \N$, если $X \neq \void$, то существует наименьший элемент $\min X$ множества $X$.
 \end{quote}
-If put in symbols (for a certain $X$ fixed), the Principle reads:
+Символьно этот принцип записывается следующим образом (для фиксированного $X$):
 $$\exists m\  m \in X \to \exists n\, \bigl(n \in X \wedge \forall m\, (m < n \to  m \notin X)\bigr).$$
 \mcomm{As we have stated it, this is a `\emph{minimal} element principle' despite its traditional name. Although, for the linear ordering of $\N$, the choice between `minimal' and `least' does not logically matter, just the `minimal' form is equivalent to `strong' (or transfinite) induction for an arbitrary poset. Therefore we prefer to keep the traditional name for this general form of the principle. On the other hand, students may have questions on this ``misleading'' name when they have learned about minima and maxima in posets. The notation $\min X$ will be redefined later as well.}
 
 \begin{exm}
-	Let's find all the integer solutions to the equation $8a^4 + 4b^4 + 2c^4 = d^4$.
+	Найдём все целочисленные решения уравнения $8a^4 + 4b^4 + 2c^4 = d^4$.
 	
-	Clearly the tuple $(0,0,0,0)$ is a (integer) solution. Let us show this to be unique. If $(a,b,c,d)$ is a solution, then $(|a|,|b|,|c|,|d|) \in \N^4$ is a solution as well. Thus, it suffices to prove that there is no non-zero solution from $\N$. Assume the contrary. Then, the set
+	Очевидно, набор $(0,0,0,0)$ является (целочисленным) решением. Покажем, что оно единственно. Если $(a,b,c,d)$ --- решение, то $(|a|,|b|,|c|,|d|) \in \N^4$ --- тоже решение. Значит, достаточно показать отсутствие ненулевых решений из $\N$. Предположим противное. Тогда множество
 	$$Y = \{ (a,b,c,d) \in \N^4 \mid 8a^4 + 4b^4 + 2c^4 = d^4 \wedge a+b+c+d > 0\}$$
-	is not empty. Hence, the set $X = \{ a + b + c + d \mid (a,b,c,d) \in Y \} \sbs \N_+$ is non-empty as well. By the Least Number Principle, there exists a certain $x = \min X > 0$, such that $x = a + b + c +d$ for some solution $(a,b,c,d)$. Since $8a^4 + 4b^4 + 2c^4 = d^4$, the number $d^4$ is even. It is known from arithmetic, that $d$ must be even too, i.\,e. $d = 2\delta$ for some number $\delta \in \N$.
+	непусто. Следовательно, и множество $X = \{ a + b + c + d \mid (a,b,c,d) \in Y \} \sbs \N_+$ тоже непусто. Согласно принципу наименьшего числа, существует такое $x = \min X > 0$, что $x = a + b + c +d$ для некоторого решения $(a,b,c,d)$. Так как $8a^4 + 4b^4 + 2c^4 = d^4$, то число $d^4$ чётно. Из арифметики известно, что $d$ тоже должно быть чётным, т.\,е. $d = 2\delta$ для некоторого $\delta \in \N$.
 	
-	Thus obtain $8a^4 + 4b^4 + 2c^4 = 16\delta^4$, whence $c^4 = 8\delta^4 - 4a^4 - 2b^4$. It is easy to see that $c= 2\gamma$ and, by a similar argument, $a = 2\alpha$, $b = 2\beta$ for certain $\alpha, \beta, \gamma \in \N$. 
+	Получаем $8a^4 + 4b^4 + 2c^4 = 16\delta^4$, откуда $c^4 = 8\delta^4 - 4a^4 - 2b^4$. Легко видеть, что $c= 2\gamma$ и, из аналогичных рассуждений, $a = 2\alpha$, $b = 2\beta$ для некоторых $\alpha, \beta, \gamma \in \N$. 
 	
-	Replacing $a$ with $2\alpha$, etc., and dividing both sides of the original equation by $16$, we get $8\alpha^4 + 4\beta^4 + 2\gamma^4 = \delta^4$.  So, the tuple $(\alpha,\beta,\gamma,\delta) \in \N^4$ is another solution. Yet $2(\alpha + \beta + \gamma + \delta) = a + b + c + d = x > 0$; hence, $\alpha + \beta + \gamma + \delta > 0$, and we have got a new \emph{non-zero} solution. Then $(\alpha,\beta,\gamma,\delta) \in Y$ and $\alpha + \beta + \gamma + \delta \in X$, while $\alpha + \beta + \gamma + \delta < x = \min X$. A contradiction.
+	Заменив $a$ на $2\alpha$ и т.\,д. и разделив обе части изначального уравнения на $16$, получим $8\alpha^4 + 4\beta^4 + 2\gamma^4 = \delta^4$.  Значит, набор $(\alpha,\beta,\gamma,\delta) \in \N^4$ также является его решением. Однако $2(\alpha + \beta + \gamma + \delta) = a + b + c + d = x > 0$, откуда $\alpha + \beta + \gamma + \delta > 0$ --- и мы имеем новое \emph{ненулевое} решение. Тогда $(\alpha,\beta,\gamma,\delta) \in Y$ и $\alpha + \beta + \gamma + \delta \in X$, но $\alpha + \beta + \gamma + \delta < x = \min X$. Противоречие.
 \end{exm}
 
-In fact, all the three forms of induction introduced hereunto are logically equivalent to each other. So, each may be looked upon as \emph{the} principle of induction.
+На самом деле все три формы индукции, изложенные выше, логически эквивалентны друг другу, и каждую из них можно считать \emph{принципом индукции}.
 \begin{thm}
-	The following statements are equivalent:
+	Следующие утверждения эквивалентны:
 	\begin{enumerate}
-		\item the Strong Induction Principle;
-		\item the Least Number Principle;
-		\item the Induction Principle.
+		\item принцип сильной индукции;
+		\item принцип наименьшего числа;
+		\item принцип математической индукции.
 	\end{enumerate}
 \end{thm}
 \mcomm{We use straightforward but abstract logical manipulations in order to prove this theorem. They pose a serious challenge for many students. Nevertheless, we prefer to make the students ``eat the frog'' now---just spending more time on this proof. In my experience, the `predicate' version of this proof is no better, whereas the `predicate' forms of the induction principle might be so for some audiences.}
 \begin{proof}
-	Suppose the Strong Induction Principle holds. We are to prove that each non-empty set $X \sbs \N$ has a least element. Assume that some $X$ lacks a least element. Let us see that the set $\bar X$ must be progressive then. Indeed, if $\forall m < n\; m \notin X$, then $n \notin X$, since $n$ would be $\min X$ otherwise, which is impossible. By the Strong Induction Principle, $\bar X = \N$, whence $X = \void$.
+	Пусть выполняется принцип сильной индукции. Докажем, что любое непустое множество $X \sbs \N$ имеет наименьший элемент. Предположим, что в каком-нибудь $X$ нет наименьшего элемента. Покажем, что множество $\bar X$ должно быть в таком случае прогрессивным. В самом деле, если $\forall m < n\; m \notin X$, то $n \notin X$, поскольку в противном случае $n$ было бы $\min X$, что невозможно. Согласно принципу сильной индукции, $\bar X = \N$, откуда $X = \void$.
 	
-	Suppose the Least Number Principle holds. We need to infer $X = \N$ from the assumptions $0 \in X$ and $\forall n\, (n \in X \to n+1 \in X)$ for an arbitrary set $X \sbs \N$. Consider the set $\bar X$ and suppose that $\bar X \neq \void$. Then there exists a certain number $n = \min \bar X$. By the assumptions, $n \neq 0 \notin \bar X$. Hence, $n = m + 1$ for some $m \in \N$. As $m < n$, it is the case that $m \in X$. By the assumptions, $n = m + 1  \in X$, which is not so. Therefore, such $n$ cannot exist and $\bar X$ must be empty. So, $X = \N$.
+	Пусть выполняется принцип наименьшего числа. Выведем $X = \N$ из предположений $0 \in X$ и $\forall n\, (n \in X \to n+1 \in X)$ для произвольного множества $X \sbs \N$. Рассмотрим множество $\bar X$ и допустим, что $\bar X \neq \void$. Тогда существует число $n = \min \bar X$. Согласно предположениям, $n \neq 0 \notin \bar X$. Следовательно, $n = m + 1$ для некоторого $m \in \N$. Так как $m < n$, то $m \in X$. Согласно предположениям, $n = m + 1  \in X$, что не так. Значит, такого $n$ не существует, а множество $\bar X$ пусто. Тогда $X = \N$.
 	
-	Suppose the Induction Principle holds. Let us prove that for every set $X \sbs \N$, from the assumption $Prog(X)$, it follows that $X =\N$. Consider the set
+	Пусть выполняется принцип математической индукции. Докажем, что для любого множества $X \sbs \N$ из $Prog(X)$ следует $X =\N$. Рассмотрим множество
 	$$Y = \{ n \in \N \mid \forall m < n\; m \in X \}.$$
-	Clearly, $0 \in Y$. Suppose $n \in Y$. By definition, we have $\forall m < n\; m \in X$ then, which yields $n \in X$ for $X$ being progressive. If $m < n + 1$, then either $m < n$ or $m = n$. In both cases, we get $m \in X$, whence $n + 1\in Y$. For $Y$, we have verified both the base and inductive step; by the Induction Principle, conclude $Y = \N$. For every $n \in \N$, it holds that $n < n + 1 \in Y$, whence $n \in X$. Consequently, $X = \N$.
+	Очевидно, $0 \in Y$. Пусть $n \in Y$. По определению имеем $\forall m < n\; m \in X$, откуда получаем $n \in X$, так как $X$ прогрессивно. Если $m < n + 1$, то $m < n$ или $m = n$. В обоих случаях имеем $m \in X$, откуда $n + 1\in Y$. Для множества $Y$ мы проверили базу и шаг индукции; согласно принципу математической индукции, $Y = \N$. Для любого $n \in \N$ выполнено $n < n + 1 \in Y$, откуда $n \in X$. Следовательно, $X = \N$.
 \end{proof}
 
 \section{Divisibility}
