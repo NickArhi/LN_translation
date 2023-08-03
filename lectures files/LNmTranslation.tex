@@ -187,62 +187,62 @@
 \end{center}
 \mcomm{}
 \begin{exm}
-	Clearly, given some statements $A, B, C,\dots$ one can freely construct more and more involved expressions using logical connectives. Say, 
-	$$\bigl((A \to \neg(B \to C)) \vee (B \wedge \neg A)\bigr) \to \bigl(((\neg A) \wedge ((\neg C) \to A)) \wedge B \bigr)$$
-	is such an expression. We will sometimes call expressions of this kind \emph{formulas}.
+	Располагая некоторыми высказываниями $A, B, C,\dots$, мы можем без труда составлять более сложные логические конструкции с помощью логических связок. Например, 
+	$$\bigl((A \to \neg(B \to C)) \vee (B \wedge \neg A)\bigr) \to \bigl(((\neg A) \wedge ((\neg C) \to A)) \wedge B \bigr)$$.
+	Подобные выражения мы будем иногда называть \emph{формулами}.
 	
-	To make formulas more readable, they usually omit some brackets according to certain rules. One of these rules says that conjunction and disjunction \emph{bind weaker} than negation but \emph{stronger} than implication. So, $\neg X \wedge Y$ means $(\neg X) \wedge Y$ (rather than $\neg (X \wedge Y)$), whereas $X \wedge Y \to Z \vee W$ stands for $(X \wedge Y) \to (Z \vee W)$. Another rule says that $X \wedge Y \wedge Z$ means $(X \wedge Y) \wedge Z$---as we shall see, the \emph{different} formula $X \wedge (Y \wedge Z)$ is nevertheless \emph{equivalent} to $(X \wedge Y) \wedge Z$, so this choice is arbitrary (but necessary from the formal point of view). A similar rule applies for ${\vee}$. With these rules, we can rewrite our example as
+	Мы также можем опускать некоторые скобки по определенным правилам, чтобы сделать текст более читаемым. Согласно одному из таких правил, конъюнкция и дизъюнкция имеют \emph{меньший приоритет}, чем отрицание, но \emph{больший}, чем импликация. Таким образом, $\neg X \wedge Y$ означает $(\neg X) \wedge Y$ (но не $\neg (X \wedge Y)$), в то время как $X \wedge Y \to Z \vee W$ равносильно $(X \wedge Y) \to (Z \vee W)$. Другое подобное правило говорит о том, что $X \wedge Y \wedge Z$ означает $(X \wedge Y) \wedge Z$ --- как мы вскоре увидим, формула $X \wedge (Y \wedge Z)$  \emph{не идентична}, но тем не менее \emph{эквивалентна} формуле $(X \wedge Y) \wedge Z$, так что выбор в данном случае произволен (однако важен с формальной точки зрения). Похожее правило работает с ${\vee}$. Взяв эти правила на вооружение, мы можем переписать наш пример:
 	$$(A \to \neg(B \to C)) \vee (B \wedge \neg A) \to \neg A \wedge (\neg C \to A) \wedge B.$$
 \end{exm}
 
-\paragraph{Equivalences, tautologies and valid arguments.} Suppose we have two statements $F$ and $G$ built from some simpler statements $A_1,\ldots,A_n$ using logical connectives. (We will use the notation like $F(A_1,\ldots,A_n)$ then.) The statements $F$ and $G$ are \emph{(logically) equivalent} if (and only if)\footnote{This part is frequently implied by but omitted from a mathematical definition.} they are both true or both false, whatever truth values the statements $A_1,\ldots, A_n$ have. We shall write $F \equiv G$ in this case.
+\paragraph{Эквивалентности, тавтологии и достоверные аргументы.} Предположим два высказывания, $F$ и $G$, составленных из более простых высказываний $A_1,\ldots,A_n$ с помощью логических связок. (В таких случаях будем писать $F(A_1,\ldots,A_n)$.) Высказывания $F$ и $G$ \emph{(логически) эквивалентны} тогда (и только тогда)\footnote{Эта часть нередко следует из математического определения, но опускается.}, когда они оба истинны либо оба ложны, в зависимости от истинностных значений высказываний $A_1,\ldots, A_n$. Мы будем обозначать данное отношение как $F \equiv G$.
 \begin{exm}
-	The statements $A \wedge B$ and $B \wedge A$ are equivalent. This is obvious from their truth tables. The statements $\neg \neg A$ and $A$ are equivalent as well, for the former is true iff $\neg A$ is false, that is, $A$ is true. 
+	Высказывания $A \wedge B$ и $B \wedge A$ эквивалентны. Это очевидно из их истинностных таблиц. Высказывания $\neg \neg A$ и $A$ также эквивалентны, так как первое истинно, если (и только если) $\neg A$ ложно, то есть если $A$ истинно. 
 	
-	The statements $A \to B$ and $\neg A \vee B$ are equivalent. Indeed, each is false iff $A$ is true and $B$ is false. Otherwise, both are true. Similarly $\neg(A \to B)$ and $A \wedge \neg B$ are equivalent: each is true iff $A$ is true and $B$ is false; otherwise, both are false.
+	Высказывания $A \to B$ и $\neg A \vee B$ эквивалентны. Действительно, каждое из них ложно тогда (и только тогда), когда $A$ истинно и $B$ ложно. В противном случае оба они истинны. Аналогично $\neg(A \to B)$ и $A \wedge \neg B$ эквивалентны: каждое истинно тогда и только тогда, когда $A$ истинно и $B$ ложно; иначе, оба они ложны.
 	
-	The statements $A \to \neg B$ and $B \to \neg A$ are also equivalent (this fact is known as \emph{the law of contraposition} or \emph{of contrapositive}). Indeed, when is the former false? If and only if $A$ is true and $\neg B$ is false. This means that both $A$ and $B$ are true. But the statement $B \to \neg A$ is false iff both $B$ and $A$ are true. Hence those statements are equivalent as it is not possible for one of them to be false the other one being true.
+	Высказывания $A \to \neg B$ и $B \to \neg A$ тоже эквивалентны (этот факт также известен, как \emph{закон контрапозиции}, закон \emph{о контрапозиции} или правило вывода \emph{modus tollens}). Действительно, в каком случае $A \to \neg B$ ложно? Тогда и только тогда, когда $A$ истинно и $\neg B$ ложно. То есть когда и $A$, и $B$ истинны. Однако высказывание $B \to \neg A$ также ложно тогда и только тогда, когда и $B$, и $A$ истинны. Таким образом, рассматриваемые высказывания эквивалентны, потому как невозможно, чтобы одно было истинно, когда ложно другое.
 	
 	
 	
-	In contrast, the statements $A \to B$ and $B \to A$ are not equivalent for their truth values differ when $A$ is true and $B$ is false.
+	Напротив, высказывания $A \to B$ и $B \to A$ не эквивалентны, так как их истинностные значения различны при истинном $A$ и ложном $B$.
 \end{exm}
-\mcomm{We believe it is very important to make a clear distinction between a statement and its truth value. We warn students against their bad yet widespread habit of writing $A = 1$ instead of `$A$ is true': let $A$ be $2 + 2 = 4$ and $B$ be the statement of Fermat's Last Theorem; both are known true, so from $A = 1$ and $B = 1$ one could naturally derive $A = B$; are these statements really \emph{the same} while differing so much in complexity? In practice we use the notation $[A] = 1$ to say that the value of $A$ is truth (in a given context), which is, of course, quite lax as it does not specify that context (say, the valuation of atoms when $A$ is compound).}
+\mcomm{}
 
-The statement $F$ built from $A_1,\ldots, A_n$ is a \emph{tautology} if it is true for any truth values of $A_1,\ldots,A_n$. Tautologies can be understood as laws of logic.
+Высказывание $F$, состоящее из высказываний $A_1,\ldots, A_n$ мы называем \emph{тавтологией} если оно истинно при любых значениях высказываний $A_1,\ldots,A_n$. Тавтологии можно рассматривать как некоторые \emph{законы} логики.
 \begin{exm}
-	To check if a statement is a tautology, it suffices to construct its truth table. For example, $A \to A$ is an obvious tautology. This procedure can be very laborious when the statement depends on many atoms. Sometimes you can save your effort the following way.
+	Чтобы проверить, является ли данная формула тавтологией, достаточно построить ее истинностную таблицу. Например, $A \to A$ --- очевидная тавтология. Однако построение истинностных таблиц становится затратной процедурой при большом количестве атомов. Иногда мы можем сэкономить время следующим образом.
 	
-	Consider the statement $F = (A \to B) \to ((B \to C) \to (A \to C))$. Assume that $F$ is not a tautology, that is, it is false for some values of $A, B, C$. What could these values be? Clearly, $A \to B$ is true while $(B \to C) \to (A \to C)$ is false. The latter implies that $B \to C$ is true and $A \to C$ is false. Hence, $A$ is true but $C$ is false. As $A \to B$ holds, $B$ does as well. From $B \to C$, we get that $C$ is true despite our previous conclusion. Thus, we have got a \emph{contradiction}. Since all our arguments are sound, the only weak link is the assumption that $F$ is false. Hence, $F$ cannot be false.
+	Рассмотрим высказывание $F = (A \to B) \to ((B \to C) \to (A \to C))$. Допустим $F$ не является тавтологией, то есть, ложно для каких-то значений высказываний $A, B, C$. Какими могут быть эти значения? Очевидно, когда $A \to B$ истинно, а $(B \to C) \to (A \to C)$ ложно. Последнее подразумевает, что $B \to C$ истинно и $A \to C$ ложно. Тогда $A$ истинно, $C$ --- ложно. В силу $A \to B$, $B$ истинно. В силу же $B \to C$, $C$ истинно, однако это противоречит предыдущему утверждению. Таким образом, перед нами \emph{противоречие}. Потому как рассуждения наши корректны, единственным слабым местом будет утверждение о ложности $F$. Итак, $F$ не может быть ложным.
 \end{exm}
-\mcomm{Of course, this version of semantic tableaux can easily come across an explicit branching (say, when $X \to Y$ is true or $X \wedge Y$ is false), which makes its applications much less neat. The Instructor should consider a few of such examples and stress that there is no known `good' algorithm to test \emph{any} formula for being a tautology.}
+\mcomm{}
 
 
-\paragraph{Arguments.} Naturally, when making an argument we make some assumptions firstly, and then draw a conclusion. We hope that the conclusion is \emph{always} true whenever all our assumptions are true (our statements may be true or false depending on situation, whence this `always' comes). In such a case, the argument is called \emph{valid}. (One can equivalently put it this way: \emph{it is never the case that all the assumptions are true whereas the conclusion is false}.) Consider the following argument:
+\paragraph{Аргументы.} Во время всякого рассуждения (аргумента) мы принимаем на веру некоторые \emph{допущения}, исходя из которых затем делаем \emph{вывод}. Мы надеемся, что вывод будет истинным \emph{в любом случае}, покуда допущения (посылки) наши верны (отдельные высказывания в нашем рассуждении могут принимать и истинное, и ложное значения, отсюда и "в любом случае"). В таком случае рассуждение (аргумент) называется \emph{общезначимым}. (Мы могли бы выразить эту идею иначе: \emph{невозможно, чтобы вывод был ложен, если все допущения (посылки) истинны}.) Рассмотрим следующий аргумент:
 \begin{quote}
-	Today is Thursday. It rains every Thursday. Therefore, $3 = 1 + 2$.
+	Сегодня четверг. Каждый четверг идет дождь. Значит $3 = 1 + 2$.
 \end{quote}
-It is not very convincing despite the fact the conclusion is known to be \emph{always} true (while it depends on today's date whether the first assumption is true). Moreover, as the conclusion is \emph{known} to be true, the argument is useless. Let us modify it a little:
+Выглядит не слишком убедительно, несмотря на то, что вывод \emph{всегда} истинен (в то время как истинность первого высказывания зависит от настоящего дня недели). Более того, в силу того, что вывод \emph{гарантированно} истинен \emph{вне зависимости} от истинности посылок, этот аргумент бесполезен, бессмысленен. Слегка переиначим его:
 \begin{quote}
-	Today is Thursday. It rains every Thursday. Therefore, it is raining today.
+	Сегодня четверг. Каждый четверг идет дождь. Значит сегодня идет дождь.
 \end{quote}
-This is much better, although both the assumptions and the conclusion are quite doubtful and still depend on what day it is today. The conclusion is now \emph{guaranteed} to be true whenever the assumptions hold true. If they do not, all bets are off, indeed. This guarantee holds \emph{always}, \emph{everyday}, for whatever situation. We need know \emph{nothing} about the truth values of those statements in any particular situation to be sure that the conclusion is no less true than the assumptions and new errors are thus impossible. 
+Гораздо лучше, хотя аргумент все еще имеет сомнительную логическую силу, так как истинность и посылок, и вывода зависит от настоящего дня недели. Вывод теперь \emph{гарантированно} истинен, покуда посылки истинны. Если посылки все-таки ложны --- что ж, логик умывает руки; об истинности вывода такого аргумента он ничего сказать не может. В случае \emph{общезначимого} же аргумента, истинность вывода при истинности посылок гарантируется \emph{всегда}, в любой день, в любой ситуации. Нам не нужно знать \emph{ничего} об истинностных значениях высказываний аргумента в той или иной ситуации, чтобы быть уверенными в том, что вывод истинен в степени не меньшей, чем истинность посылок.
 
-\mcomm{It is not easy to clarify the implied universal quantifier in our `definition' of validity. To demonstrate the phenomenon of `semantic validity' (i.\,e., due to the logical form only), the Instructor could use statements whose `real-world' truth is `uncertain' (see argument examples from the next lecture).}
+\mcomm{}
 
-One can render this argument into symbols as follows:
+Мы можем переложить этот аргумент в символы:
 $$(T \wedge (T \to R)) \to R,$$
-where $T$ means `today is Thursday' and $R$ means `it is raining today'. (Please notice the model: if the assumptions are $A_1, \ldots, A_n$ and the conclusion is $C$, we construct the formula $(A_1 \wedge  \ldots \wedge A_n) \to C$). It is easy to see that the resulting statement is a tautology. In general, an argument is valid if the respective statement is a tautology (but the converse is not necessary).
+где $T$ означает `сегодня четверг', а $R$ --- `сегодня идет дождь'. (Обратите внимание на принцип: если посылки --- это $A_1, \ldots, A_n$ и вывод --- $C$, мы составляем аргумент в виде формулы $(A_1 \wedge  \ldots \wedge A_n) \to C$). Нетрудно увидеть, что это выражение является тавтологией. В общем случае, аргумент общезначим, если соответствующая ему формула --- тавтология (однако обратное не всегда верно).
 
 \begin{exm}
-	Consider the argument:
+	Рассмотрим пример:
 	\begin{quote}
-		It is raining today. It rains every Thursday. Therefore, it is Thursday today.
+		Сегодня идет дождь. Каждый четверг идет дождь. Значит сегодня четверг.
 	\end{quote}
-	This can be rendered as $(R \wedge (T \to R)) \to T$, where the atoms $T$ and $R$ have kept their meaning. The resulting statement is not a tautology, since it is false when $R$ is true but $T$ is false. The argument is indeed invalid: it fails in a situation when, for example, it rains every day but today is Saturday.
+	Можно записать это рассуждение как $(R \wedge (T \to R)) \to T$, где атомы $T$ и $R$ имеют те же значения, что и выше. Получившееся выражение не является тавтологией, так как оно ложно, когда $R$ истинно и $T$ ложно. Аргумент действительно не общезначим: он неверен, если, например, дождь идет каждый день, но сегодня суббота.
 \end{exm}
 
-In science, one hopes to draw previously unknown yet necessarily true conclusions from one's assumptions (given they are true themselves). Hence, a scientist should stick to valid arguments whenever possible. In particular, each mathematical proof should be a valid argument.
+Занимаясь научными изысканиями, мы надеемся делать неизвестные нам ранее, но необходимо истинные заключения из имеющихся посылок (данных, допущений, фактов). Поэтому ученый должен следовать логически корректным рассуждениям везде, где это возможно. В частности, любое математическое доказательство должно быть подобным рассуждением (общезначимым аргументом).
 
 \section{The Language of Mathematics}
 \mcomm{This lecture continues the line of the previous one. A predicate is `defined' to be a syntactic function from names to statements, while quantifiers lack general definition (without advanced semantics, one could just identify them with variable binders). We (almost tacitly) generalize logical equivalence to the case of quantified statements and appeal routinely to the natural intuition of `existence' and `universality' as one usually does in mathematical proofs.}
