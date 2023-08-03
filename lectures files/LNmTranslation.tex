@@ -244,173 +244,175 @@ $$(T \wedge (T \to R)) \to R,$$
 
 Занимаясь научными изысканиями, мы надеемся делать неизвестные нам ранее, но необходимо истинные заключения из имеющихся посылок (данных, допущений, фактов). Поэтому ученый должен следовать логически корректным рассуждениям везде, где это возможно. В частности, любое математическое доказательство должно быть подобным рассуждением (общезначимым аргументом).
 
-\section{The Language of Mathematics}
-\mcomm{This lecture continues the line of the previous one. A predicate is `defined' to be a syntactic function from names to statements, while quantifiers lack general definition (without advanced semantics, one could just identify them with variable binders). We (almost tacitly) generalize logical equivalence to the case of quantified statements and appeal routinely to the natural intuition of `existence' and `universality' as one usually does in mathematical proofs.}
+\section{Язык математики}
+\mcomm{}
 
-Now, let us try to discover some inner structure in logical atoms. Let us split the atoms! As every atom is an indicative sentence, a rudimentary linguistic analysis suggests that each such sentence should have its \emph{subject} and \emph{predicate}.  Basically, the predicate is \emph{what is being said} and the subject is \emph{what it is being said about}.\footnote{Sometimes, it is quite tricky to identify these parts: say, what is the subject in the sentence \emph{it rains}? What does that `it' refer to?} For example, in the sentence
+Сейчас мы попробуем исследовать внутреннюю структуру атомов. Разделим их! Каждый атом --- утвердительное предложение, а поверхностный лингвистический анализ говорит нам, что каждое такое предложение должно иметь \emph{подлежащее} (субъект) и \emph{сказуемое} (предикат). Можно сказать, что сказуемое --- то, \emph{что говорят}, а подлежащее --- то, \emph{о ком/чем говорят}.\footnote{Иногда выявить эти две составляющие не так просто: например, что является подлежащим в предложении \emph{сегодня пасмурно}? Что "пасмурно"?} Например, в предложении
 \begin{quote}
-	The quick brown fox jumps over the lazy dog,
+	Роза упала на лапу Азора,
 \end{quote}
-`the quick brown fox' can be seen as the subject while `jumps over the lazy dog' as the predicate. We can change our sentence a bit:
+`розу' можно рассматривать в качестве подлежащего, а `упала на лапу Азора' --- как сказуемое. Предложение можно слегка поменять:
 \begin{quote}
-	The slow gray cat jumps over the lazy dog.
+	Фиалка упала на лапу Азора.
 \end{quote}
-Here the same predicate is said about another subject. In general, we see that the expression
+То же сказуемое (предикат) применяется к другому подлежащему. Можно заметить, что выражение
 \begin{quote}
-	$x$ jumps over the lazy dog
+	$x$ упал на лапу Азора
 \end{quote}
-turns into a statement when one replaces its part $x$ (which is called a \emph{variable} for it varies) with the name of a reasonable thing.  Neglecting the grammatical terminology, the expression
+превращается в высказывание, когда мы заменяем $x$ (который называют \emph{переменной}, потому как он меняется) на название более содержательного объекта. Игнорируя грамматическую терминологию, выражение
 \begin{quote}
-	$x$ jumps over $y$,
+	$x$ упал на лапу $y$,
 \end{quote}
-which turns into a statement when substituting some names for the \emph{variables} $x$ and $y$, can also be called a predicate. The former predicate contains just one variable and is thus called \emph{unary}, while the latter one is called \emph{binary} for it has two distinct variables. Likewise, we can speak about an \emph{$n$-ary} predicate with variables $x_1,\ldots,x_n$.
+которое превращается в высказывание после подстановки имен на место \emph{переменных} $x$ и $y$, можно также назвать \emph{предикатом}. Первый рассмотренный нами предикат содержит одну переменную, и потому называется \emph{унарным}, а второй содержит две различные переменные, и называется \emph{бинарным}. Развивая эту мысль, можно рассматривать \emph{$n$-арные} предикаты с переменными $x_1,\ldots,x_n$.
 
-In general, a \emph{predicate} (or \emph{property}) is an expression which turns into a statement (either true or false) after one substitutes some reasonable object names for all its variables. Each statement can be looked upon as a $0$-ary (\emph{nullary}) predicate.
+Обобщая, \emph{предикат} (или \emph{свойство}) --- это выражение, которое превращается в логическое высказывание (истинное либо ложное) после замены всех переменных на названия более конкретных объектов. Также, любое высказывание можно рассматривать как $0$-арный (\emph{нульарный}) предикат.
 
 \begin{exm}
-	The following expressions are typical predicates: \emph{$x$ is even}, \emph{$x$ is greater than $y$}. They turn into statements (e.\,g., \emph{$4$ is even}, \emph{$3$ is greater than $7$}) if we substitute numbers for variables. On the other hand, the predicate \emph{$x$ is a son of $y$} can be turned into a statement when substituting human names.
+	Следующие выражения --- типичные предикаты: \emph{$x$ четно}, \emph{$x$ больше, чем $y$}. Они превращаются в высказывания (например, \emph{$4$ четно}, \emph{$3$ больше, чем $7$}) если мы подставим вместо переменных числовые значения. С другой стороны, предикат \emph{$x$ --- сын $y$} может стать высказыванием при подстановке вместо переменных человеческих имен.
 \end{exm}
-It is natural to associate a \emph{domain} with a predicate, whence the objects are taken from. For example, the domain of the predicate \emph{$x$ is even} could be natural or integer numbers, while the same domain choice does not make much sense for \emph{$x$ is a son of $y$}.
+Весьма естественно, интуитивно соотносить с предикатом некоторый \emph{домен} (область значений), откуда берутся подставляемые объекты-значения. Например, областью значений предиката \emph{$x$ четно} могут быть натуральные или целые числа, в то время как эти же области значений не будут иметь смысла для предиката \emph{$x$ --- сын $y$}.
 
-\mcomm{The exact nature of domains is out of the discussion scope here, but it might be noteworthy that two arguments of one predicate may have distinct domains in general.}
+\mcomm{}
 
-One can easily construct new predicates from some given ones applying logical connectives. E.\,g., \emph{$x$ is even and it is not the case that $y$ is greater than $x$}. But there is a more interesting way to do so. Namely, it is possible to express some meaning about the whole domain: \emph{there is some $x$ such that $x$ is even}; \emph{all $x$ are even}; \emph{there are many $x$ which are even}; \emph{there exists a unique even $x$}; \emph{most of $x$ are even}; \emph{there are infinitely many $x$ being even}, etc.
+Мы без труда можем составлять новые предикаты из имеющихся с помощью логических связок. Например, \emph{$x$ четно, и неправда, что $y$ больше, чем $x$}. Но для этого есть и более интересный способ. А именно, можно составить суждение о всей области значений: \emph{существует некоторый $x$ такой, что $x$ четен}; \emph{все $x$ четны}; \emph{существует много четных $x$-ов}; \emph{существует единственный четный $x$}; \emph{большинство $x$-ов четны}; \emph{существует бесконечно много четных $x$-ов}, etc.
 
-Such constructions are called \emph{quantifiers}. A quantifier \emph{binds} some variable in a predicate so that it is no more available for a substitution (such a variable is called \emph{bound}; otherwise it is still \emph{free}). Indeed, the predicate \emph{either $x$ is even or $x$ is odd} may be turned into the statement \emph{either $7$ is even or $7$ is odd}, while the expression \emph{for each $7$, either $7$ is even or $7$ is odd} does not make much sense.
+Подобные конструкции называются \emph{кванторами}. Квантор \emph{связывает} некоторую переменную в предикате так, что она более не доступна для подстановки вместо нее значения (такая переменная зовется \emph{связанной}; в противном случае она зовется \emph{свободной}). И в самом деле, предикат \emph{либо $x$ четен, либо $x$ нечетен} можно превратить в высказывание \emph{либо $7$ четно, либо $7$ нечетно}, в то время как высказывание \emph{для каждой $7$, либо $7$ четно, либо $7$ нечетно} не имеет большого смысла.
 
-Among many conceivable quantifiers, two are the most important. These are the \emph{existential} quantifier \emph{there exists some $x$ such that\dots} and the \emph{universal} quantifier \emph{for each $x$ it holds that\dots}. We will sometimes write $A(x)$ for a predicate $A$ with a variable $x$ (like \emph{$x$ is\dots}, \emph{$x$ does\dots}, etc.). For example, one can write $even(x)$ instead of \emph{$x$ is even}; here $A$ itself can be expressed by words as \emph{to be even}.
+Из многих известных математикам кванторов, есть два наиболее важных. Эти кванторы --- квантор \emph{существования} (\emph{существует $x$ такой, что \dots}), и квантор \emph{всеобщности} (\emph{для каждого $x$ верно, что \dots}). Иногда мы будем писать $A(x)$ для обозначения предиката $A$ с переменной $x$ (например, \emph{$x$ --- \dots}, \emph{$x$ является \dots}, etc.). Так, можно записать предикат \emph{$x$ четно} как $\text{четный}(x)$; здесь $A$ можно в свою очередь выразить словами, \emph{быть четным}.
 
 \begin{center}
 	\begin{tabular}{|c | c | c |}
 		\hline
-		\bf Quantifier & \it existential & \it universal \\
+		\bf Квантор & \it существования & \it всеобщности \\
 		\hline
-		\bf In logic & there exists some $x$ such that $A$  & for each $x$ it holds that $A$ \\
+		\bf В логике & существует некоторый $x$ такой, что $A$  & для любого $x$ верно $A$ \\
 		\hline
-		\bf In symbols & $\exists x\, A(x)$; $\exists x\, A$   & $\forall x\, A(x)$; $\forall x\, A$ \\
+		\bf В символах & $\exists x\, A(x)$; $\exists x\, A$   & $\forall x\, A(x)$; $\forall x\, A$ \\
 		\hline
-		\bf In English & for some $x$, $A(x)$; for (a) suitable $x$, $A(x)$;   & for all $x$, $A(x)$; 
-		for every $x$, $A(x)$; \\
-		& something is $A$; somebody is $A$; &  for (an) arbitrary $x$, $A(x)$; \\
-		& at least one is $A$; for at least one $x$, $A(x)$;  & whatever $x$ is, $A(x)$; $A(x)$ always holds;  \\
-		& there is an $x$ such that $A(x)$ & everything is $A$; everybody is $A$  \\
+		\bf На русском 
+		& для некоторого $x$, $A(x)$; & для всех $x$, $A(x)$; \\
+		& для какого-то $x$, $A(x)$;  & для любого $x$, $A(x)$; \\
+		& что-то $A$; кто-то $A$; &  для произвольного $x$, $A(x)$; \\
+		& хотя бы один $A$;  & каким бы $x$ ни был, $A(x)$; \\
+		& для хотя бы одного $x$, $A(x)$; & $A(x)$ всегда верно; \\
+		& есть $x$ такой, что $A(x)$ & всё $A$; все $A$  \\
 		\hline
 	\end{tabular}
 \end{center}
-\mcomm{As in the above, it is very useful to have some exercises in translating (standard) natural language expressions with quantifiers into symbols, and vice versa. Even the simplest patterns like \emph{all $A$'s are $B$'s}, \emph{no $A$ is $B$}, \emph{some $A$'s are $B$'s} may prove difficult for the students.}
+\mcomm{}
 
 \begin{exm}
-	Let us translate some English phrases into logical symbolism. \emph{All roses are red}. In order to translate this one, we need predicates of redness and `roseness', that is, $Rs(x)$ will stand for \emph{$x$ is a rose} and $Rd(x)$ for \emph{$x$ is red}. The domains for these predicates must be chosen reasonably, say as `all flowers' or even `all the real things'. Then our phrase is rendered as $\forall x\, (Rs(x) \to Rd(x))$. Please notice the implication here: we are effectively \emph{asserting} that $x$ is red---yet under a condition: namely, that $x$ is a rose. We are saying \emph{nothing} about objects which are not roses, nor we are asserting anything to be a rose.
+	Давай переведем несколько фраз на русском на символический язык логики. \emph{Все розы красные}. Для перевода этого предложения, нам нужны предикаты, выражающие степень того, является ли объект красным и розой. Так $Рз(x)$ будет означать \emph{$x$ является розой}, а $\text{Кр}(x)$ --- \emph{$x$ красный}. Домены для этих предикатов должны быть выбраны разумно --- «все цветы» или даже «все существующие объекты». Тогда наша фраза будет выглядеть как $\forall x\, (\text{Рз}(x) \to \text{Кр}(x))$. Обратите внимание на наличие импликации здесь: мы правда \emph{удостоверяемся}, что $x$ красный --- но при условии, что $x$ это роза. Мы обходимся без утверждений о том, что какая-либо не-роза является красной, а также не утверждаем какой бы то ни было объект в качестве розы\footnote{Если бы первое было неверным, то предикат $\text{Кр}(x)$ стоял бы вне импликации, либо вместе с другой посылкой. Если же второе было бы неверным, предикат $\text{Рз}(x)$ находился бы по правую сторону импликация или вне ее; в данном же случае это допущение, посылка.}.
 	
-	\emph{No rose is red}. This one may sound as an equivalent to the negation of the previous one but it is far from that. There are a few (equivalent) ways to put this into symbols: $\forall x\, (Rs(x) \to \neg Rd(x))$ (\emph{everything being a rose is not red}), $\neg \exists x\, (Rs(x) \wedge Rd(x))$ (\emph{it is not the case that there is something being both a rose and red}), $\neg \exists x\, (Rd(x) \wedge Rs(x))$, $\forall x\, (Rd(x) \to \neg Rs(x))$ (\emph{everything red is not a rose}).
+	\emph{Никакая роза не красная}. Данная фраза может звучать как отрицание предыдущей, но это совсем не так. Можно переложить ее в язык символов несколькими способами: $\forall x\, (\text{Рз}(x) \to \neg \text{Кр}(x))$ (\emph{все, что является розой, не красное}), $\neg \exists x\, (\text{Рз}(x) \wedge \text{Кр}(x))$ (\emph{неправда, что существует нечто и красное, и являющееся розой}), $\neg \exists x\, (\text{Кр}(x) \wedge \text{Рз}(x))$, $\forall x\, (\text{Кр}(x) \to \neg \text{Рз}(x))$ (\emph{все красное не является розой}).
 	
-	Observe that ``on a distant planet'' where no rose exists, both $\forall x\, (Rs(x) \to Rd(x))$ and $\forall x\, (Rs(x) \to \neg Rd(x))$ would be true since the implication's assumption $Rs(x)$ would fail for every $x$ from that planet, which would make both implications true. So, these two formulas do not negate each other. For more details, see Example~\ref{exm_vacuous} below.
+	Заметьте, что на далекой планете, где не существует роз, и $\forall x\, (\text{Рз}(x) \to \text{Кр}(x))$, и $\forall x\, (\text{Рз}(x) \to \neg \text{Кр}(x))$ будут истинны, так как посылки ложны, ведь $\text{Рз}(x)$ даст «ложь» для любого $x$ на той планете, откуда импликации станут истинными. Таким образом, эти две формулы не являются отрицанием друг друга. Подробнее, см. Пример~\ref{exm_vacuous} ниже.
 	
-	But how can one translate the negation of the first phrase? $\neg \forall x\, (Rs(x) \to Rd(x))$, of course, or  $\exists x\, (Rs(x) \wedge \neg Rd(x))$ equivalently (\emph{there is something being a rose but not red}). These transformations under negation are not at all complicated: they are governed by few simple laws (see below).
+	Но как тогда выразить отрицание первой фразы? $\neg \forall x\, (\text{Рз}(x) \to \text{Кр}(x))$, само собой, или, эквивалентно, $\exists x\, (\text{Рз}(x) \wedge \neg \text{Кр}(x))$ (\emph{существует нечто, являющееся розой, но при этом не красное}). Это превращение импликации с квантором под действием отрицания не так запутанно, как может показаться на первый взгляд: здесь применяются несколько простых законов логики (см. ниже).
 \end{exm}
 
-Some quantifiers can be expressed via others. E.g., $\exists x\, A(x)$ is usually considered to be equivalent to $\neg \forall x\, \neg A(x)$ (`some $x$ satisfies the property $A$ if and only if it is not the case that the property $A$ fails for every $x$'), and dually, $\forall x\, A(x)$ can be seen equivalent to $\neg \exists x\, \neg A(x)$. If we have equality at our disposal, we can express \emph{there exists a unique such $x$ that $A(x)$} as $\exists x\, (A(x) \wedge \forall y\, (A(y) \to y = x))$.
+Некоторые кванторы могут быть выражены через другие. Например, выражение $\exists x\, A(x)$ обычно рассматривается как эквивалентное выражению $\neg \forall x\, \neg A(x)$ («некоторый $x$ удовлетворяет свойству $A$ тогда и только тогда, когда неверно, что свойство $A$ дает «ложь» при применении его к любому $x$»), и аналогично, $\forall x\, A(x)$ можно рассматривать как эквивалентное $\neg \exists x\, \neg A(x)$. Если мы вооружены корректно определенным равенством, можно выразить \emph{существует единственный $x$ такой, что $A(x)$} как $\exists x\, (A(x) \wedge \forall y\, (A(y) \to y = x))$.
 
-In general, two predicates are (logically) equivalent if they hold (or do not) `simultaneously'. It is a too big task for us now to make this `definition' precise. Thus, we have $\exists x\, A(x) \equiv \neg \forall x\, \neg A(x)$ and  $\forall x\, A(x) \equiv \neg \exists x\, \neg A(x)$.
+В общем случае, два предиката зовутся (логически) эквивалентными, если они истинны (или ложны) «одновременно»\footnote{Сделать это «определение» более строгим --- слишком большая задача для нас сейчас.}. Таким образом, $\exists x\, A(x) \equiv \neg \forall x\, \neg A(x)$ и $\forall x\, A(x) \equiv \neg \exists x\, \neg A(x)$.
 
 \begin{exm}
-	Continuing the previous example, we have 
+	Продолжая предыдущий пример, имеем 
 	\begin{multline*}
-		\neg \forall x\, (Rs(x) \to Rd(x)) \equiv \neg \neg \exists x \neg\, (Rs(x) \to Rd(x)) \equiv\\
-		\exists x \neg\, (Rs(x) \to Rd(x)) \equiv\exists x\, (Rs(x) \wedge \neg Rd(x)),
+		\neg \forall x\, (\text{Рз}(x) \to \text{Кр}(x)) \equiv \neg \neg \exists x \neg\, (\text{Рз}(x) \to \text{Кр}(x)) \equiv\\
+		\exists x \neg\, (\text{Рз}(x) \to \text{Кр}(x)) \equiv\exists x\, (\text{Рз}(x) \wedge \neg \text{Кр}(x)),
 	\end{multline*}
-	as $\neg (A \to B) \equiv A \wedge \neg B$.
+	как $\neg (A \to B) \equiv A \wedge \neg B$.
 \end{exm}
 
 \begin{rem}
-	When used in a formula, a quantifier binds its variable's occurrences in some part of that formula. For example, the formula $\forall x\, A(x) \to \forall x\, B(x)$ is conventionally read as $\forall x\, ( A(x) ) \to \forall x\, ( B(x) )$, that is, the first quantifier's \emph{scope} is limited to the subformula $A(x)$ and the second one's---to $B(x)$. The rule is that a quantifier binds stronger (has higher precedence) than any binary logical connective, so a quantifier's scope ends by default at the first binary connective to the right of the quantifier. In order to include a connective into the scope, parentheses are needed: e.\,g., in $\forall x\, (A (x) \to B(x))$, the quantifier binds occurrences of $x$ in both $A$ and $B$. On the other hand, in the formula $\forall x\, A(x) \to B(x)$, no occurrence of $x$ in $B(x)$ is bound by the first quantifier. Each such occurrence is free for a substitution (if not bound by any inner quantifier in the formula $B(x)$).
+	Когда квантор используется в какой-либо формуле, он связывает все вхождения своей переменной в какой-то части формулы. Например, формула $\forall x\, A(x) \to \forall x\, B(x)$ обыкновенно читается как $\forall x\, ( A(x) ) \to \forall x\, ( B(x) )$, то есть \emph{область действия} первого квантора ограничена подформулой $A(x)$, а второго --- подформулой $B(x)$. Связывание квантора сильнее (имеет больший приоритет), чем любая логическая связка, так что как правило область действия квантора заканчивается на первой бинарной логической связке справа от него. Чтобы включить связку в область действия квантора, необходимы скобки: например, в $\forall x\, (A (x) \to B(x))$ квантор связывает вхождения $x$ и в $A$, и в $B$. С другой стороны, в формуле $\forall x\, A(x) \to B(x)$, никакое вхождение $x$ в $B(x)$ не связано первым квантором. То есть любое такое вхождение свободно для подстановки вместо него значения (если не связано каким-либо квантором внутри $B(x)$).
 	
-	If two occurrences of $x$ are bound by the same quantifier, they are \emph{guaranteed} to refer to one object. Say, in $\exists x\, (A(x) \wedge B(x))$, we mean \emph{one} $x$ with both the properties $A$ and $B$. If two occurrences of a variable belong to distinct scopes, they may refer to distinct things. E.g., $\exists x\, A(x) \wedge \exists x\, B(x)$ states that something satisfies $A$ and some (other) thing satisfies $B$---no identity between the two is assumed. In particular, one may safely rename a bound variable, so that $\exists x\, A(x) \wedge \exists x\, B(x) \equiv \exists x\, A(x) \wedge \exists y\, B(y)$.
+	Если два вхождения $x$ связаны одним и тем же квантором, они \emph{гарантированно} указывают на один объект. Скажем, в $\exists x\, (A(x) \wedge B(x))$, мы имеем в виду \emph{один и тот же} $x$, удовлетворяющий и $A$, и $B$. Если два вхождения переменной принадлежат разным областям действия, они могут указывать на разные объекты. Например, $\exists x\, A(x) \wedge \exists x\, B(x)$ утверждает, что что-то удовлетворяет свойству $A$, и что-то (возможно другое) удовлетворяет $B$ --- тождество этих двух "что-то" ни утверждается, ни опровергается. Таким образом, мы можем легко менять названия связанных переменных: $\exists x\, A(x) \wedge \exists x\, B(x) \equiv \exists x\, A(x) \wedge \exists y\, B(y)$.
 	
-	In programming terms, a bound variable is \emph{local} and retains its value throughout its scope but not beyond it.
+	Говоря языком программистов, связанная переменная \emph{локальна} и сохраняет свое значение в пределах своей области видимости (scope), но не за пределами последней.
 \end{rem}
 
-When using a quantifier on some variable $x$, we always have to fix a \emph{domain} for it, whence the possible objects to replace $x$ come from. E.g., the statement $\forall x\, ( even(x) \vee odd(x))$ makes sense for numerical integer domains but hardly so if $x$ can denote, say, a mineral. The truth value of a statement built using quantifiers depends very much on the domain chosen.
+Используя квантор с переменной $x$, мы обязаны зафиксировать ее \emph{домен}, откуда позволяется брать объекты для подстановки вместо $x$. Например, высказывание $\forall x\, ( \text{четный}(x) \vee \text{нечетный}(x))$ имеет смысл для целочисленных доменов, но вряд ли для случая, когда $x$ может обозначать, скажем, минерал. Истинностное значение высказывания, использующего кванторы, сильно зависит от выбираемых доменов для их переменных.
 
 \begin{exm}
-	Consider the statement $\exists x\, (2 x + 3 = 1)$. This means, of course, that the equation $2x + 3 = 1$ has a solution. But in which domain? There is an integer (hence, rational and real) solution $x = -2$ but there are no natural solutions. So, the statement is false for the natural domain but true for the integer one.
+	Рассмотрим высказывание $\exists x\, (2 x + 3 = 1)$. Это, очевидно, означает, что уравнение $2x + 3 = 1$ имеет решение. Но в каком домене, в каких числах? Есть целочисленное (а значит рациональное и вещественное) решение $x = -2$, но в натуральных числах это уравнение решить нельзя. Таким образом, высказывание истинно для домена целых чисел, но ложно для домена натуральных чисел.
 	
-	Another example. The statement is $\exists x \forall y\, x \leq y$ is false for the domain of integers but true for the domain of naturals (as one can consider $x = 0$).
+	Еще один пример --- высказывание $\exists x \forall y\, x \leq y$ ложно для целочисленного домена, но истинно для натурального (например, при $x = 0$).
 \end{exm}
 
 \begin{exm}\label{exm_vacuous}
-	There is a degenerate but common situation in mathematics, that is sometimes perceived as paradoxical. Let us consider the statement:
+	В математических рассуждениях нередко встречается вырожденный случай, воспринимаемый иногда как парадоксальный. Рассмотрим высказывание:
 	\begin{quote}
-		The present King of France is bald.
+		Сегодняшний король Франции лысый.
 	\end{quote}
-	If we interpret this as 
+	Если мы истрактуем это как 
 	\begin{quote}
-		For each $x$, if $x$ is the present King of France, then $x$ is bald,
+		Для любого $x$, если $x$ --- сегодняшний король Франции, тогда $x$ лысый,
 	\end{quote}
-	taking all human beings who ever lived as the domain, we see that the assumption \emph{$x$ is the present King of France} is false for every $x$ (as of the year A.\,D. $2022$), hence the whole implication \emph{is true}. Clearly, the statement `the present King of France is hairy' is no less true. Such situations (and paradoxically true statements themselves) are called \emph{vacuous truths}  and are indeed very common in mathematics.
+	и выберем множество всех живущих и когда-либо живших людей в качестве домена, то увидим, что \emph{$x$ --- сегодняшний король Франции} ложно для всех $x$ (на момент $2023$ г. н. э.), то есть вся импликация \emph{истинна}. Очевидно, высказывание «сегодняшний король Франции волосат» не менее истинно. Подобные ситуации (и сами «парадоксально» истинные высказывания) называют \emph{пустыми истинами}, которые действительно нередки в математике.
 	
-	For example, the typical pattern of proving that \emph{there is no $x$ such that $A(x)$} is as follows: consider an arbitrary $x$ with $A(x)$ and prove that a knowingly false statement \emph{logically} follows from $A(x)$. Therefore, if $x$ with $A(x)$ existed, that falsity would be true, which is impossible. No such $x$ thus exists. Notice that here we reasoned about $x$ which had appeared \emph{nonexistent} by the end of our argument. That is, our \emph{logic} must be valid for such \emph{counterfactual} situations, where we have effectively proved a vacuous truth: ``for every $x$ with $A(x)$, a falsity holds''. 
+	Например, стандартный алгоритм доказательства утверждения вида \emph{не существует такого $x$, что $A(x)$} следующий: рассмотрим произвольный $x$ такой, что $A(x)$ истинно, и докажем, что какое-то известно ложное высказывание \emph{логически} следует из $A(x)$. Следовательно, если бы $x$ с истинным $A(x)$ существовал, то заведомо ложное высказывание было бы истинным, что невозможно. Таким образом, такого $x$ не существует. Заметьте, что все это время мы рассуждали об $x$, оказавшимся \emph{несуществующим} к концу нашего рассуждения. То есть наша \emph{логика} должна быть корректна в таких \emph{противоречащих фактам} случаях, когда мы действительно доказываем пустую истину: «для любого $x$ с истинным $A(x)$, ложность истинна». 
 \end{exm}
-\mcomm{The Instructor might add that vacuous truths may sound very logical, like \emph{every round square is round}, or be vacuous for a certain parameter value (still being true for all its values), like \emph{every finite set of integers has an upper bound}. So, they are not mere fruits of an idle mind but a necessity.}
+\mcomm{}
 
-Now let us check some arguments employing quantifiers for validity. As in the above, an argument is valid iff its conclusion is true whenever all its assumptions are true.
+Давайте проверим на корректность несколько рассуждений. Как мы писали выше, рассуждение корректно тогда и только тогда, когда вывод истинен при истинности посылок.
 
 \begin{exm}
-	Let us begin with the classics. Consider the argument:
+	Начнем с классики. Рассмотрим рассуждение:
 	\begin{quote}
-		All humans are mortal. Socrates is a human. Therefore, Socrates is mortal.
+		Все люди смертны. Сократ человек. Значит Сократ смертен.
 	\end{quote}
-	As we know who Socrates was, we are sure he was mortal. But what if we did not know? (Which situation is usual for any practical reasoning.) What if the meaning of the name `Socrates' may vary?
+	Так как мы знаем, кем был Сократ, мы уверены в его смертности. Но что если бы мы не знали этого? (Стандартная ситуация на практике.) Что если значение имени «Сократ» переменно?
 	
-	One can put this in symbols as $\forall x\, (H(x) \to M(x)) \wedge H(Socrates) \to M(Socrates)$ denoting `to be a human' by $H$, `to be mortal'---by $M$, and choosing any domain that contains all humans who ever lived. By the assumption, $H(x) \to M(x)$ must hold for every $x$ from the domain. If we \emph{instantiate} $x$ as the name `Socrates', we obtain a tautology $(H(Socrates) \to M(Socrates)) \wedge H(Socrates) \to M(Socrates)$. So the argument is valid. Yet notice that it is not a tautology itself since $\forall x\, (H(x) \to M(x))$ is an atom whose inner structure cannot be grasped just in terms of logical connectives.
+	Можно переложить это высказывание в символы как $\forall x\, (\text{Ч}(x) \to \text{С}(x)) \wedge \text{Ч}(\text{Сократ}) \to \text{С}(\text{Сократ})$, где $\text{Ч}$ --- «быть человеком», а $\text{С}$ --- «быть смертным», и выбрав в качестве домена любой, включающий множество всех людей. По гипотезе, $\text{Ч}(x) \to \text{С}(x)$ должно быть истинным для всех $x$ из домена. Если мы \emph{инстанцируем} $x$ как (подставим на его место) имя «Сократ», получим тавтологию: $(\text{Ч}(\text{Сократ}) \to \text{С}(\text{Сократ})) \wedge \text{Ч}(\text{Сократ}) \to \text{С}(\text{Сократ})$. Значит рассуждение корректно. Однако обратите внимание, что изначальная формула не является тавтологией, так как первая ее часть --- $\forall x\, (\text{Ч}(x) \to \text{С}(x))$ --- это атом, чья внутрення структура не может быть выражена с помощью одних лишь логических связок (то есть с появлением кванторов разрешимость логических формул значительно затрудняется).
 \end{exm}
-\mcomm{Logical proofs in these examples should be presented as guided by the natural intuition rather than any formal inference rule. Much like one does for ordinary theorems of `mathematical content'.}
+\mcomm{}
 
 \begin{exm}
-	Here is a slight variation of the above:
+	Вот то же высказывание, но слегка измененное:
 \end{exm}
 \begin{quote}
-	Every (natural) number that is divisible by $4$ is even. All numbers are divisible by $4$. Therefore, all numbers are even.
+	Любое (натуральное) число, которое делится на $4$, четно. Все числа делятся на $4$. Значит все числа четные.
 \end{quote}
-Again, here we surely have a false assumption. Yet this assurance requires some knowledge of arithmetic, while logic guarantees our argument to be valid without any such knowledge.
+Здесь мы снова имеем заведомо ложную посылку. Однако знание «заведомой ложности» требует некоторого знания арифметики, в то время как логика позволяет нам судить о корректности рассуждения без всякого априорного знания.
 
-So, we may formalize our argument as follows: $\forall x\, (D(x) \to E(x)) \wedge \forall x\, D(x) \to \forall x\, E(x)$ over the domain $\N = \{0,1,2,\ldots\}$ of natural numbers, where $D(x)$ means that $x$ is divisible by $4$ and $E(x)$ stands for $x$ being even. Clearly, our first assumption is true, while the second one is not. However, we need not know anything about numbers in order to accept this argument as valid. Indeed, if our assumptions are (or \emph{were} as the English grammar suggests for our `unreal' condition) true, we might \emph{prove} the conclusion to be true as well.
+Итак, мы можем формализовать высказывание так: $\forall x\, (\text{Дел}(x) \to \text{Чет}(x)) \wedge \forall x\, \text{Дел}(x) \to \forall x\, \text{Чет}(x)$ на домене $\N = \{0,1,2,\ldots\}$ натуральных чисел, где $\text{Дел}(x)$ означает «$x$ делится на $4$», а $\text{Чет}(x)$ --- «$x$ четно». Очевидно, первая посылка истинна, а вторая ложна. Однако нам не нужно знание о числах, чтобы судить о корректности суждений. Действительно, если наши посылки верны (или \emph{были бы} верны --- русская грамматика уже подразумевает нереальность, невозможность условия), мы могли бы \emph{доказать} истинность вывода.
 
-Indeed, given the assumptions, we need $\forall x\, E(x)$. Consider an \emph{arbitrary} (=nothing special) number $x'$. As every number satisfies $D$, our $x'$ also does. So, $D(x')$ is true. We can likewise instantiate $x$ as $x'$ in the first assumption. As both $D(x') \to E(x')$ and $D(x')$ are true, $E(x')$ also is. Since our $x'$ was arbitrary, we could get the same conclusion for any other number, so we may \emph{generalize} and obtain $\forall x\, D(x)$ therefrom.
+В самом деле, исходя из посылок, нам необходимо $\forall x\, \text{Чет}(x)$. Рассмотрим \emph{произвольное} (т.е. неотличимое от других элементов домена) число $x'$. Так как любое число удовлетворяет предикату $\text{Дел}$, наше $x'$ тоже удовлетворяет ему --- значит $\text{Дел}(x')$ истинно. Мы можем при этом инстанцировать $x$ как $x'$ в первой посылке. Так как и $\text{Дел}(x') \to \text{Чет}(x')$, и $\text{Дел}(x')$ истинны, $\text{Чет}(x')$ тоже истинно. А потому как наш $x'$ был произвольным, мы можем получить тот же вывод с любым другим $x$ из домена, а затем \emph{обобщить} результат и получить $\forall x\, \text{Дел}(x)$.
 \begin{exm}
 	
-	Another example will show quantifiers' great expressive power. Here it is:
+	Следующий пример призван продемонстрировать большую выразительную силу кванторов:
 	\begin{quote}
-		When I am hungry, I want to go home or to go to a restaurant. Sometimes, I am hungry but do not want to go home. Therefore, sometimes I want to go to a restaurant. 
+		Когда я голоден, я хочу пойти домой или в ресторан. Иногда я голоден, но не хочу идти домой. Значит иногда я хочу пойти в ресторан. 
 	\end{quote}
-	To choose the right domain is the key. This could be the continuity of time (so, every variable refers to a point in time). We thus get $$\forall x\, (H(x) \to Hm(x) \vee R(x)) \wedge \exists x\, (H(x) \wedge \neg Hm(x)) \to \exists x\, R(x).$$ This argument is also valid. Indeed, let $x_0$ be some moment when I am hungry but do not want to go home. Instantiate $x$ in the first assumption as $x_0$ to obtain the tautology
-	$$(H(x_0) \to Hm(x_0) \vee R(x_0)) \wedge H(x_0) \wedge \neg Hm(x_0) \to R(x_0).$$
-	Hence, our assumptions imply $R(x_0)$, whence it follows that $\exists x\, R(x)$.
+	Главное здесь --- выбрать правильный домен. Как вариант --- течение, продолжительность времени (то есть все переменные означают некоторую точку во времени). Тогда мы получаем: $$\forall x\, (\text{Г}(x) \to \text{Дом}(x) \vee \text{Р}(x)) \wedge \exists x\, (\text{Г}(x) \wedge \neg \text{Дом}(x)) \to \exists x\, \text{Р}(x).$$ Это рассуждение тоже корректно. Действительно, пусть $x_0$ будет некоторым моментом во времени когда я голоден, но не хочу домой. Можно инстанцировать $x$ как $x_0$:
+	$$(\text{Г}(x_0) \to \text{Дом}(x_0) \vee \text{Р}(x_0)) \wedge \text{Г}(x_0) \wedge \neg \text{Дом}(x_0) \to \text{Р}(x_0).$$
+	Таким образом, из посылок следует истинность $\text{Р}(x_0)$, откуда следует истинность $\exists x\, \text{Р}(x)$.
 \end{exm}
 
 \begin{exm}
-	Now, the final example. Consider the argument:
+	Наконец, последний пример:
 	\begin{quote}
-		Everyone loves himself. Therefore, someone is loved by somebody.
+		Каждый человек любит себя. Следовательно, всякий человек любим кем-то.
 	\end{quote}
-	In symbols this looks like $\forall x\, L(x,x) \to \exists y \exists x\, L(x,y)$. Is it valid? At first glance, it is for the assumption clearly implies $\forall y \exists x\, L(x,y)$ (take $y$ for $x$ here and instantiate $x$ as $y$ in the assumption). But does the latter imply  $\exists y \exists x\, L(x,y)$? In general, does it follow that $\exists z\, A(z)$ from $\forall z\, A(z)$?
+	Перекладывая в формулы, получим что-то вроде $\forall x\, \text{Л}(x,x) \to \exists y \exists x\, \text{Л}(x,y)$. Корректно ли это рассуждение? На первый взгляд --- да, ведь из посылки очевидно следует $\forall y \exists x\, \text{Л}(x,y)$ (можно, например, взять $y$ как $x$ здесь и инстанцировать $x$ как $y$ в посылке). Но следует ли из последнего $\exists y \exists x\, \text{Л}(x,y)$? В общем случае, следует ли $\exists z\, A(z)$ из $\forall z\, A(z)$?
 	
-	It depends on whether the domain is empty (remember \emph{vacuous truths} about the \emph{absent} `present King of France'). Usually, domains are required to be non-empty. Then the argument must be valid.
+	Ответ зависит от того, пуст ли домен (вспомните \emph{пустые истины} о \emph{несуществующем} «сегодняшнем короле Франции»). Обыкновенно требуется, чтобы домены были непустыми. Тогда рассуждение должно быть корректно.
 \end{exm}
 
 \begin{exc}
-	Consider the argument:
+	Рассмотрим рассуждение:
 	\begin{quote}
-		Some key can unlock every door. Therefore, every door may be unlocked with some key.
+		Какой-то ключ может открыть любую дверь. Следовательно любая дверь может быть открыта каким-то ключом.
 	\end{quote}
-	Put this argument in symbols and check it for validity. Do the same for the `inverse' argument:
+	Переложите это рассуждение в символы и проверьте его на корректность. Сделайте то же самое для «обратного» рассуждения:
 	\begin{quote}
-		Every door may be unlocked with some key. Therefore, some key can unlock every door.
+		Любая дверь может быть открыта каким-то ключом. Следовательно какой-то ключ может открыть любую дверь.
 	\end{quote}
 	
 \end{exc}
 
-The exact rules for checking such arguments for validity are given by \emph{predicate} or \emph{first-order logic} and are out of the scope of our course.
+Формальные законы для проверки подобных рассуждений на корректность определяются \emph{предикативной} логикой или логикой \emph{первого порядка} и выходят за рамки нашего курса.
 
 \section{A Case Study: Strings}\label{sect:strings}
 
