@@ -1950,92 +1950,92 @@ In fact, one can easily extract a recursive algorithm for solving a system of th
 \end{exm}
 
 
-\section{Binary Relations}\label{sect:7}
+\section{Бинарные отношения}\label{sect:7}
 \mcomm{We introduce the algebra of binary relations to provide students with a unified formalism for functions, orders and equivalences. First, this allows to solve many problems via a straight-forward symbolic computation. Second, we try to overcome the well-known difficulties many students experience when learning images and pre-images (which are typically presented in an asymmetric manner and for the function case only) and various concepts of a function's `inverse' as well.}
 
-Let $A$ and $B$ be some sets. Any set $R$ such that $R \sbs A \times B$ is called a \emph{(binary) relation between} sets $A$ and $B$. This simple notion forms the base for modeling functions and orderings in the formalism of sets. The set
+Пусть $A$ и $B$ --- некоторые множества. Любое множество $R$ такое, что $R \sbs A \times B$, называется \emph{(бинарным) отношением между} множествами $A$ и $B$. На это простое определение опираются понятия функции и порядка в формализме теории множеств. Множество
 $$\dom R = \{a \in A \mid \exists b\, (a, b) \in R \}$$
-is called the \emph{domain} of the relation $R$ while the set
+называется \emph{областью определения} отношения $R$, а множество
 $$\rng R = \{b \in B \mid \exists a\, (a, b) \in R \}$$
-is called the \emph{range} of the relation $R$. The set $\dom R \cup \rng R$ is called the \emph{field} of the relation $R$. Clearly, $\dom R \sbs A$ and $\rng R \sbs B$. We see that $\dom R$ ($\rng R$) is the set of the first (second) coordinates of the pairs from $R$. If we mention just a \emph{binary relation} $R$, we imply that some sets $A$ and $B$ with $R \sbs A \times B$ are fixed yet their exact specification is immaterial.
+называется \emph{областью значений} отношения $R$. Множество $\dom R \cup \rng R$ называется \emph{полем} отношения $R$. Очевидно, что $\dom R \sbs A$ и $\rng R \sbs B$. Также отметим, что $\dom R$ ($\rng R$) --- множество первых (вторых) координат пар из $R$. Когда мы говорим о \emph{бинарном отношении} $R$, мы подразумеваем, что зафиксированы некоторые множества $A$ и $B$, для которых $R \sbs A \times B$, хотя и не обозначаем этих множеств явно.
 
 \mcomm{We prefer this `parametric' definition to the more natural one (where every set $R$ of ordered pairs is called a relation) since the latter would require taking ${\cup} {\cup} R$ for the relation's field, whereas we want to avoid infinite unions generally.}
 
 \begin{exm}\label{rel:exm_rel}
-	The sets $\void$ and $A \times B$ are binary relations between $A$ and $B$.
+	Множества $\void$ и $A \times B$ суть бинарные отношения между $A$ и $B$.
 	
-	Let $A = \{0,2, x, y\}$ and $B = \{z, 0, 1\}$ for some sets $x, y, z$. The set
+	Пусть $A = \{0,2, x, y\}$ и $B = \{z, 0, 1\}$ для некоторых множеств $x, y, z$. Множество
 	$$R = \{ (0, 0), (0,z), (x, 1), (y,1) \}$$
-	is a binary relation between $A$ and $B$. Clearly, $\dom R = \{0,x,y\} \sbs A$ (but $\dom R \neq A$ when neither $x$ nor $y$ equals $2$) and $\rng R = B$.
+	является бинарным отношением между $A$ и $B$. Очевидно, $\dom R = \{0,x,y\} \sbs A$ (но $\dom R \neq A$, когда ни $x$, ни $y$ не равны $2$) и $\rng R = B$.
 \end{exm}
 
-If $R \sbs A \times A$ for a set $A$, the relation $R$ is called a \emph{binary relation on} the set $A$.
+Если $R \sbs A \times A$ для некоторого множества $A$, то отношение $R$ называется \emph{бинарным отношением на} множестве $A$.
 \begin{exm}
-	The set $\void$ is a binary relation on any set. The sets $A^2 = A \times A$ and
+	Множество $\void$ является бинарным отношением на любом множестве. Множества $A^2 = A \times A$ и
 	$$\id_A = \{(x,x) \mid x \in A \}$$
-	are binary relations on $A$. The \emph{identity relation} $\id_A$ is of some import. Clearly, $(x,y) \in \id_A$ iff $x = y$ and $x,y \in A$. One may think of $\id_A$ as of the set-theoretic representation for equality predicate (restricted to the set $A$).
+	суть бинарные отношения на $A$. \emph{Тождественное отношение} $\id_A$ играет в нашей теории важную роль. Ясно, что $(x,y) \in \id_A$ тогда и только тогда, когда $x = y$ и $x,y \in A$. Можно считать $\id_A$ неким теоретико-множественным представлением предиката равенства (ограниченного на множество $A$).
 	
-	Likewise, one can consider the predicate `less than' over natural numbers as a \emph{set}---namely, the binary relation ${<} = \{ (m, n) \in \N^2 \mid m\ \mbox{is less than}\ n\}$. This way, one gets $(2,3) \in {<}$ (as $2 < 3$) yet $(2,2) \notin {<}$ (as $2 \not< 2$). In fact, \emph{every} binary predicate over a set may be identified with a binary relation. Thus, binary relations comprise the set-theoretic model for binary predicates.
+	Похожим образом можно рассмотреть предикат <<меньше>> на натуральных числах как \emph{множество} --- а именно, бинарное отношение ${<} = \{ (m, n) \in \N^2 \mid m\ \mbox{меньше, чем}\ n\}$. В таком случае имеем $(2,3) \in {<}$ (так как $2 < 3$) и $(2,2) \notin {<}$ (так как $2 \not< 2$). В сущности, \emph{любой} бинарный предикат на множестве может быть отождествлён с бинарным отношением. Таким образом, бинарные отношения представляют собою теоретико-множественную модель для бинарных предикатов.
 	
-	On the other hand, for any given binary relation $R$, we will use a `predicate-style' notation, that is, we will often write $x R y$ instead of $(x,y) \in R$.
+	С другой стороны, для любого бинарного отношения $R$ можно использовать <<предикатную>> нотацию, и мы часто будем писать $x R y$ вместо $(x,y) \in R$.
 	
-	Every geometric figure in the coordinate plane $\R^2$ is a binary relation on $\R$. Its domain and range are the projections thereof onto the abscissa and ordinate axes, respectively. (See Figure~\ref{rel:proj}).
+	Любая геометрическая фигура на плоскости $\R^2$ является бинарным отношением на $\R$. Её область определения и область значений --- её проекции на оси абсцисс и ординат соответственно. (См. рис.~\ref{rel:proj}).
 	\begin{figure}[h]
 		\centering
 		\includegraphics*[width=0.7\textwidth]{rel_proj.pdf}
-		\caption{\label{rel:proj} A planar figure (equivalently, a binary relation on $\R$) $F$ with its two projections $\dom F$ and $\rng F$ are highlighted.}
+		\caption{\label{rel:proj} Фигура $F$ на плоскости (то есть бинарное отношение на $\R$) и её проекции $\dom F$ и $\rng F$ заштрихованы.}
 	\end{figure}
 \end{exm}
 
-For any finite relation $R$ one can draw a \emph{diagram} (in principle, at least). That is, one labels some plane points with elements of the field of $R$ (or a superset thereof). Sometimes, they allow multiple points with identical labels or multiple labels for the same point (if the respective elements are equal). Then one draws an arrow from the point (labeled by) $a$ to the point $b$ iff $(a,b) \in R$. When plotting two or more relations on one diagram, it is useful to label the arrows themselves with relation symbols such as `$R$'.
+Для любого конечного отношения $R$ можно начертить (во всяком случае, в теории) \emph{диаграмму}. Для этого точки плоскости обозначаются элементами поля отношения $R$ (или его надмножества). Иногда разрешается разные точки обозначать одинаковыми элементами или же одну точку обозначить несколькими элементами (если они равны). Затем точка (обозначенная элементом) $a$ соединяется с точкой $b$ тогда и только тогда, когда $(a,b) \in R$. При построении нескольких отношений на одной диаграмме бывает полезно обозначать ещё и сами стрелки названиями соответствующих им отношений, например <<$R$>>.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics*[width=0.6\textwidth]{rel_diag.pdf}
-	\caption{A diagram for the relation $\{ (5,5), (5,3), (1,5), (1,2), (4, 0) \}$ on the set $\{0, 1, 2, 3, 4, 5, 8\}$.}
+	\caption{Диаграмма отношения $\{ (5,5), (5,3), (1,5), (1,2), (4, 0) \}$ на множестве $\{0, 1, 2, 3, 4, 5, 8\}$.}
 \end{figure}
 
 
 \begin{exc}
-	Let $A = \{1,2,3,4\}$. Draw a diagram depicting relations $P = A^2$, $Q = \id_A$, and $R = \{ (m,n) \in A^2 \mid m < n\}$.
+	Пусть $A = \{1,2,3,4\}$. Начертите диаграмму, изображающую отношения $P = A^2$, $Q = \id_A$ и $R = \{ (m,n) \in A^2 \mid m < n\}$.
 \end{exc}
 
-\paragraph{Algebra of relations.} Let $R \sbs A \times B$. The \emph{converse} relation of $R$ is the relation
+\paragraph{Алгебра отношений.} Пусть $R \sbs A \times B$. \emph{Обратным} отношением к $R$ называется отношение
 $$R^{-1} = \{(b,a) \in \rng R \times \dom R \mid (a, b) \in R\},$$
-that is, each pair from $R$ is overturned in $R^{-1}$.
+то есть всякая пара из $R$ входит в $R^{-1}$ с обратным порядком координат.
 
 \begin{exc}
-	Prove that $\dom R^{-1} = \rng R$ and $\rng R^{-1} = \dom R$.
+	Докажите, что $\dom R^{-1} = \rng R$ и $\rng R^{-1} = \dom R$.
 \end{exc}
 
 \begin{exm}
-	For every sets $A, B$, it is clear that $\void^{-1} = \void$, $\id^{-1}_A = \id_A$, and $(A \times B)^{-1} = B \times A$.
+	Для любых множеств $A, B$ имеем $\void^{-1} = \void$, $\id^{-1}_A = \id_A$ и $(A \times B)^{-1} = B \times A$.
 	
-	As we have already seen, the predicates `less than', `less or equal' (for natural arguments) etc. may be treated as binary relations on $\N$. We have ${<}^{-1} = {>}$, ${>}^{-1} = {<}$, and ${\leq}^{-1} = {\geq}$.
+	Как мы ранее заметили, предикаты <<меньше>>, <<меньше или равно>> (для натуральных аргументов) и проч. могут быть рассмотрены как бинарные отношения на $\N$. Тогда имеем ${<}^{-1} = {>}$, ${>}^{-1} = {<}$ и ${\leq}^{-1} = {\geq}$.
 \end{exm}
 
-Since binary relations are sets, every set algebra operation makes sense for them. For example, one has ${<} \cup \id_\N = {\leq}$. Indeed, a pair $(x, y) \in \N^2$ belongs to the left-hand side iff $x < y$ or $x = y$, which is equivalent to $x \leq y$. As usual, to define the \emph{complement} of a relation $R$, one must fix a \emph{universe} first. Since we have just \emph{relations between two sets} formally, one has certain sets $A$ and $B$ with $R \sbs A \times B$ already fixed. In general, we put $\bar R = (A \times B) \setminus R$, but caution is recommended at this point.
+Поскольку бинарные отношения являются множествами, для них осмысленны все операции алгебры множеств. Так, например, ${<} \cup \id_\N = {\leq}$. В самом деле, пара $(x, y) \in \N^2$ принадлежит левой части тогда и только тогда, когда $x < y$ или $x = y$, что равносильно $x \leq y$. Как и ранее, чтобы определить \emph{дополнение} отношения $R$, необходимо сначала зафиксировать \emph{универсальное множество}. Так как формально мы имеем дело с \emph{отношениями между двумя множествами}, то в нашем распоряжении уже есть фиксированные множества $A$ и $B$, для которых $R \sbs A \times B$. Как правило, мы полагаем $\bar R = (A \times B) \setminus R$, но тем не менее рекомендуется проявлять бдительность в этих моментах.
 
 \begin{rem}
-	It is important to realize that \emph{conversion} and \emph{complement} operations are not the same. (We shall see in a moment that they result in distinct relations `almost surely'.) In particular, ${\bar <} = {\geq}$ (since $x \not< y$ is equivalent to $x \geq y$ for all $x, y \in \N$) whereas ${<}^{-1} = {>}$.
+	Важно понимать, что операция \emph{обращения} --- не то же самое, что операция \emph{дополнения}. (Вскоре мы увидим, что результаты этих операций окажутся различными <<почти наверное>>.) В частности, ${\bar <} = {\geq}$ (поскольку $x \not< y$ равносильно $x \geq y$ для любых $x, y \in \N$), в то время как ${<}^{-1} = {>}$.
 \end{rem}
 \mcomm{In my experience, the students often confuse the two.}
 
-\begin{lemma} Let $P, Q \sbs A \times B$ be arbitrary binary relations. Then
+\begin{lemma} Пусть $P, Q \sbs A \times B$ --- произвольные бинарные отношения. Тогда
 	\begin{enumerate}
 		\item $(P^{-1})^{-1} = P$;
 		\item $(P \cup Q)^{-1} = P^{-1} \cup Q^{-1}$;
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
-	For the first statement, for an arbitrary pair $(a,b)$ obtain
+	Для первого утверждения, рассмотрев произвольную пару $(a,b)$, получим:
 	$$
 	\begin{array}{rcl}
 		(a, b) \in (P^{-1})^{-1} &\iff& (b,a) \in P^{-1}\\
 		&\iff&  (a,b) \in P.\\
 	\end{array}
 	$$
-	For the second one, 
+	Для второго утверждения: 
 	$$
 	\begin{array}{rcl}
 		(a, b) \in (P \cup Q)^{-1} &\iff& (b,a) \in P \cup Q\\
@@ -2046,74 +2046,74 @@ Since binary relations are sets, every set algebra operation makes sense for the
 	$$
 \end{proof}
 \begin{corr}
-	If $P \sbs Q$, then $P^{-1} \sbs Q^{-1}$.
+	Если $P \sbs Q$, то $P^{-1} \sbs Q^{-1}$.
 \end{corr}
 \begin{proof}
-	Suppose that $P \sbs Q$. By Lemma~\ref{ch0:lattice}, get $Q = P \cup Q$. Hence,
+	Пусть $P \sbs Q$. По лемме~\ref{ch0:lattice} имеем $Q = P \cup Q$. Следовательно,
 	$Q^{-1} = (P \cup Q)^{-1} = P^{-1} \cup Q^{-1}$
-	and $P^{-1} \sbs Q^{-1}$ by the same Lemma.
+	и $P^{-1} \sbs Q^{-1}$ по той же лемме.
 \end{proof}
 
 \begin{exc}
-	Prove that $(P \cap Q)^{-1} = P^{-1} \cap Q^{-1}$.
+	Докажите, что $(P \cap Q)^{-1} = P^{-1} \cap Q^{-1}$.
 \end{exc}
 
 \begin{exm}
-	Suppose that $R \sbs A \times B$ for non-empty sets $A$ and $B$. Then $R^{-1} \neq \bar R$.
+	Пусть $R \sbs A \times B$ для непустых множеств $A$ и $B$. Тогда $R^{-1} \neq \bar R$.
 	
-	Assuming the contrary, let $R^{-1} = \bar R$. First, we are to prove that $A \cap B \neq \void$.  If $R = \void$, then $R^{-1} = \void$. On the other hand, $\bar R = (A \times B) \setminus \void = A \times B \neq \void$. The contradiction implies $R \neq \void$, i.\,e.,\ $(a,b) \in R$ for some $a \in A$ and $b \in B$. Then $(b,a) \in R^{-1}$, whence $(b,a) \in (A \times B) \setminus R$. Hence, $b \in A$ and $b \in A \cap B$. 
+	Предположим противное: $R^{-1} = \bar R$. Сперва докажем, что $A \cap B \neq \void$.  Если $R = \void$, то $R^{-1} = \void$. Однако в этом случае $\bar R = (A \times B) \setminus \void = A \times B \neq \void$. Из этого противоречия получаем, что $R \neq \void$, т.\,е.\ $(a,b) \in R$ для некоторых $a \in A$ и $b \in B$. Тогда $(b,a) \in R^{-1}$, откуда $(b,a) \in (A \times B) \setminus R$. Значит, $b \in A$ and $b \in A \cap B$. 
 	
-	Let $x$ be an element of $A \cap B$. If $(x,x) \in R$, then $(x,x) \in R^{-1} = \bar R$, i.\,e.,\ $(x,x) \notin R$. The contradiction yields $(x,x) \notin R$. But then $(x,x) \in \bar R = R^{-1}$. We thus get $(x,x) \in R$ and a new contradiction. The only remaining assumption $R^{-1} = \bar R$ must be false.
+	Пусть $x$ --- элемент $A \cap B$. Если $(x,x) \in R$, то $(x,x) \in R^{-1} = \bar R$, т.\,е.\ $(x,x) \notin R$. Из противоречия получаем $(x,x) \notin R$. Но тогда $(x,x) \in \bar R = R^{-1}$. Получаем $(x,x) \in R$ --- и опять противоречие. Следовательно, единственное оставшееся предположение $R^{-1} = \bar R$ ложно.
 \end{exm}
 
-Let $P$ and $Q$ be arbitrary binary relations. The set 
+Пусть $P$ и $Q$ --- произвольные бинарные отношения. Множество
 $$Q \circ P = \{(a, c) \in \dom P \times \rng Q \mid \exists b\, \bigl( a P b \wedge b Q c \bigr)\}$$
-is then called the \emph{composition} of the relations $P$ and $Q$. Clearly, $Q \circ P \sbs A \times C$ if $P \sbs A \times B$ and $Q \sbs B \times C$. On the other hand, we have
+называется \emph{композицией} отношений $P$ и $Q$. Понятно, что $Q \circ P \sbs A \times C$, если $P \sbs A \times B$ и $Q \sbs B \times C$. С другой стороны, имеем
 $$(a,c) \in Q \circ P \iff \exists b\, \bigl( a P b \wedge b Q c \bigr)$$
-for \emph{any} pair $(a, c)$ since the right-hand side implies that $a \in \dom P$ and $c \in \rng Q$.
+для \emph{любой} пары $(a, c)$, поскольку правая часть влечёт $a \in \dom P$ и $c \in \rng Q$.
 
 \begin{rem}
-	Note that the relation $P$ `acts' first but comes second (from left to right) in the expression $Q \circ P$. This counter-intuitive convention is motivated by the traditional notation for the composition of functions (which we discuss later), where $(g \circ f)(x) = g(f(x))$.
+	Отметим, что отношение $P$ хотя и <<действует>> первым, но записывается вторым (слева направо) в выражении $Q \circ P$. Такая противоестественная форма записи мотивируется устоявшимся обозначением для композиции функций (их мы обсудим позже), где $(g \circ f)(x) = g(f(x))$.
 \end{rem}
 
-In a diagram, points $a$ and $c$ are connected by a $(Q \circ P)$-arrow iff there exists a two arrow path from $a$ to $c$ first going along a $P$-arrow from $a$ to some $b$ and then along a $Q$-arrow from $b$ to $c$. You can think about composition as the set of pairs of places connected by a route with a change.
+На диаграмме точки $a$ и $c$ будут соединены $(Q \circ P)$-стрелкой тогда и только тогда, когда существует путь из $a$ в $c$, состоящий из двух стрелок, где первая --- $P$-стрелка --- проведена от $a$ к некоторому $b$, а вторая --- $Q$-стрелка --- от $b$ к $c$. Можно думать о композиции как о множестве пар точек, соединённых маршрутом с пересадкой.
 
 
 \begin{figure}[h]
 	\centering
 	\includegraphics*[width=0.6\textwidth]{conv_comp.pdf}
-	\caption{Conversion and composition.}
+	\caption{Обращение и композиция.}
 \end{figure}
 
 
-\begin{exm} Another illustration. Let $A$ be a group of authors, $C$ be a group of critics, and $B$ be a set of books. Assume that $a P b$ means that \emph{Author $a$ has authored Book $b$}, while  $b Q c$ means that \emph{Book $b$ is praised by Critic $c$}. Then  $a (Q \circ P) c$ means that Author $a$ has authored a book praised by Critic $c$.
+\begin{exm} Ещё одна иллюстрация. Пусть $A$ --- группа писателей, $C$ --- группа критиков, а $B$~--- множество книг. Пусть $a P b$ означает, что \emph{писатель $a$ написал книгу $b$}, а $b Q c$ означает, что \emph{книгу $b$ хвалит критик $c$}. Тогда  $a (Q \circ P) c$ будет означать, что автор $a$ написал книгу, которую хвалит критик $c$.
 \end{exm}
 
 \begin{exc}
-	Let $A$ be a group of men and let $a P b$ mean that \emph{$a$ is a son of $b$}. Which concepts are expressed by the relations $P\circ P$, $P^{-1}$, $P^{-1} \circ P$, and $P \circ P^{-1}$?
+	Пусть $A$ --- группа мужчин, а $a P b$ означает, что \emph{$a$ --- сын $b$}. Какие связи выражены отношениями $P\circ P$, $P^{-1}$, $P^{-1} \circ P$ и $P \circ P^{-1}$?
 \end{exc}
 
 \begin{exm}
-	On $\N$, we have ${\leq}\circ{<} = \{(m,  n) \in \N^2 \mid \exists k\in \N\, (m < k \wedge k \leq n)\}$. If $m < k$ and $k \leq n$, then $m < n$. If $m < n$, then we get $m < k$ and $k \leq n$ by assigning $k = n$. Hence, ${\leq}\circ{<} = {<}$.
+	На $\N$ имеем ${\leq}\circ{<} = \{(m,  n) \in \N^2 \mid \exists k\in \N\, (m < k \wedge k \leq n)\}$. Если $m < k$ и $k \leq n$, то $m < n$. Если $m < n$, то можно получить $m < k$ и $k \leq n$, положив $k = n$. Следовательно, ${\leq}\circ{<} = {<}$.
 \end{exm}
 
-As we shall see, composition is similar to numerical multiplication in many respects. For example, there is a `zero' element.
+Как мы потом увидим, композиция во многом похожа на умножение чисел. Например, наличием <<нулевого>> элемента.
 \begin{exc}
-	Prove that $R \circ \void = \void \circ R = \void$.
+	Докажите, что $R \circ \void = \void \circ R = \void$.
 \end{exc}
 
-Also, there is an analogue for unity, or `neutral element' w.\,r.\,t. composition (a quantity does not change if you multiply it by unity). For relations between $A$ and $B$, we have  distinct `left' and `right' unities indeed.
+Также для композиции существует <<нейтральный элемент>> --- аналог единицы (число не изменится, если его умножить на единицу). В сущности, для отношений между $A$ и $B$ существуют различные <<левый>> и <<правый>> нейтральные элементы.
 \begin{exm}
-	If $R \sbs A \times B$, then $R \circ \id_A = R$ and $\id_B \circ R = R$.
+	Если $R \sbs A \times B$, то $R \circ \id_A = R$ и $\id_B \circ R = R$.
 	
-	Let us prove the first equality. If $(x,y) \in R$ then $x \in A$ and $(x,x) \in \id_A$. Thus we have $(x,z) \in \id_A$ and $(z,y) \in R$ for a suitable $z$---namely, for $z = x$. Hence $(x,y) \in R \circ \id_A$ by the definition of composition. For the other direction, suppose that $(x,y) \in R \circ \id_A$. By the same definition, we conclude that $(x,z) \in \id_A$ and $(z,y) \in R$ for some $z$. But the former means that $z = x$, whence $(x,y) \in R$.
+	Докажем первое равенство. Если $(x,y) \in R$, то $x \in A$ и $(x,x) \in \id_A$. Тогда имеем $(x,z) \in \id_A$ и $(z,y) \in R$ для некоторого $z$ --- а именно, для $z = x$. Отсюда $(x,y) \in R \circ \id_A$ по определению композиции. В обратную сторону, положим $(x,y) \in R \circ \id_A$. По тому же определению имеем $(x,z) \in \id_A$ и $(z,y) \in R$ для некоторого $z$. Первое означает, что $z = x$, откуда $(x,y) \in R$.
 \end{exm}
 
-\begin{thm}[Composition associativity]\label{ch0:rel_comp}
-	Let $P, Q, R$ be arbitrary binary relations. Then
+\begin{thm}[Ассоциативность композиции]\label{ch0:rel_comp}
+	Пусть $P, Q, R$ --- произвольные бинарные отношения. Тогда
 	$$R \circ (Q \circ P) = (R \circ Q) \circ P.$$
 \end{thm}
-\begin{proof} For any pair $(a,d)$, obtain:
+\begin{proof} Для произвольной пары $(a,d)$ имеем:
 	$$
 	\begin{array}{rcl}
 		(a, d) \in R \circ (Q \circ P) &\iff& \exists c\, \bigl( a(Q \circ P)c \wedge cRd \bigr)\\
@@ -2125,28 +2125,28 @@ Also, there is an analogue for unity, or `neutral element' w.\,r.\,t. compositio
 		&\iff& (a,d) \in (R \circ Q)\circ P.\\
 	\end{array}
 	$$
-	Here, we have observed that $c R d$ does not depend on $b$ (and does not mention at all); therefore the quantifier on $b$ does not change the meaning of this statement, so the later can be safely placed in or out of the scope of that quantifier.
+	Здесь мы заметили, что $c R d$ не зависит от $b$; следовательно, квантор по $b$ никаким образом не влияет на истинность этого утверждения. А тогда оно может быть свободно внесено в область действия этого квантора или же исключено из неё.
 	
 \end{proof}
 \mcomm{For this argument, the Instructor might wish to explain the logical equivalences $\exists x\, (A(x) \wedge B) \equiv \exists x\, A(x) \wedge B$ (where $B$ does not mention $x$) and $\exists x \exists y\, A \equiv \exists y \exists x\, A$ in more detail.}
 \begin{rem}
-	Associativity allows us to omit parentheses in expressions like $P_1 \circ P_2 \circ \ldots \circ P_n$ as it does not matter how one places them.
+	Ассоциативность позволяет нам опускать скобки в выражениях вида $P_1 \circ P_2 \circ \ldots \circ P_n$, поскольку их расстановка не имеет значения.
 \end{rem}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics*[width=0.65\textwidth]{comp_assoc.pdf}
-	\caption{Proving Theorem~\ref{ch0:rel_comp}.}
+	\caption{К доказательству теоремы~\ref{ch0:rel_comp}.}
 \end{figure}
 
-\noindent Conversion is \emph{somewhat} similar to taking a multiplicative inverse for numbers: one has $\frac{1}{xy} = \frac{1}{y} \cdot \frac{1}{x}$.
+\noindent Обращение \emph{в некотором смысле} похоже на взятие обратного по умножению для чисел: $\frac{1}{xy} = \frac{1}{y} \cdot \frac{1}{x}$.
 
 \mcomm{The Instructor might wish to compare conversion to matrix transposition or string reversion as well.}
 \begin{thm}\label{ch0:comp_inv}
-	Let $P, Q$ be arbitrary binary relations. Then $(Q \circ P)^{-1} = P^{-1} \circ Q^{-1}$.
+	Пусть $P, Q$ --- произвольные бинарные отношения. Тогда $(Q \circ P)^{-1} = P^{-1} \circ Q^{-1}$.
 \end{thm}
 \begin{proof}
-	For any pair $(a,c)$, obtain:
+	Для произвольной пары $(a,c)$ имеем:
 	$$
 	\begin{array}{rcl}
 		(a, c) \in (Q \circ P)^{-1} &\iff& (c, a) \in Q \circ P\\
@@ -2157,41 +2157,41 @@ Also, there is an analogue for unity, or `neutral element' w.\,r.\,t. compositio
 	$$
 \end{proof}
 \begin{rem}
-	For numbers, one also has $x \cdot \frac{1}{x} = x$. Nevertheless, a similar statement fails for binary relations. Indeed, consider the relation $R = \{ (1, 2) \}$ on the set $A = \{1, 2\}$. Clearly, $R^{-1} = \{ (2,1) \}$, $R \circ R^{-1} = \{ (2,2)\}$, and $R^{-1} \circ R = \{ (1, 1)\}$. Neither of the relations $R \circ R^{-1}$ and $R^{-1} \circ R$ equals $\id_A$, which is the analogue of unity as we have seen.
+	Для чисел мы также имеем $x \cdot \frac{1}{x} = 1$. Однако аналогичное утверждение становится неверным для бинарных отношений. В самом деле, рассмотрим отношение $R = \{ (1, 2) \}$ на множестве $A = \{1, 2\}$. Очевидно, $R^{-1} = \{ (2,1) \}$, $R \circ R^{-1} = \{ (2,2)\}$ и $R^{-1} \circ R = \{ (1, 1)\}$. Ни одно из отношений $R \circ R^{-1}$ и $R^{-1} \circ R$ не равно $\id_A$ --- а это, как мы видели, и есть аналог единицы.
 	
-	For this reason, we have preferred to call $R^{-1}$ the \emph{converse} rather than the \emph{inverse} of the relation $R$.
+	% For this reason, we have preferred to call $R^{-1}$ the \emph{converse} rather than the \emph{inverse} of the relation $R$.
 \end{rem}
 \begin{exc}
-	The analogues of the following statements hold for numerical multiplication. Do they hold for arbitrary binary relations?
+	Аналоги следующих утверждений выполнены для умножения чисел. А выполняются ли они для произвольных бинарных отношений?
 	\begin{enumerate}
 		\item $P \circ Q = Q \circ P$;
-		\item if $P \neq \void$ and $P \circ Q = P \circ R$, then $Q = R$.
+		\item если $P \neq \void$ и $P \circ Q = P \circ R$, то $Q = R$.
 	\end{enumerate}
 \end{exc}
 
 
 \begin{lemma}\label{ch0:ex11}
-	Let $R, P, Q $ be arbitrary binary relations. Then
+	Пусть $R, P, Q $ --- произвольные бинарные отношения. Тогда
 	\begin{enumerate}
 		\item $(P \cup Q) \circ R = (P \circ R) \cup (Q \circ R)$;
 		\item $(P \cap Q) \circ R \sbs (P \circ R) \cap (Q \circ R)$.
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
-	For any pair $(a,c)$,
+	Для произвольной пары $(a,c)$
 	$$
 	\begin{array}{rcl}
 		(a, c) \in (P \cup Q) \circ R &\iff& \exists b\, \bigl( a R b \wedge (b,c) \in P \cup Q \bigr)\\
-		&\iff& \exists b\, \bigl( a R b \wedge ( b P c\ \mbox{or}\ b Q c) \bigr)\\
-		&\iff& \exists b\, \bigl( (a R b \wedge  b P c)\ \mbox{or}\ (a R b \wedge b Q c) \bigr)\\
-		&\iff& \exists b\, \bigl( a R b \wedge  b P c \bigl)\ \mbox{or}\ \exists b\, \bigl(a R b \wedge b Q c \bigr)\\
-		&\iff& (a,c) \in P \circ R\ \mbox{or}\ (a,c) \in Q \circ R\\
+		&\iff& \exists b\, \bigl( a R b \wedge ( b P c\ \mbox{или}\ b Q c) \bigr)\\
+		&\iff& \exists b\, \bigl( (a R b \wedge  b P c)\ \mbox{или}\ (a R b \wedge b Q c) \bigr)\\
+		&\iff& \exists b\, \bigl( a R b \wedge  b P c \bigl)\ \mbox{или}\ \exists b\, \bigl(a R b \wedge b Q c \bigr)\\
+		&\iff& (a,c) \in P \circ R\ \mbox{или}\ (a,c) \in Q \circ R\\
 		&\iff& (a,c) \in (P \circ R) \cup (Q \circ R).\\
 	\end{array}
 	$$
-	Here we have applied a certain law of logic. Indeed, $\exists x\, (A \vee B)$ (``there exists a  unicorn either black or tame'') iff $\exists x\, A \vee \exists x\, B$ (``there exists a black unicorn or there exists a tame unicorn'').
+	Здесь мы применили некоторый закон логики. В самом деле, $\exists x\, (A \vee B)$ (``существует чёрный или ручной единорог'') тогда и только тогда, когда $\exists x\, A \vee \exists x\, B$ (``существует чёрный единорог или существует ручной единорог'').
 	
-	Consider the second statement.
+	Рассмотрим второе утверждение.
 	$$
 	\begin{array}{rcl}
 		(a, c) \in (P \cap Q) \circ R &\iff& \exists b\, \bigl( a R b \wedge (b,c) \in P \cap Q \bigr)\\
@@ -2202,65 +2202,65 @@ Also, there is an analogue for unity, or `neutral element' w.\,r.\,t. compositio
 		&\iff& (a,c) \in (P \circ R) \cap (Q \circ R).\\
 	\end{array}
 	$$
-	Thus, from $(a,c) \in (P \cap Q) \circ R$, it follows that $(a,c) \in (P \circ R) \cap (Q \circ R)$. We have applied the fact that $\exists x\, (A(x) \wedge B(x))$ (``there exists a unicorn both black and tame'') implies $\exists x\, A(x) \wedge \exists x\, B(x)$ (``there exists a black unicorn and there exists a tame unicorn''). The reverse implication does not hold in general.
+	Таким образом, из $(a,c) \in (P \cap Q) \circ R$ следует $(a,c) \in (P \circ R) \cap (Q \circ R)$. Мы применили тот факт, что $\exists x\, (A(x) \wedge B(x))$ (``существует чёрный ручной единорог'') влечёт $\exists x\, A(x) \wedge \exists x\, B(x)$ (``существует чёрный единорог и существует ручной единорог''). В обратную сторону импликация в общем случае не выполняется.
 \end{proof}
 
 \begin{exm}
-	Here is an example where the last inclusion of Lemma~\ref{ch0:ex11} cannot be strengthened to become an equality. Consider relations $R = \{(0,1), (0,2)\}$, $Q = \{(1,3)\}$ and $P = \{(2,3)\}$. Clearly, $(0,3) \in (P \circ R) \cap (Q \circ R)$, while $P \cap Q$ and $(P\cap Q) \circ R$ are empty.
+	Приведём пример, когда последнее включение в лемме~\ref{ch0:ex11} не может быть превращено в равенство. Рассмотрим отношения $R = \{(0,1), (0,2)\}$, $Q = \{(1,3)\}$ и $P = \{(2,3)\}$. Очевидно, $(0,3) \in (P \circ R) \cap (Q \circ R)$, в то время как $P \cap Q$ и $(P\cap Q) \circ R$ пусты.
 \end{exm}
 
 \begin{exm}
-	Suppose that $P \sbs Q$. Then $P \circ R \sbs Q \circ R$.
+	Пусть $P \sbs Q$. Тогда $P \circ R \sbs Q \circ R$.
 	
-	Indeed, we get $Q = P \cup Q$, whence
-	$Q \circ R = (P \cup Q) \circ R = (P \circ R) \cup (Q \circ R) \supseteq P \circ R$ by Lemma~\ref{ch0:ex11}.
+	В самом деле, имеем $Q = P \cup Q$, откуда получаем
+	$Q \circ R = (P \cup Q) \circ R = (P \circ R) \cup (Q \circ R) \supseteq P \circ R$ по лемме~\ref{ch0:ex11}.
 \end{exm}
 
 \begin{exc}
-	Apply the above example to derive Claim 2 of Lemma~\ref{ch0:ex11}.
+	Используя результат примера выше, выведите второй пункт леммы~\ref{ch0:ex11}.
 \end{exc}
 
 
 \begin{exm}\label{ch0:exm17}
-	By Lemma~\ref{ch0:ex11} and Theorem~\ref{ch0:comp_inv}, it holds that
+	Используя лемму~\ref{ch0:ex11} и теорему~\ref{ch0:comp_inv}, получим
 	\begin{multline*}
 		(R \circ (P \cup Q))^{-1} = (P \cup Q)^{-1} \circ R^{-1} =\\
 		=(P^{-1} \cup Q^{-1}) \circ R^{-1} = (P^{-1} \circ R^{-1}) \cup (Q^{-1} \circ R^{-1}) =\\
 		=(R \circ P)^{-1} \cup (R \circ Q)^{-1} = ((R \circ P) \cup (R \circ Q))^{-1}.
 	\end{multline*}
-	Hence,
+	Отсюда
 	$$
 	R \circ (P \cup Q) = ((R \circ (P \cup Q))^{-1})^{-1} = ((R \circ P) \cup (R \circ Q))^{-1})^{-1} = (R \circ P) \cup (R \circ Q).
 	$$
-	One can derive $R \circ (P \cap Q) \sbs (R \circ P) \cap (R \circ Q)$ in a similar manner.
+	Аналогично можно вывести $R \circ (P \cap Q) \sbs (R \circ P) \cap (R \circ Q)$.
 \end{exm}
 
-\paragraph{Image of set.} Let $R$ be a binary relation and $X$ be some set. Then the set
+\paragraph{Образ множества.} Пусть $R$ --- бинарное отношение, а $X$ --- некоторое множество. Тогда множество
 $$R[X] = \{ b \in \rng R \mid \exists a \in X\, a R b \}$$
-is called the \emph{image of $X$ under $R$} (or simply the \emph{$R$-image of $X$}). It is easy to see that
-$$b \in R[X] \iff \exists a \in X\, a R b$$
-for the right-hand side clearly implies $b \in \rng R$. The set $R^{-1}[X]$ (that is, the image of $X$ under $R^{-1}$) is usually called the \emph{preimage of $X$ under $R$}. Clearly,
+называется \emph{образом $X$ под действием $R$} (или просто \emph{$R$-образом $X$}). Легко видеть, что
+$$b \in R[X] \iff \exists a \in X\, a R b,$$
+поскольку правая часть влечёт $b \in \rng R$. Множество $R^{-1}[X]$ (то есть образ $X$ под действием $R^{-1}$) обычно называют \emph{прообразом $X$ под действием $R$}. Очевидно,
 $$R ^{-1}[X] = \{ a \in \rng R^{-1} \mid \exists b \in X\, b R^{-1} a \} =  \{ a \in \dom R \mid \exists b \in X\, a R b \}.$$
 
-Considering arrow diagrams, we see that $R[X]$ is the set of endings of $R$-arrows beginning somewhere in $X$, while $R^{-1}[X]$ is the set of beginnings of $R$-arrows with endings in $X$.
+Переходя на язык диаграмм, можно сказать, что $R[X]$ --- множество концов $R$-стрелок, начинающихся где-то в $X$, а $R^{-1}[X]$ --- множество начал $R$-стрелок, оканчивающихся в $X$.
 
 \begin{rem}
-	If $R \sbs A \times B$, then $\dom R = R^{-1}[B]$ и $\rng R = R[A]$.
+	Если $R \sbs A \times B$, то $\dom R = R^{-1}[B]$ и $\rng R = R[A]$.
 \end{rem}
 
 \begin{exm}
-	Let $A$ be a set of cities and let $xRy$ mean that there is some route from $x$ to $y$ along existing highways for a relation $R \sbs A^2$. Then $R[X]$ is the set of cities accessible from at least one city that belongs to $X$.
+	Пусть $A$ --- множество городов, а отношение $R \sbs A^2$ таково, что $xRy$ означает существование некоторого маршрута из $x$ в $y$ по проложенным дорогам. Тогда $R[X]$ --- множество всех городов, достижимых хотя бы из одного города, принадлежащего множеству $X$.
 \end{exm}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics*[width=0.7\textwidth]{rel_img.pdf}
-	\caption{An image and a pre-image.}
+	\caption{Образ и прообраз.}
 \end{figure}
 
 \begin{exm}
-	Let us show that $R[X \cup Y] = R[X] \cup R[Y]$.
-	For any set $b$, obtain
+	Покажем, что $R[X \cup Y] = R[X] \cup R[Y]$.
+	Для произвольного множества $b$ имеем
 	$$
 	\begin{array}{rcl}
 		b \in R[X \cup Y] &\iff& \exists a\, \bigl(a \in X \cup Y \wedge a R b \bigr)\\
@@ -2274,25 +2274,25 @@ Considering arrow diagrams, we see that $R[X]$ is the set of endings of $R$-arro
 \end{exm}
 
 \begin{exc}\label{ch0:img_monot}
-	Prove that $X \sbs Y$ implies $R[X] \sbs R[Y]$.
+	Докажите, что из $X \sbs Y$ следует $R[X] \sbs R[Y]$.
 \end{exc}
 
 \begin{exc}
-	Prove that $R[\void] = \void$.
+	Докажите, что $R[\void] = \void$.
 \end{exc}
 
 \begin{exm}\label{ch0:exm25}
 	$R[X \cap Y] \sbs R[X] \cap R[Y]$.
 	
-	From $X \cap Y \sbs X$ and $X \cap Y \sbs Y$, it follows that $R[X \cap Y] \sbs R[X]$ and $R[X \cap Y] \sbs R[Y]$ by Exercise~\ref{ch0:img_monot}, which implies the required inclusion.
+	Из $X \cap Y \sbs X$ и $X \cap Y \sbs Y$ по упражнению~\ref{ch0:img_monot} следует, что $R[X \cap Y] \sbs R[X]$ и $R[X \cap Y] \sbs R[Y]$, откуда получаем требуемое включение.
 	
-	The reverse inclusion is not yet necessary. E.\,g., consider the relation $R = \{(0,2), (1,2)\}$. For $X = \{0\}$ and $Y = \{1\}$, we have $R[X] = R[Y] = R[X] \cap R[Y]  = \{2\}$ but $R[X \cap Y] = R[\void] = \void$.
+	Обратное включение выполняется не всегда. Рассмотрим, например, отношение $R = \{(0,2), (1,2)\}$. Для $X = \{0\}$ и $Y = \{1\}$ имеем $R[X] = R[Y] = R[X] \cap R[Y]  = \{2\}$, но $R[X \cap Y] = R[\void] = \void$.
 \end{exm}
 
 \begin{exm}
 	$(R \circ Q)[X] = R[Q[X]]$.
 	
-	For any $c$, we have
+	Для произвольного $c$ имеем
 	$$
 	\begin{array}{rcl}
 		c \in (R \circ Q)[X] &\iff& \exists a\, \bigl( a \in X \wedge (a,c) \in R \circ Q \bigr)\\
@@ -2304,7 +2304,8 @@ Considering arrow diagrams, we see that $R[X]$ is the set of endings of $R$-arro
 	\end{array}
 	$$
 \end{exm}
-The above equation gives another reason for that strange ``acting first is written last'' rule for composition as long as we prefer the notation $R[X]$ to $[X]R$ for image. 
+Полученное выше равенство может служить (коль скоро мы предпочитаем обозначать образ как $R[X]$, а не $[X]R$) ещё одной причиной для странного правила записи композиции --- <<что действует первым, то записывается последним>>.
+
 \section{Functions}
 Function is one of the most basic concepts in mathematics. Loosely speaking, this notion expresses the idea of \emph{dependence} of one `quantity' on another, as in the laws of nature. This idea can be modeled in set-theoretic framework by using binary relations of a special kind.
 
