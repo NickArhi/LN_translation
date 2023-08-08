@@ -77,11 +77,7 @@
 \makeatother
 
 % for methodical comments
-\newcommand{\mcomm}[1]{
-\medskip\noindent\begin{tabular}{| l}
-\parbox{0.99\textwidth}{{\small
-#1 }}\end{tabular}
-\smallskip}
+\newcommand{\mcomm}[1]{}
 
 
 \title{Elements of Discrete Mathematics}
@@ -2952,7 +2948,7 @@ $$
 If sets $A$, $B$ are finite, then $|A \cup B| \leq |A| + |B|$.
 \end{corr}
 
-\begin{thm}[Rule of Product]\label{prod}
+\begin{thm}[Rule of Product]\label{L10:prod}
 Let sets $A$ and $B$ be finite. Then the set $A \times B$ is also finite and $|A \times B| = |A| \cdot |B|$.
 \end{thm}
 \begin{proof}
@@ -2990,31 +2986,10 @@ If a set $A$ is finite, then the set $\mP(A)$ is finite as well and $|\mP(A)| = 
 \begin{proof}
 By Lemma~\ref{L9:char2}, obtain $\mP(A) \sim \ul{2}^A$, whence $|\mP(A)| = 2^{|A|}$ in view of Corollary~\ref{L10:num_func}.
 \end{proof}
-%
-%\begin{exm}
-%Напротив, если $A$ бесконечно, тривиальное вложение $A \lesssim \mP (A)$ влечет, по следствию~\ref{ch1:fin_sbs}, что $\mP(A)$ также бесконечно.
-%\end{exm}
-%
-%\begin{lemma}
-%Если множества $A$ и $B$ счетны, то множество $A \times B$ тоже счетно.
-%\end{lemma}
-%\begin{proof}
-%Согласно примеру~\ref{ch0:N_sq}, $\N \times \N \sim \N$. Затем используем теорему~\ref{ch0:bi_power}.
-%\end{proof}
-%
-%\begin{corr}
-%Если множество $A$ счетно и $n \in \N_+$, то множество $A^n$ тоже  счетно \emph{(}а $A^0 = \{ \void \}$ конечно\emph{)}.
-%\end{corr}
-
 
 \begin{exc}\label{L10:fin_img}
 Let $f\colon A \to B$ and a set $A$ be finite. Then the set $f[A]$ is also finite and $|f[A]| \leq |A|$.
 \end{exc}
-%\begin{proof}
-%Проведем индукцию по $n = |A|$. Если $|A| = 0$, то $A = \void$, откуда $f = \void$ и $f[A] = \void$. Пусть $|A| = n + 1$. Рассмотрим некоторый $x \in A$ и положим $A' = A \setminus \{x\}$. По правилу сложения $|A'| = n$, а значит, по предположению индукции для функции $f' = f \rst A'$ имеем $|f'[A']| \lq |A'|$. С другой стороны, $f[A] = f'[A'] \cup \{f(x)\}$, откуда $|f[A]| \lq |f'[A']| + |\{ x \}| \lq n + 1$.
-%\end{proof}
-
-
 
 \begin{exm}\label{L10:2_union}
 If a set $A$ is countable, while $B$ is either countable or finite, then the set $A \cup B$ is countable.
@@ -3030,37 +3005,6 @@ h(x) &=&\begin{cases}
 $$
 This yields an injection $h\colon A \cup B \to (\N \times \{ 0 \}) \cup (\N \times \{ 1 \})$. Furthermore, we have $(\N \times \{ 0 \}) \cup (\N \times \{ 1 \}) = \N \times \ul{2} \lesssim \N \times \N \sim \N$. So, $A \cup B \lesssim \N$, whence $A \cup B \sim \N$.
 \end{exm}
-%
-%Интуитивно ясно, что если есть сюръекция из $A$ в $B$, то множество $B$ "<не больше">, чем множество $A$, ибо из каждого элемента $A$ в $B$ идет ровно одна стрелка, а различных концов стрелок не больше, чем начал. В формальных терминах достаточно показать, что $B \lesssim A$. Это легко следует из леммы~\ref{ch0:sur_inv}, поскольку правая обратная любой функции есть инъекция. Однако лемма использует аксиому выбора. В случае конечных и счетных множеств без аксиомы можно обойтись.
-%
-%\begin{lemma}\label{ch1:count_img}
-%Пусть $f\colon A \to B$ и множество $A$ счетно. Тогда множество $f[A]$ конечно или счетно.
-%\end{lemma}
-%\begin{proof}
-%Пусть $\N \stackrel{\phi}{\sim} A$.
-%Определим функцию $g\colon f[A] \to \N$, т.\,ч. для всех $y \in f[A]$
-%$$g(y) = \min \{k \in \N \mid f(\phi(k)) = y \}.$$
-%Содержательно, $g(y)$ есть "<наименьший"> прообраз элемента $y$. В силу принципа наименьшего числа, функция $g$, действительно, тотальна. Если $g(y) = g(z) = k \in \N$, то $y = f(\phi(k)) = z$. Значит, $g$ "--- инъекция. Согласно следствию~\ref{ch1:count_sbs}, множество $f[A]$ оказывается конечно или счетно.
-%\end{proof}
-%
-%\paragraph{Зависимый и счетный выбор.} Следующие результаты о счетных множествах используют аксиому выбора. Однако "<в полную силу"> аксиому можно здесь не применять, обходясь важным следствием "--- \emph{принципом зависимого выбора}\index{Принцип!зависимого выбора}, гласящим:
-%\begin{quote}
-%Пусть множество $A$ непусто и отношение $R \sbs A^2$ таково, что для всякого $a \in A$ найдется $b \in A$, т.\,ч. $a R b$. Тогда существует функция $f\colon \N \to A$, т.\,ч. $f(n) R f(n+1)$ для всех $n \in \N$.
-%\end{quote}
-%Иначе говоря, если для каждого элемента $a$ можно выбрать $b$ так, что $a R b$, то существует \emph{бесконечная} (именно, счетная) последовательность $(a_n)_{n \in \N}$ таких выборов, где каждый элемент в находится отношении $R$ к последующему. Как видим, логическая структура $\forall \exists \to \exists \forall$ аксиомы выбора сохранена.
-%
-%\begin{rem}
-%Индукцией по $m$ легко доказать, что в условиях принципа зависимого выбора \emph{для каждого} $m  \in \N$ найдется функция $f\colon \ul{m} \to A$, т.\,ч. $f(n) R f(n+1)$, если $n+1 \in \ul{m}$. Но вот "<склеить"> такие функции в одну $f\colon \N \to A$ без той или иной формы аксиомы выбора не получается.
-%\end{rem}
-%
-%\begin{exm}
-%Проверим, что принцип зависимого выбора следует из аксиомы выбора.
-%
-%В самом деле, рассмотрим множество $X = \{R[\{a\}] \in \mP(A) \mid a \hm\in A \}$. По условию, для каждого $a \in A$ есть $b$, т.\,ч. $a R b$, а значит, $\void \notin X$. Для множества $X$ существует функция выбора $\xi\colon X \to A$ (учли $\cup X \sbs A$). Поскольку $A \neq \void$, можно взять некоторый $a_0 \in A$. Тогда, согласно теореме~\ref{ch1:recursion}, существует функция $f\colon \N \to A$, т.\,ч.
-%$$f(0) = a_0\quad \mbox{и}\quad f(n+1) = \xi(R[\{ f(n) \}])$$
-%при всех $n \in \N$. Очевидно, функция $f$ искомая.
-%\end{exm}
-
 \medskip
 
 Up to now, we have had only a `negative' definition for infinity: a set $A$ is infinite iff it is \emph{not} finite, i.\,e. there is no $\ul{n}$ with $A \sim \ul{n}$. Clearly, this makes assuming some set to be infinite not very helpful in a proof. Using the Axiom of Choice, it is possible to turn infinity into a more explicit, `positive' notion.
@@ -3254,7 +3198,7 @@ C_n^0 x^0 + \sum_{k = 1}^n (C_n^k + C_n^{k-1}) x^k + C_n^n x^{n+1} =\\
 as it is required.
 \end{proof}
 
-\begin{corr}[Binomial Theorem]
+\begin{corr}[Binomial Theorem]\label{L10:binom}
 For every numbers $a, b \in \R$ and $n \in \N$,
 $$(a + b)^n = \sum_{k = 0}^n C_n^k a^k b^{n-k}.$$
 \end{corr}
@@ -3264,7 +3208,7 @@ If $b = 0$, then the right-hand side equals $C_n^n a^n b^0 = a^n$, that is, the 
 Suppose that $b \neq 0$. Then
 $$(a + b)^n = (b + a)^n = b^n \cdot \left (1 + \dfrac{a}{b} \right)^n = b^n \cdot \sum_{k = 0}^n C_n^k \left ( \dfrac{a}{b} \right)^k = \sum_{k = 0}^n C_n^k a^k b^{n-k}.$$
 \end{proof}
-\noindent The above theorem justifies the name \emph{binomial coefficients} for the numbers $C_n^k$.
+\noindent The above theorem justifies the name \emph{binomial coefficients} for numbers $C_n^k$.
 
 \begin{exm}\label{L11:pow_2}
 For every $n \in \N$, we have $\sum_{k = 0}^n C_n^k = 2^n$.
@@ -3291,6 +3235,71 @@ What is the number of \emph{positive} integer solutions to the equation $x_1 + x
 
 Each natural number $x_i > 0$ can be uniquely expressed as $y_i + 1$ for some $y_i \geq 0$. Then $\vec x$ is a positive solution to the equation iff one has $(y_1 + 1) + (y_2 + 1) + \ldots + (y_m + 1) = n$. The latter equation has no natural solution when $n < m$ but is equivalent to $y_1 + y_2 + \ldots y_m = n - m$ otherwise. By the above, there are $C_{(n - m) + m - 1}^{m - 1} = C_{n - 1}^{m - 1}$ distinct solutions $\vec y$. As $\vec x$ bijectively corresponds to $\vec y$, there are exactly $C_{n - 1}^{m - 1}$ distinct positive solutions to the original equation when $n, m > 0$.
 \end{exm}
+
+\mcomm{The following subsection is logically necessary, but it may be omitted for most audiences. Then, of course, the respective arguments in classwork problems remain intuitive at best.}
+\paragraph{Dependent product rule.}
+Consider a counting problem: how many such tuples of sets $(A, B, C)$ exist that $A \cup B \cup C = \ul{n}$, the sets $A, B, C$ are pairwise disjoint, and $|A| = a$, $|B| = b$, $|C| = c$, where $n, a, b, c$ are some given numbers? If one lifts the constraint on sizes of $A, B, C$, there is an easy solution. Indeed, there exists a bijection from the set $X = \{ (A, B, C) \in (\mP(n))^3 \mid A \cup B \cup C = \ul{n}\ \mbox{and $A, B, C$ are pairwise disjoint} \}$ to $\ul{3}^{\ul{n}}$. Namely, let us map each triple $(A, B, C) \in X$ to such a function $f_X\colon \ul{n} \to \ul{3}$ that:
+$$
+\begin{array}{rcll}
+f_X(k) &=& \begin{cases}
+			0&\mbox{if } k \in A;\\
+			1&\mbox{if } k \in B;\\
+			2&\mbox{if } k \in C.\\
+		\end{cases}
+\end{array}
+$$
+We see that $f_X$ is indeed total (as $A \cup B \cup C = \ul{n}$) and functional (as these sets are pairwise disjoint). The map $X \mapsto f_X$  is clearly injective; for surjectivity's sake, we take $X = (f^{-1}[\{0\}], f^{-1}[\{1\}], f^{-1}[\{2\}])$ for any given $f \in \ul{3}^{\ul{n}}$. So, $|X| = 3^n$ by Corollary~\ref{L10:num_func}.
+
+\begin{exc}
+There exist just $4^n$ tuples of sets $(A, B, C)$ such that $A \sbs B \sbs C \sbs \ul{n}$. 
+\end{exc}
+
+Let us however return to the original problem of counting elements in the set 
+\begin{multline*}
+Y = \{ (A, B, C) \in (\mP(n))^3 \mid A \cup B \cup C = \ul{n}\ \mbox{and $A, B, C$ are pairwise disjoint,}\\ \mbox{and}\ |A| = a \wedge |B| = b \wedge |C| = c \}.
+\end{multline*} 
+Neither applying Corollary~\ref{L10:num_func} nor even the Rule of Product (which is what that corollary is based on) suffices here. But we have a clear intuitive argument in fact. If $a + b + c \neq n$, then $|Y| = 0$ due to the Rule of Sum. Assume that $a + b + c = n$. In order to specify a tuple $(A, B, C) \in Y$, we have $C_n^a = |\mP_a(\ul{n})|$ ways to choose $A \sbs \ul{n}$. \emph{For whatever choice of $A$} (under the constraints), there remains $n - a$ elements among which we can choose $B$ in $C_{n - a}^b$ ways. All the remaining elements, which comprise the set $\ul{n} \setminus (A \cup B)$, must go to $C$. So, there is just $1 = C_{n - a - b}^c = C_c^c$ way to choose $C$. The result should thus be
+$$|Y| = C_n^a \cdot C_{n - a}^b \cdot C_{n - a - b}^c = \dfrac{n! \cdot (n - a)! \cdot (n - a - b)!}{(n - a)! \cdot a! \cdot (n - a - b)! \cdot b! \cdot (n - a - b - c)! \cdot c!} = \dfrac{n!}{a! \cdot b! \cdot c!}.$$
+But why are we multiplying those `numbers of ways'? Do we really have a bijection to some product set $P \times Q \times R$, which would allow of applying the Rule of Product? Naturally, $P = \mP_a(\ul{n})$; it is the set whence we take $A$. But what is $Q$? Each element of $Q$ is a `candidate' for $B$, that is, a $b$-sized subset of $\ul{n} \setminus A$. But putting $Q = \mP_b(\ul{n} \setminus A)$ \emph{makes no sense} since $A$ has not yet been defined: it may be anything from $P$! So, $Q$ `depends' on our choice of $A$: we have something like $Q = Q_A$. Nevertheless, multiplication is legitimate as the \emph{size} of $Q_A$ does not depend on $A$: it always equals $C_{n - a}^b$.
+
+How can one formally refine this situation? Let us make the dependence of $Q$ on $A \in P$ explicit.
+
+\begin{thm}[Dependent Product Rule]
+Let $P$ and $Q$ be two sets, $P$ be finite and let $S \sbs P \times Q$. Suppose that there exists such a function $f\colon P \to \N$ that $|S[\{x\}]| = f(x)$ for every $x \in P$. Then the relation $S$ is finite and $|S| = \sum_{x \in P} f(x)$. The latter symbol stands for a sum of all possible (finitely many) terms of the form $f(x)$ with $x \in P$ in no particular order; if $P = \void$, then $\sum_{x \in P} f(x) = 0$ by definition. For instance, if we already have somehow (bijectively) enumerated the elements of $P$ so that $P = \{x_1, x_2, \ldots, x_n\}$ and $|P| = n$, we get $|S| = f(x_1) + f(x_2) + \ldots + f(x_n)$.
+\end{thm}
+\begin{proof}
+Notice that $S$ is not necessarily of the form $X \times Y$. This differs our situation from that of Theorem~\ref{L10:prod}. We proceed by induction on $n = |P|$. If $n = 0$, then $S \sbs P \times Q = \void \times Q = \void$, so $S = \void$  and $|S| = 0 = \sum_{x \in P} f(x)$. As our IH, assume that $|S'| = \sum_{x \in P'} f'(x)$ for all $P', Q', f'\colon P' \to \N, S' \sbs P' \times Q'$ such that $f'(x) = |S'[\{x\}]|$ for all $x \in P'$, whenever $|P'| = n$.
+
+Consider arbitrary sets $P, Q, f\colon P \to \N, S \sbs P \times Q$ such that $f(x) = |S[\{x\}]|$ for all $x \in P$, with $|P| = n + 1$. As $P \neq \void$, we may take some $z \in P$ and let $P' = P \setminus \{z\}$, $Q' = Q$, $f' = f \setminus \{(z, f(z))\}$, and $S' = S \setminus \{ (z, y) \in S \mid y \in Q \}$.
+
+First, we get $|P'| = (n + 1) - 1 = n$ by the Rule of Sum. Then we clearly have $S = S' \cup \{ (z, y) \in S \mid y \in Q \}$ and $S' \cap \{ (z, y) \in S \mid y \in Q \} = \void$. Since $S' \sbs P' \times Q'$ and $f'(x) = f(x)$ for each $x \in P'$, the IH is applicable. The set $S'$ is finite by the IH, while $\{ (z, y) \in S \mid y \in Q \} \sim S[\{z\}] \sim \ul{f(z)}$, obviously. By the Rule of Sum, $S$ is finite and $|S| = |S'| + |S[\{z\}]| = \sum_{x \in P'} f'(x) + f(z) = \sum_{x \in P'} f(x) + f(z) = \sum_{x \in P} f(x)$.
+\end{proof}
+
+\begin{corr}\label{L10:dep_simpl}
+Let $P$ and $Q$ be two sets, $P$ be finite and let $S \sbs P \times Q$. Suppose that there exists such a number $k \in \N$ that $|S[\{x\}]| = k$ for every $x \in P$. Then the relation $S$ is finite and $|S| = |P|\cdot k$.
+\end{corr}
+
+Now, a formal solution to our starting example is straightforward:  let $P = \mP_a(\ul{n})$ and $Q = \mP(\ul{n})$ (or even $\mP(\N)$); let $S = \{ (A, B) \in P \times Q \mid A \cap B = \void \wedge |B| = b \}$. Clearly, $B \in S[\{A\}] \iff B \sbs \mP_b (\ul{n} \setminus A)$ for each $A \in P$. So, $|S[\{A\}]| = C_{n - a}^b$, and $|S| = |P| \cdot C_{n - a}^b = C_n^a \cdot C_{n - a}^b$. But how about $C$? This requires one more application of Corollary~\ref{L10:dep_simpl}. Let $P' = S$, $Q' = \mP(\ul{n})$, and $S' = \{ ((A, B), C) \in P' \times Q' \mid A \cap C = B \cap C = \void \wedge |C| = c \}$. We have $C \in S'[\{(A, B)\}] \iff C \in \mP_c(\ul{n} \setminus (A \cup B))$; as $c = n - a - b$, this yields $|S'[\{(A, B)\}]| = C^c_{n - a - b} = 1$. On the other hand, $Y = S'$ since $(A, B, C) = ((A, B), C)$. Finally, $|Y| = |S'|= |S| \cdot 1 = C_n^a \cdot C_{n - a}^b = \frac{n!}{a! \cdot b! \cdot c!}$.
+
+\begin{rem}
+One may observe that the Dependent Product Rule implies our `regular' Product Rule (Theorem~\ref{L10:prod}). Indeed, assume that $A$ and $B$ are finite and put $P = A$, $Q = B$, and $S = P \times Q$. Then $S[\{x\}] = Q$ for each $x \in P$. By Corollary~\ref{L10:dep_simpl}, obtain $A \times B = S$ being finite with $|A \times B| = |S| = |P| \cdot |Q| = |A| \cdot |B|$.
+\end{rem}
+
+\begin{exc}
+Find a combinatorial proof for the identity $C_n^a \cdot C_a^b = C_n^b \cdot C_{n - b}^{a - b}$ when $b \leq a \leq n$.
+\end{exc}
+
+One important application of `dependent products' is a generalization of the Binomial Theorem (Corollary~\ref{L10:binom}). From the latter, we know that the coefficient at $x^a y^{n - a}$ in the expansion of $(x + y)^n$ equals $C_n^a$. We may rephrase this:  the coefficient at $x^a y^b$ equals $C_n^a \cdot C_{n - a}^b = \frac{n!}{a! \cdot b!}$ when $a + b = n$ and equals $0$ otherwise.
+
+But this is exactly the answer we would obtain for the following counting problem: how many such pairs of sets $(A, B)$ exist that $A \cup B = \ul{n}$, the sets $A, B$ are disjoint, and $|A| = a$, $|B| = b$. Moreover, we can reduce the former problem to the latter one. Indeed, $(x + y)^n = \underbrace{(x + y) \cdot (x + y) \cdot \ldots \cdot (x + y)}_{\small\mbox{$n$ copies}}$; when expanding, we take either $x$ or $y$ from each bracket and then group like terms (i.\,e., monomials of the form $x^a y^b$) together. For given $a$ and $b$ with $a + b = n$, there exist just $C^a_n \cdot C_{n - a}^b$ splittings of the set of brackets into those yielding $x$ and those yielding $y$ such that every such splitting results in one `copy' of the term $x^a y^b$.
+
+A similar intuitive argument shows that for the polynomial $(x_1 + x_2 + \ldots + x_k)^n$ and some fixed numbers $a_1, a_2, \ldots, a_k$ with $a_1 + a_2 + \ldots + a_k = n$, the coefficient at $x_1^{a_1} x_2^{a_2} \ldots x_k^{a_k}$ equals the number of such tuples of sets $(A_1, A_2, \ldots, A_k)$ that $A_1 \cup A_2 \cup \ldots \cup A_k = \ul{n}$, the sets $A_i$ are pairwise disjoint, and $|A_i| = a_i$ for each $i$. The latter number clearly equals
+$$C_n^{a_1} \cdot C_{n - {a_1}}^{a_2} \cdot C_{n - {a_1} - {a_2}}^{a_3} \cdot \ldots \cdot \cdot C_{n - {a_1} - {a_2} - \ldots - {a_{k-1}}}^{a_k} = \dfrac{n!} {a_1! \cdot a_2! \cdot \ldots \cdot a_k!} = \binom{n}{a_1,\ a_2,\ \ldots,\ a_k},$$
+where the last term is the standard notation for this number, which is called \emph{multinomial coefficient}.
+
+\begin{exc}
+Find a combinatorial proof for the identity $\sum\limits_{a_1 + a_2 + \ldots + a_k = n} \binom{n}{a_1,\ a_2,\ \ldots,\ a_k} = k^n$ (the sum is taken over all possible tuples $(a_1, a_2, \ldots, a_k) \in \N^k$ that satisfy $a_1 + a_2 + \ldots + a_k = n$; how many summands does it contain, by the way?).
+\end{exc}
 
 \paragraph{Inclusion--Exclusion Principle.} From Corollary~\ref{L10:in-ex}, we know that $|A \cup B| = |A| + |B| - |A \cap B|$ for any two finite sets $A$ and $B$. It is not hard to extend this fact to three finite sets $A, B, C$. Indeed, since $(A \cup B) \cap C = (A \cap C) \cup (B \cap C)$ and $(A \cap C) \cap (B \cap C) = A \cap B \cap C$, we obtain
 \begin{multline*}
@@ -4174,7 +4183,7 @@ If an $(n,m)$-graph $G$ is connected, then $m \geq n - 1$.
 \begin{proof}
 By induction on $m$. Let $m = 0$. If $G$ has at least two distinct vertices, these cannot not be connected by a path, hence, it should be $n = 1$, as required.
 
-Assume that $m > 0$ and that $m' \geq n - 1$ for every $m' < m$, every $n'$ and each connected $(n',m')$-graph (IH). Consider an arbitrary connected $(n, m)$-graph $G$ and remove an edge therefrom. By Lemma~\ref{L14:l_conn_rem}, this shall result in an $(n,m - 1)$-graph $H$ which is either connected or consists of two connected components that are an $(n',m')$-graph $G'$ and an $(n'', m'')$-graph $G''$.
+Assume that $m > 0$ and that $m' \geq n' - 1$ for every $m' < m$, every $n'$ and each connected $(n',m')$-graph (IH). Consider an arbitrary connected $(n, m)$-graph $G$ and remove an edge therefrom. By Lemma~\ref{L14:l_conn_rem}, this shall result in an $(n,m - 1)$-graph $H$ which is either connected or consists of two connected components that are an $(n',m')$-graph $G'$ and an $(n'', m'')$-graph $G''$, respectively.
 
 In the former case, we have $m - 1 \geq n - 1$ by the IH, whence $m \geq n - 1$. In the latter one, we get $n' + n'' = n$ and $m' + m'' = m - 1$. As $m', m'' < m$, obtain $m' \geqslant n' - 1$ and $m'' \geqslant n'' - 1$ by the IH. This implies $m - 1 \geq n - 2$, whence $m \geq n - 1$ again.
 \end{proof}
@@ -4338,7 +4347,7 @@ Every tree that has at least $2$ vertices is bipartite. Hence, \emph{every} tree
 
 Let us compute how many ways to color a tree exist. By bipartiteness, there is at least one way to do so. As there are just two colors $0$ and $1$, we can \emph{invert} a coloring $c$ by putting $c'(x) = 1 - c(x)$ for each vertex $x$. Clearly, $c(x) = c(y)$ iff $c'(x) = c'(y)$, so $c'$ is a (proper) coloring as $c$ is. Hence, there are at least two colorings for any bipartite graph.
 
-Now, let us show that there are no more than two distinct colorings for a tree. It will be convenient to prove the following: \emph{every $(n,m)$-tree $T$ has exactly two coloring, each of which is the inversion of the other}---by induction on $m$.
+Now, let us show that there are no more than two distinct colorings for a tree. It will be convenient to prove the following: \emph{every $(n,m)$-tree $T$ has exactly two colorings, each of which is the inversion of the other}---by induction on $m$.
 
 If $m = 0$, then $n = 1$ as $T$ is a tree. Clearly, there are just two colorings in this case. Assume that $m > 0$. Remove some edge $x y$ from $T$ to get a graph $T'$ with two connected components $T_1 = [x]_{\sim_{T'}}$ and $T_2 = [y]_{\sim_{T'}}$. Since these two are trees, by the IH, we have exactly two colorings $c_1$, $c'_1$ for $T_1$ and exactly two colorings $c_2$, $c'_2$ for $T_2$, where $c_1(x) = 0 = c_2(y)$ and $c'_1(x) = 1 = c'_2(y)$. On the other hand, every coloring $c$ of $T$ induces a pair of colorings for $T_1$ and for $T_2$ (distinct $c$'s yield distinct pairs). As $c(x) \neq c(y)$, these may be but $c_1$ and $c'_2$ or $c'_1$ and $c_2$, respectively. So, there are no more than two distinct colorings of $T$. As we have already noticed, at least two colorings for $T$ are guaranteed, each of which is the inversion of the other.
 
@@ -5638,5 +5647,7 @@ Let $(\Omega, \mF, \P)$ be a probability space. Then for arbitrary events $A_1, 
 %(6) if \xi and \eta are independent, then E (\xi * \eta) = E \xi * E \eta.
 
 \section{Random Variables}
+
+\section{An `Unlimited Calculus'}
 
 \end{document}
