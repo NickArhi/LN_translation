@@ -414,62 +414,62 @@ $$(T \wedge (T \to R)) \to R,$$
 
 Формальные законы для проверки подобных рассуждений на корректность определяются \emph{предикативной} логикой или логикой \emph{первого порядка} и выходят за рамки нашего курса.
 
-\section{A Case Study: Strings}\label{sect:strings}
+\section{Практика: строки}\label{sect:strings}
 
-\mcomm{This section introduces an `inductive type' of strings without much `foundational' explanation. The main goal is to present the ideas of induction and recursion (which we looked upon as the heart of `discrete mathematics') without boring traditional examples of summing consecutive naturals, etc. We see this especially useful when the students have some (functional) programming experience. This section has few (if any) dependencies in the Course and may thus be freely omitted.}
+\mcomm{}
 
-Our next goal is to taste some \emph{discrete mathematics} while trying to stick to the logical formalism. We are not going to dig too deep for the `foundations' and will take some notions as familiar and statements as obvious. Our case study deals with \emph{strings} (or \emph{lists}, or \emph{words}), which are one of the most basic programming `data types'.
+Следующая наша цель --- познакомиться с настоящей \emph{дискретной математикой}, стараясь не выходить за рамки логического формализма. Мы не будем копать слишком глубоко и формализовывать некоторые базовые понятия, а возьмем их как очевидные и интуитивные. Наша практика сосредоточена на \emph{строках} (или \emph{списках}, или \emph{словах}), являющихся одним из основных «типом данных» в программировании.
 
-Intuitively, a \emph{string} is a finite sequence of \emph{symbols} of arbitrary nature. For example, $[x, y, x]$, $[4, 12, 2, 3]$, and $[\mbox{Socrates}, \mbox{Plato}, \mbox{Aristotle}]$ are strings where $x$, $y$, $3$, $12$, and $\mbox{Plato}$ are symbols. We use $[\ldots]$ and commas here to separate stings and symbols from each other. If we know that, say, $x$ and $y$ are treated as symbols (but not $xy$), we may safely omit the delimiters and render the first string as $xyx$. In general, we shall consider the strings over an arbitrary but fixed collection (or \emph{set}, in mathematical parlance) $A$ of symbols, which is called an \emph{alphabet}. E.\,g., $[4, 12, 2, 3]$ is a string over the set of all natural numbers $\N = \{0,1,2,\ldots\}$. Needless to say, an alphabet could be a set of strings over some other alphabet.
+Интуитивное понятие \emph{строки} --- конечная последовательность \emph{символов} произвольной природы. Например, $[x, y, x]$, $[4, 12, 2, 3]$, и $[\mbox{Сократ}, \mbox{Платон}, \mbox{Аристотель}]$ --- строки, в которых $x$, $y$, $3$, $12$, и $\mbox{Платон}$ играют роль символов. Мы используем $[\ldots]$ и запятые для разделения символов в пределах одной строки. Если нам известно, что, например, $x$ и $y$ используются в качестве символов в какой-то строке (и символ $xy$ там отсутствует), мы вольны убрать разделители и прочесть первую строку выше как $xyx$. В общем случае, мы будем рассматривать строки из фиксированной коллекции (или \emph{множества}, выражаясь математическим языком) символов $A$, называемым \emph{алфавитом}. Например, $[4, 12, 2, 3]$ --- это строка над множеством натуральных чисел $\N = \{0,1,2,\ldots\}$. Разумеется, алфавитом может стать набор строк, в свою очередь самих составленных с помощью некоторого алфавита (как это яственно показывает, наприер, третья строка из приведенных выше).
 
-As it is usual in mathematics, we are interested in `borderline' degenerate objects. The empty string $[\ ]$ that contains no symbol is just such an object.
+Как это часто бывает в математике, важно рассмотреть граничные, вырожденные случаи. Пустая строка $[\ ]$, содержащая ни одного символа --- как раз такой случай для строк.
 
-\paragraph{Inductive definition.} Our account of what a string is seems quite clear for a typical human (but not so much for the Mathematician who could ask what `finite sequence' means, etc.). But if we try to make this definition clear for a computer, that is, to describe it programmatically from `scratch', we may discover this task being quite hard. Typically, one has a certain `array' or `string' type already implemented in his favorite programming language. But what if you have not one?
+\paragraph{Индуктивное определение.} Наше представление строки видится чем-то ясным и очевидным для обычного человека (пусть и не совсем --- для профессионального математика, который спросил бы, что, к примеру, означает "конечная последовательность" и т.д.). Но если мы хотим сделать это представление ясным для компьютера, то есть, запрограммировать его с нуля, то обнаружим, что перед нами задача не из простых. Как правило, программисты располагают уже встроенным в их любимый язык программирования типом данных, вроде массива или списка. Но что если такого типа нет?
 
-One possible approach is based on the following observation: every string $s$ is either empty or is obtained from another string $s'$ by adding a certain symbol $x$ to it, or $s = x : s'$ is symbols. (Assuming that $x$ is added as the leftmost symbol, we obtain $[4,12, 2] = 4 : [12, 2] = 4 : (12 : [2]) = 4 : (12 : (2 : [\ ]))$. Let us call $x$ the \emph{head} of the string $s$, and call $s'$ the \emph{tail} thereof. Now, we may \emph{forget} about `finite sequences' and \emph{define} the set $S(A)$ of strings over an alphabet $A$ via the following generating rules:
+Один из возможных способ решить эту проблему таков: каждая строка $s$ либо пуста, либо составляется из уже существующей строки $s'$ с помощью добавления к ней некоторого символа $x$ ($s = x : s'$). Допустим, $x$ добавляется слева, тогда получим $[4,12, 2] = 4 : [12, 2] = 4 : (12 : [2]) = 4 : (12 : (2 : [\ ]))$. Назовем $x$ \emph{головой} строки $s$, а $s'$ --- ее \emph{хвостом}. Теперь мы можем \emph{забыть} о «конечных последовательностях» и \emph{определить} множество строк $S(A)$ над алфавитом $A$ с помощью следующих правил построения:
 \begin{quote}
-	$[\ ]$ is a string over $A$;\\
-	if $s'$ is a string over $A$ and $x$ is a symbol from $A$, then $x : s'$ is a string over $A$,
+	$[\ ]$ --- строка над $A$;\\
+	если $s'$ --- строка над $A$, а $x$ --- символ из $A$, тогда $x : s'$ --- тоже строка над $A$,
 \end{quote}
-which might be rendered symbolically as
+что можно записать символьно как:
 $$[\ ] \in S(A);\quad \forall s'\; \forall x \left(\ (s' \in  S(A) \wedge  x \in A)\ \to\ x : s' \in S(A)\  \right).$$
-We also tacitly suppose that \emph{every} sting is constructed according to these rules. Here, the symbols $[\ ]$ and $:$ \emph{lack any definition}. They are kind of `axioms' or, as the Programmer would say, \emph{constructors} (of the data type `string'). In a word, we replace the question \emph{what a string is} with the question \emph{how one can construct a string}. Along these lines, we can easily return to our `natural' symbolism by defining $[x_1, x_2, \ldots, x_n]$ as $x_1 : (x_2 : (\ldots : (x_n : [\ ])\ldots)))$.
+Мы также подразумеваем, что \emph{любая} строка составлена с помощью этих правил. Здесь символы $[\ ]$ и $:$ \emph{не имеют определения}. Они своего рода аксиомы или, как сказал бы программист, \emph{конструкторы} (типа данных «строка»). Можно сказать, что мы заменяем вопрос \emph{что такое строка} на вопрос \emph{как можно составить, сконструировать строку}. Вместе с этим мы можем ввести более естественную нотацию: $[x_1, x_2, \ldots, x_n]$ вместо $x_1 : (x_2 : (\ldots : (x_n : [\ ])\ldots)))$.
 
-Such `definitions by construction' are known as \emph{inductive definitions}.
+Подобные определения по построению, описанию того, \emph{как построить объект}, называются \emph{индуктивными определениями}.
 
-\paragraph{Induction Principle.} If we want to prove anything about our redefined strings, we need to fix some basic properties which will be used as `axioms' in our arguments. Clearly, these properties should be as intuitively plausible as possible.
+\paragraph{Принцип индукции.} Если мы хотим доказывать какие-либо факты о нашей новоопределенной строке, нам нужно зафиксировать некоторые фундаментальные ее свойства, чтобы использовать их в качестве «аксиом» в наших доказательствах. Эти аксиомы должны быть интуитивно ясны настолько, насколько это возможно.
 
-First, we assume that $[\ ] \neq x : s$ for all $x$ and $s$, as the empty string should differ from any other. Then we postulate that $x : s = y : t \iff (x = y \wedge s = t)$ for all $x, y \in A$ and $s, t \in S(A)$, that is two strings constructed via $:$ are equal iff their respective heads and tails are equal. Let us denote the first axiom by (A1) and the second one denote by (A2).
+Для начала, положим $[\ ] \neq x : s$ для всех $x$ и $s$, так как пустая строка должна отличаться от любой другой. Также примем, что $x : s = y : t \iff (x = y \wedge s = t)$ для всех $x, y \in A$ и $s, t \in S(A)$, сиречь две строки, составленные с помощью оператора конкатенации $:$ равны тогда и только тогда, когда соответствующие их головы и хвосты равны. Будем обозначать первую аксиому как (A1) и вторую --- как (A2).
 
 \begin{exm}
-	The facts the principles (A1) and (A2) can prove are not too astonishing. We can show, say, that $[1,2] \neq [1,2,3]$. We need then to check that the equation $[1,2] = [1,2,3]$ is false. We will yet suppose that it is true, and then prove such a situation impossible. Hence, the equation must be false indeed. Such a technique is know as \emph{proof by contradiction} and is widely used.
+	Факты, которые мы можем доказать располагая лишь аксиомами (A1) и (A2), вряд ли можно назвать шокирующими. Можно, например, показать, что $[1,2] \neq [1,2,3]$. Для этого нужно доказать ложность равенства $[1,2] = [1,2,3]$. Предположим его истинность с целью получить противоречие. Этот метод доказательства зовется \emph{доказательством от противного} и крайне любим математиками.
 	
-	So, assume  $1:[2] = 1:[2,3]$. From (A2), it follows that $2 : [\ ] = [2] = [2,3] = 2 : [3]$. Yet another application of this principle results in $[\ ] = [3] = 3 : [\ ]$. On the other hand, $[\ ] \neq 3 : [\ ]$ by (A1). Thus, the equality $[\ ] = 3 : [\ ]$ is both true and false, which is not possible. A contradiction. Hence, our assumption does fail and, as a matter of fact, $[1,2] \neq [1,2,3]$.
+	Итак, допустим  $1:[2] = 1:[2,3]$. По (A2) верно, что $2 : [\ ] = [2] = [2,3] = 2 : [3]$. Применим эту аксиому еще раз и получим $[\ ] = [3] = 3 : [\ ]$. С другой стороны, $[\ ] \neq 3 : [\ ]$ по (A1). Следовательно $[\ ] = 3 : [\ ]$ одновременно истинно и ложно. Противоречие. Таким образом, допущение наше неверно, и $[1,2] \neq [1,2,3]$.
 	
-	The Pedantic Reader might have noticed that we use a little more than just principles (A1) and (A2) in our argument. Namely, we have used `obvious' properties of equality, like \emph{transitivity} (if $x = y$ and $y = z$, then $x = z$), and the logic itself ($\neg P$ and $P$ cannot be both true). In the next exercise, you are also supposed to use the `obvious' properties of the familiar alphabet $\N$, like $0 \neq 1$.
+	Педантичный читатель мог заметить, что выше мы использовали что-то помимо аксиом (A1) и (A2). А именно, «очевидные» свойства равенства, такие как \emph{транзитивность} (если $x = y$ и $y = z$, то $x = z$), и логический закон непротиворечия ($\neg P$ и $P$ не могут быть одновременно истинными). При решении следующего примера, вы так же можете использовать «очевидные» свойства хорошо знакомого вам алфавита $\N$, например, $0 \neq 1$.
 \end{exm}
 
 \begin{exc}
-	Prove formally that $[1,2,3] \neq [1,3,4]$ and $[1 + 2, 1 + 1] = [5 - 2, 2]$ (all strings are over the alphabet $\N$; $1 + 2$ is just another name for the symbol $3$, so that $1 + 2 = 3$).
+	Формально докажите, что $[1,2,3] \neq [1,3,4]$ и $[1 + 2, 1 + 1] = [5 - 2, 2]$ (все строки построены над алфавитом $\N$; $1 + 2$ --- просто вариант записи символа $3$, так что $1 + 2 = 3$).
 \end{exc}
 
-To prove anything interesting, we need another principle. Surprisingly, one is enough. Being so versatile, this principle is necessary abstract.
+Если же мы хотим доказывать \emph{интересные} свойства, нам нужна (всего лишь) еще одна аксиома. Естественным образом, за большую выразительную силу и широкую применимость, приходится иметь дело с повышенной абстрактностью.
 
-Let $P(s)$ be a unary predicate with the domain $S(A)$, that is, a property of strings over $A$. Say, one might have $P = \mbox{``John likes $s$ better than the number $n$''}$ where $n$ is fixed. Assume that we want to prove that \emph{each string $s$ over $A$ satisfies the property $P$}, or $\forall s\, P(s)$ symbolically.
+Положим $P(s)$ --- унарный предикат над доменом $S(A)$, то есть свойство строк над алфавитом $A$. Скажем, предикат звучит как $P = \mbox{«Мише больше нравится $s$, чем число $n$''}$, где $n$ фиксировано. Положим наша цель --- доказать, что \emph{любая строка $s$ над алфавитом $A$ удовлетворяет свойству $P$}, или $\forall s\, P(s)$ формально.
 
-With this in view, we could consider an \emph{arbitrary} string $t$ and try to prove $P(t)$. As we know \emph{nothing special} about $t$, there is not much we can do here. But we know that each string has been constructed according to our inductive definition, that is, $t$ is either $[\ ]$ or $x : t'$ for some $x \in A$ and another string $t'$. For our goal $\forall s\, P(s)$, it is clearly necessary that $[\ ]$ satisfies $P$, or $P([\ ])$ in symbols. Assume that it is the case.
+Можно попробовать взять \emph{произвольную} строку $t$ и доказать $P(t)$. Так как мы не знаем ничего \emph{специфичного} о строке $t$, наши возможности ограничены. Вместо этого мы знаем только, что любая строка была построена в соответствии с нашим индуктивным определением, то есть $t$ --- либо $[\ ]$, либо $x : t'$ для некоторого $x \in A$ и другой строки $t'$. Для нашей задачи $\forall s\, P(s)$, точно необходимо, чтобы $[\ ]$ удовлетворял $P$, или $P([\ ])$ символьно. Предположим, что это так.
 
-If $t = x : t'$, we get just another `arbitrary' string $t'$. It is yet clear intuitively that if $t'$ is not $[\ ]$, we would have  $t' = x' : t''$ etc.,---and get $[\ ]$ eventually after a finite number of steps. This gives us the following idea: if $P([\ ])$ and $P$ survives each step of string construction, i.\,e., from $P(t')$ it follows $P(x : t')$ for every $t'$ and $x$ (in symbols, $\forall t' \forall x\; (P(t') \to P(x:t'))$), then we obtain $P( t )$ for an arbitrary $t$ and, finally, $\forall s\, P(s)$.
+Если $t = x : t'$, мы \emph{снова} получаем «произвольную» строку $t'$. Кажется естественным, что если строка $t'$ не является пустой строкой $[\ ]$, то мы имеем  $t' = x' : t''$ и так далее, --- и в конце концов, за конечное число шагов, получаем пустую строку $[\ ]$ . Это намекает на следующую идею: если $P([\ ])$ и $P$ сохраняется после каждого шага индуктивного построения строки, то есть из $P(t')$ следует $P(x : t')$ для каждых $t'$ и $x$ (формально: $\forall t' \forall x\; (P(t') \to P(x:t'))$), то мы получаем $P( t )$ для произвольной строки $t$ и, наконец, $\forall s\, P(s)$.
 
-To sum it up, we want to use the following \emph{Induction Principle} (IP) for strings:
+Резюмируя, нам необходим следующий \emph{принцип индукции} (ПИ) для строк:
 \begin{quote}
-	for every unary predicate $P$ over $S(A)$, if $P([\ ])$ and  $\forall s \forall x\; (P(s) \to P(x:s))$, then $\forall s\, P(s)$.
+	для любого унарного предиката $P$ над $S(A)$, если $P([\ ])$ и $\forall s \forall x\; (P(s) \to P(x:s))$, то $\forall s\, P(s)$.
 \end{quote}
-The assumption $P([\ ])$ is called the \emph{base case} of induction, $\forall s \forall x\; (P(s) \to P(x:s))$ is called the \emph{inductive step}, and $P(s)$ is called \emph{inductive hypothesis} (which is usually abbreviated to IH) when used to infer $P(x:s)$ from it.
+Утверждение $P([\ ])$ называется \emph{базой индукции}, $\forall s \forall x\; (P(s) \to P(x:s))$ --- \emph{индукционным переходом}, а $P(s)$ --- \emph{предположением индукции}.
 
-While we cannot prove (IP) in our current setting and have to take this principle as an axiom, we can support its intuitive validity by the following argument.
+Хотя мы не можем доказать принцип индукции формально и вынуждены утвердить его как аксиому, мы можем обосновать его интуитивную верность, корректность, с помощью следующего рассуждения.
 \begin{exm}\label{strings:ind_intuition}
-	We let $A = \N$ and let both the assumptions $P([\ ])$ (ass.~1) and  $\forall s \forall x\; (P(s) \to P(x:s))$ (ass.~2) hold. Consider the string $t = [1,2,3] = 1 : (2 : (3 : [\ ]))$. From (IP), it follows that $\forall s\, P(s)$, whence $P(t)$. But one can prove this particular instance $P([1,2,3])$ directly from our assumptions \emph{without} (IP). Indeed, we obtain the following derivation:
+	Положим $A = \N$, $P([\ ])$ (пос.~1) и  $\forall s \forall x\; (P(s) \to P(x:s))$ (пос.~2). Рассмотрим строку $t = [1,2,3] = 1 : (2 : (3 : [\ ]))$. По ПИ следует, что $\forall s\, P(s)$, значит $P(t)$. Однако мы можем доказать истинность утверждения $P([1,2,3])$ напрямую из наших посылок, \emph{без} ПИ. Действительно, получаем следующую цепочку:
 	$$
 	\begin{array}{rll}
 		(1)&P([\ ])&\qquad\mbox{by (ass.~1)}\\
@@ -481,122 +481,122 @@ While we cannot prove (IP) in our current setting and have to take this principl
 		(7)&P(1 : (2 : (3 : [\ ])))&\qquad\mbox{from (5) and (6)}\\
 	\end{array}
 	$$
-	It is clear that our $t$ is nothing special, so we can prove $P(s)$ for each particular $s$ this way, while the proof gets longer with $s$. Essentially, the Induction Principle `packs' this infinite multitude of proofs of unboundedly increasing length into one proof based on (IP).
+	Очевидно, в нашем $t$ нет ничего особенного, поэтому мы можем доказать $P(s)$ для любого конкретного $s$, пусть доказательство становится тем дольше, чем больше наша строка $s$. Принцип индукции в сущности «упаковывает» это бесконечное множество доказательств неограниченно возрастающей длины в один, основывающийся на ПИ.
 \end{exm} 
 
-\paragraph{Recursive functions.} So far, we have a mighty principle to prove things but not many statements to try it for. In programming practice, one defines a plethora of \emph{functions} over strings, whose properties are natural challenges to prove. As in the case of Induction Principle for proofs, we will take advantage of the the \emph{inductive} definition for strings when defining our functions.
+\paragraph{Рекурсивные функции} На данный момент, мы располагаем могучим принципом, но небольшим количеством фактов, на которых можем его использовать. При написании кода, часто описывается множество \emph{функций} над строками, доказательство свойств которых --- классическая проблема. Как и с принципом индукции в случае доказательств, мы воспользуемся \emph{индуктивной} природой нашего определения строк при описании новых функций.
 
-Let us start with the string \emph{length}. This function takes a string $s$ over $A$ and returns a natural number $lh(s)$. Intuitively, we want the following equations to hold: $lh([\ ]) = 0$, $lh([8]) = 1$, $lh([3,11]) = 2$, and so on. We thus \emph{define} $lh$ by these two rules:
+Начнем с \emph{длины} строки. Эта функция принимает строку $s$ над $A$ и возвращает натуральное число $lh(s)$. Интуиция говорит нам, что следующие утверждения должны быть верны: $lh([\ ]) = 0$, $lh([8]) = 1$, $lh([3,11]) = 2$, и т.д. Определим $lh$ следующими двумя правилами:
 \begin{quote}
 	$lh([\ ]) = 0$;\\
-	$lh(x : s) = 1 + lh(s)$ for all $x$ and $s$.
+	$lh(x : s) = 1 + lh(s)$ для всех $x$ и $s$.
 \end{quote}
-We assume such a function $lh$ that satisfies the two properties does indeed exist and is unique. They say that $lh$ is defined \emph{by recursion} on strings (since one \emph{recurs} to the `previous' value $lh(s)$ in order to get $lh(x: s)$). As in the case of (IP), the definition mimics somehow the structure of the inductive definition for strings.
+Мы предполагаем, что функция $lh$, удовлетворяющая этим двум свойствам, действительно существует и уникальна. Говорят $lh$ \emph{рекурсивно} определена на строках\footnote{От англ. \emph{to recur} --- возвращаться, в данном случае к предыдущему значению $lh(s)$ при получении $lh(x: s)$.}. Как и в случае с ПИ, определение как бы имитирует структуру индуктивного определения строк.
 
 \mcomm{It is easy to prove the uniqueness by IP application but the existence would likely require some `set-theoretic' considerations, which we want to avoid here.}
 
 \begin{exm}
-	Our definition for $lh$ is \emph{computationally effective}, i.\,e., it provides a recipe to compute the value $lh(s)$ for every particular string $s$. For example, $lh([3,11]) = lh (3:(11:[\ ])) = 1 + lh (11:[\ ]) = 1 + (1 + lh([\ ])) = 1 + (1 + 0) = 2$.
+	Наше определение $lh$ \emph{вычислимо}, то есть описывает рецепт для вычисления значения $lh(s)$ для любой конкретной строки $s$. Например, $lh([3,11]) = lh (3:(11:[\ ])) = 1 + lh (11:[\ ]) = 1 + (1 + lh([\ ])) = 1 + (1 + 0) = 2$.
 \end{exm}
 
 \begin{exc}
-	For strings over the English alphabet, prove that $lh(student) = 7$ formally.
+	Для строк над латиницей, формально докажите $lh(student) = 7$.
 \end{exc}
 
-Another interesting function is \emph{append} (or \emph{concatenate}) which `glues' two strings together, so that $app([1,3,2],[3,2]) = [1,3,2,3,2]$ and $app([5,8], [\ ]) = app([\ ], [5,8]) = [5, 8]$. We can define $app$ recursively the following way:
+Другая интересная функция --- \emph{append} (\emph{конкатенация}), склеивающая две строки в одну: $app([1,3,2],[3,2]) = [1,3,2,3,2]$ и $app([5,8], [\ ]) = app([\ ], [5,8]) = [5, 8]$. Мы можем рекурсивно определить $app$ следующим образом:
 \begin{quote}
-	$app([\ ], t) = t$ for each $t$;\\
-	$app(x : s, t) = x : app(s, t)$ for all $x$, $s$, and $t$.
+	$app([\ ], t) = t$ для любого $t$;\\
+	$app(x : s, t) = x : app(s, t)$ для любых $x$, $s$, и $t$.
 \end{quote}
 \begin{exc}
-	Prove formally that $app([1,3,2],[3,2]) = [1,3,2,3,2]$.
+	Формально докажите, что $app([1,3,2],[3,2]) = [1,3,2,3,2]$.
 \end{exc}
 
-Now, we have got just enough to state and prove moderately interesting theorems about string functions. From the definition, we know that $app([\ ], s) = s$. But what can one say about $app (s, [\ ])$? Clearly, $app ([1, 2], [\ ]) = 1 : app ([2],  [\ ]) = 1 : (2 : [\ ]) = [1, 2]$. Unsurprisingly, in general we have
+Наконец, мы обладаем достаточным языком для описания и доказательства относительно интересных теорем о строковых функциях. По определению известно, что $app([\ ], s) = s$. Но что мы можем сказать о $app (s, [\ ])$? Очевидно, $app ([1, 2], [\ ]) = 1 : app ([2],  [\ ]) = 1 : (2 : [\ ]) = [1, 2]$. Неудивительно, что в общем случае мы имеем,
 \begin{lemma}\label{cs:app_nil_r}
-	For every $s \in S(A)$, $app (s, [\ ]) = s$.
+	Для любых $s \in S(A)$, $app (s, [\ ]) = s$.
 \end{lemma}
 \begin{proof}
-	By induction on $s$. If we let $P$ be just the equation $app (s, [\ ]) = s$, it suffices to show that $P([\ ])$ and $\forall s \forall x\; (P(s) \to P(x:s))$ hold, that is, $app ([\ ], [\ ]) = [\ ]$ and $\forall s \forall x\; (app (s, [\ ]) = s \to app (x : s, [\ ]) = x : s)$. The first statement holds by the definition of $app$. Let us prove the second one. Consider arbitrary $s$ and $x$ and assume that $app (s, [\ ]) = s$ is true (otherwise, the implication is clearly true). By definition, we have $app (x : s, [\ ]) = x : app(s, [\ ])$, whence $app (x : s, [\ ]) = x : s$ as required. Generalizing $s$ and $x$, we obtain what we want.
+	По индукции на $s$. Если мы положим $P$ как равенство $app (s, [\ ]) = s$, достаточно показать, что $P([\ ])$ и $\forall s \forall x\; (P(s) \to P(x:s))$, то есть $app ([\ ], [\ ]) = [\ ]$ и $\forall s \forall x\; (app (s, [\ ]) = s \to app (x : s, [\ ]) = x : s)$. Первое утверждение истинно по определению $app$. Докажем второе утверждение. Рассмотрим произвольные $s$ и $x$ и допустим, что $app (s, [\ ]) = s$ верно (в противном случае импликация тривиально истинна). По определению имеем $app (x : s, [\ ]) = x : app(s, [\ ])$, откуда $app (x : s, [\ ]) = x : s$ как требовалось. Обобщая $s$ и $x$, получаем искомое.
 \end{proof}
 
-It appears that $[\ ]$ plays the same role for $app$ as $0$ does for ${+}$, where one has $n + 0 = n = 0 + n$. How far can we extend this analogy? For example, we know that $n + (m + l) = (n + m) + l$. What about $app$?
+Похоже, что $[\ ]$ играет ту же роль для $app$, что $0$ --- для операции ${+}$, где мы имеем $n + 0 = n = 0 + n$. Как далеко возможно вести эту аналогию? Например, мы знаем, что $n + (m + l) = (n + m) + l$. Что насчет $app$?
 
 \begin{lemma}\label{cs:app_assoc}
-	For every $s, t, r \in S(A)$, $app (s, app(t, r)) = app (app (s, t), r)$.
+	Для любых $s, t, r \in S(A)$, $app (s, app(t, r)) = app (app (s, t), r)$.
 \end{lemma}
 \begin{proof}
-	As (IP) deals with unary predicates while the equation $app (s, app(t, r)) = app (app (s, t), r)$ has three parameters, we have to fix two of them. The right choice of one to base the induction on is crucial! We consider some arbitrary strings $t$, $r$ and apply induction on $s$ for those fixed with $P(s) = (app (s, app(t, r)) = app (app (s, t), r))$. 
+	Так как ПИ орудует унарными предикатами, а $app (s, app(t, r)) = app (app (s, t), r)$ --- предикат с \emph{тремя} аргументами, нам необходимо зафиксировать два из них. Выбрать правильный аргумент, на котором мы будем затем применять ПИ --- критически важно! Давайте рассмотрим произвольные строки $t$, $r$ и применим индукцию на $s$, получая предикат $P(s) = (app (s, app(t, r)) = app (app (s, t), r))$. 
 	
-	Clearly, $P([\ ]) = (app ([\ ], app(t, r)) = app (app ([\ ], t), r))$. Both sides of this equation equal $app(t,r)$ by the definition of $app$, hence the statement $P([\ ])$ holds. Now, let us assume $P(s) = (app (s, app(t, r)) = app (app (s, t), r))$ for an arbitrary $s$ and $x$, then try to get $P(x:s)$. Indeed,
+	Очевидно, $P([\ ]) = (app ([\ ], app(t, r)) = app (app ([\ ], t), r))$. Обе части уравнения сводятся к $app(t,r)$ по определению функции $app$, отсюда получаем истинность $P([\ ])$. Теперь предположим $P(s) = (app (s, app(t, r)) = app (app (s, t), r))$ для произвольных $s$ и $x$, а затем попробуем доказать $P(x:s)$. В самом деле,
 	\begin{multline*}
 		app (x:s, app(t, r)) = x : app (s, app(t, r)) = x : app (app (s, t), r)) =\\
 		app (x : app (s, t), r)) = app (app (x : s, t), r)).
 	\end{multline*}
-	Here, we have applied the inductive hypothesis $P(s)$ and the definition of $app$. As both the base case and the inductive step are proved now, we may conclude $\forall s\, P(s)$ by virtue of $(IP)$. Generalizing our arbitrary $t$ and $r$, we obtain the required statement.
+	В выкладках выше мы применили гипотезу $P(s)$ и определение функции $app$. Так как база и шаг индукции доказаны, мы вправе заключить $\forall s\, P(s)$ по (ПИ). Обобщая наши произвольные $t$ и $r$, приобретаем искомое утверждение.
 \end{proof}
 \begin{exc}
-	Try to prove the statement above by induction on either $t$ or $r$. What obstacles do you face when doing so? Can you overcome them?
+	Попробуйте доказать лемму выше по индукции на $t$ или $r$. Какие препятствия мешают вам сделать это? Можете ли вы устранить их?
 \end{exc}
 
-In general, you should apply induction to the argument that is used in recursive definitions of the functions involved. The function $app$ is defined by recursion on its \emph{first} argument, whence our choice of induction on $s$.
+Как правило, применять индукцию нужно по аргументу, используемому в рекурсивном определении участвующих функций. Функция $app$ рекурсивно определена по своему \emph{первому} аргументу, откуда наш выбор $s$ в качестве объекта для применения ПИ.
 
 \medskip
-So far so good, but we also have $n + m = m + n$ for any numbers $n, m$. Does a similar property hold for $app$?
+Что ж, пока проблем нет. Однако мы также имеем $n + m = m + n$ для любых чисел $n, m$. Верно ли аналогичное свойство для $app$?
 \begin{exc}
-	Prove formally that it does not, i.\,e., it is not the case that $app(s,t) = app(t,s)$ for every $s$ and $t$. Notice that you do not need (IP) here but rather (A1) and (A2).
+	Формально докажите, что нет, то есть неверно, что $app(s,t) = app(t,s)$ для любых $s$ и $t$. Заметьте, что вам скорее понадобятся (A1) и (A2), чем (ПИ).
 \end{exc}
 
-The operations $app$ on strings and $+$ on natural numbers are not only somewhat similar but `interrelated' via the function $lh$. In fact, one has $lh([\ ]) = 0$ and $lh(app(s, t)) = lh(s) + lh(t)$ for every $s, t$. Relations of this form are called \emph{homomorphisms} in mathematics.
+Операции $app$ на строках и $+$ на натуральных числах не только «чем-то похожи», но взаимосвязаны через функцию $lh$. А именно, мы имеем $lh([\ ]) = 0$ и $lh(app(s, t)) = lh(s) + lh(t)$ для любых $s, t$. Подобные отношения в математике зовутся \emph{гомоморфизмами}.
 \begin{exc}
-	Prove these statements formally.
+	Докажите эти утверждения формально.
 \end{exc}
 
-For natural numbers, from $n + m = n + l$, it follows that $m = l$. Does a similar property hold for $app$?
+Для натуральных чисел, из $n + m = n + l$ следует, что $m = l$. Верно ли аналогичное для $app$?
 \begin{lemma}\label{cs:app_inv_head}
-	For every $s, t, r \in S(A)$, if $app(s,t) = app(s,r)$, then $t = r$.
+	Для любых $s, t, r \in S(A)$, если $app(s,t) = app(s,r)$, то $t = r$.
 \end{lemma}
 \begin{proof}
-	Let us apply induction on $s$ to the predicate $P(s) = (app(s,t) = app(s,r) \to t = r)$. The base case is to infer $t = r$ from $app([\ ], t) = app([\ ], r)$, which is clear. For the inductive step, we assume (as the IH) that $app(s,t) = app(s,r)$ implies $t = r$ and try to prove $t = r$ from $app(x:s, t) = app(x:s, r)$. Simplifying the latter equation, we get $x : app(s,t) = x : app(s,t)$, whence $app(s,t) = app(s,r)$ by (A2). Applying the IH, obtain $t = r$.
+	Применим индукцию по $s$ к предикату $P(s) = (app(s,t) = app(s,r) \to t = r)$. Базой индукции будет вывод $t = r$ из $app([\ ], t) = app([\ ], r)$, что очевидно. Для доказательства шага индукции, допустим (как предположение, гипотезу индукции, IH), что $app(s,t) = app(s,r)$ влечет $t = r$ и попробуем вывести $t = r$ из $app(x:s, t) = app(x:s, r)$. Упрощая последнее равенство, получаем $x : app(s,t) = x : app(s,t)$, откуда $app(s,t) = app(s,r)$ по (A2). Применяя IH, получаем $t = r$.
 \end{proof}
 \begin{exc}
-	Try to prove that from $app(t,s) = app(r,s)$, it follows that $t = r$. Probably, you will need to state and prove a few auxiliary lemmas to complete the task. Please read on for an easier but indirect approach.
+	Попробуйте из $app(t,s) = app(r,s)$ вывести $t = r$. Скорее всего, вам понадобится доказать несколько вспомогательных лемм для выполнения этой задачи. Для более простого, пусть и непрямолинейного подхода, см. ниже.
 \end{exc}
 
-Another interesting string function is $rev$, which reverses a string, so that $rev([1,2,3]) = [3,2,1]$. Let us define it formally:
+Еще одна интересная строковая функция --- $rev$. Она \emph{обращает}, переворачивает (reverse) строку, так что $rev([1,2,3]) = [3,2,1]$. Определим ее формально:
 \begin{quote}
 	$rev([\ ]) = [\ ]$;\\
-	$rev(x : s) = app(rev(s), [x])$ for all $x$ and $s$.
+	$rev(x : s) = app(rev(s), [x])$ для всех $x$ и $s$.
 \end{quote}
-The function $rev$ relates to $app$ much like matrix transposition (or inversion) relates to matrix multiplication, where one has $(AB)^T = B^T A^T$ and $(AB)^{-1} = B^{-1} A^{-1}$ when everything is well-defined. E.\,g., $rev(app([1,2], [3,4])) = [4,3,2,1] = app(rev[3,4], rev[1,2])$. In fact, the same pattern might be seen in the usual rational number inversion and multiplication, as $\frac{1}{pq} = \frac{1}{q} \cdot \frac{1}{p}$ when $p, q \neq 0$. 
+Функция $rev$ относится к $app$ почти так же, как транспозиция (или инверсия) матриц относится к матричному умножению, где мы имеем $(AB)^T = B^T A^T$ и $(AB)^{-1} = B^{-1} A^{-1}$ в случае, если все корректно определено. Например, $rev(app([1,2], [3,4])) = [4,3,2,1] = app(rev[3,4], rev[1,2])$. Более того, похожее поведение можно наблюдать в привычных обращении и умножении рациональных чисел, где $\frac{1}{pq} = \frac{1}{q} \cdot \frac{1}{p}$ когда $p, q \neq 0$. 
 
 \begin{exc}\label{cs:rev_app_distr}
-	Prove that $rev(app(s,t)) = app(rev(t), rev(s))$ for every $s, t \in S(A)$. Probably, you will need Lemmas~\ref{cs:app_nil_r} and~\ref{cs:app_assoc} at some stage.
+	Докажите, что $rev(app(s,t)) = app(rev(t), rev(s))$ для любых $s, t \in S(A)$. Вероятно, вам понадобятся леммы~\ref{cs:app_nil_r} и~\ref{cs:app_assoc}.
 \end{exc}
 
-Clearly, $(p^{-1})^{-1}$ for both rationals and matrices, and $(A^T)^T$ holds for the latter as well. A similar statement is true for strings.
+Известно, что $(p^{-1})^{-1}$ верно и для матриц, и для рациональных чисел, как и $(A^T)^T$ для матриц. Аналогичное утверждение верно и для строк.
 \begin{exc}\label{cs:rev_involutive}
-	Prove that $rev(rev(s)) = s$ for each $s \in S(A)$.
+	Докажите, что $rev(rev(s)) = s$ для всех $s \in S(A)$.
 \end{exc}
 
 \begin{exc}
-	Prove that $app(t,s) = app(r,s)$ implies $t = r$ for every $s, t, r \in S(A)$. Try to find a simple proof using Lemmas~\ref{cs:rev_involutive},~\ref{cs:rev_app_distr}, and~\ref{cs:app_inv_head}, yet no explicit induction.
+	Докажите, что $app(t,s) = app(r,s)$ влечет $t = r$ для всех $s, t, r \in S(A)$. Постарайтесь найти простое доказательство с помощью лемм~\ref{cs:rev_involutive},~\ref{cs:rev_app_distr}, и~\ref{cs:app_inv_head}, но при этом без явной индукции.
 \end{exc}
 
-Many simple proofs employ inductive definitions but not induction itself.
+Многие простые доказательства используют индуктивные определения, но не саму индукцию.
 \begin{lemma}\label{cs:app_eq_nil}
-	For every $s,t \in S(A)$, if $app(s,t) = [\ ]$, then $s = [\ ]$ and $t = [\ ]$.
+	Для любых $s,t \in S(A)$, если $app(s,t) = [\ ]$, то $s = [\ ]$ и $t = [\ ]$.
 \end{lemma}
 \begin{proof}
-	According to the definition, each string is either $[\ ]$ or of the form $x : r$ for some $x, r$. Let us consider the two possible cases for the structure of $s$. (Such a procedure is known as a \emph{proof by cases}.)
+	Согласно определению, любая строка либо является $[\ ]$, либо имеет форму $x : r$ для некоторых $x, r$. Рассмотрим два возможных случая для структуры $s$. (Подобный подход известен как \emph{доказательство по случаям}.)
 	
-	If $s = [\ ]$, then $[\ ] = app(s,t) = app([\ ], t) = t$, so $t = [\ ]$ as well. Assume now that $s = x : r$ for some $x$ and $r$. Then $[\ ] = app(x:r, t) = x : app(r, t)$, which is forbidden by (A1). Hence, this situation is impossible, we have got a contradiction (i.\,e., a false statement). Formally, from a falsity, it follows anything. In particular, we may infer $s = [\ ]$ and $t = [\ ]$.
+	Если $s = [\ ]$, то $[\ ] = app(s,t) = app([\ ], t) = t$, поэтому $t = [\ ]$ также верно. Предположим теперь $s = x : r$ для некоторых $x$ и $r$. Тогда $[\ ] = app(x:r, t) = x : app(r, t)$, что невозможно по (А1). Таким образом, получаем противоречие, ложное высказывание. Формально, ложь влечет все, что угодно. В частности, мы можем вывести $s = [\ ]$ и $t = [\ ]$.
 	
-	As each possible case results in $s = [\ ]$ and $t = [\ ]$, these statements do hold.
+	Так как все возможные случаи подразумевают $s = [\ ]$ и $t = [\ ]$, эти утверждения действительно верны.
 \end{proof}
 
 \begin{exc}
-	Prove that $lh(s) = 0$ is equivalent to  $s = [\ ]$ for any $s \in S(A)$.
+	Докажите, что $lh(s) = 0$ эквивалентно  $s = [\ ]$ для любых $s \in S(A)$.
 \end{exc}
 
 \section{Множества}
