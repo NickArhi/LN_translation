@@ -1212,136 +1212,136 @@ $$\exists m\  m \in X \to \exists n\, \bigl(n \in X \wedge \forall m\, (m < n \t
 	Очевидно, $0 \in Y$. Пусть $n \in Y$. По определению имеем $\forall m < n\; m \in X$, откуда получаем $n \in X$, так как $X$ прогрессивно. Если $m < n + 1$, то $m < n$ или $m = n$. В обоих случаях имеем $m \in X$, откуда $n + 1\in Y$. Для множества $Y$ мы проверили базу и шаг индукции; согласно принципу математической индукции, $Y = \N$. Для любого $n \in \N$ выполнено $n < n + 1 \in Y$, откуда $n \in X$. Следовательно, $X = \N$.
 \end{proof}
 
-\section{Divisibility}
-\mcomm{This section opens a series of classical results on integer arithmetic. We looked upon them as a playground for the students to try induction principles in solving concrete problems  and, of course, to have some rest before coming back to more abstract concepts.}
+\section{Делимость}
+\mcomm{This section opens a series of classical results on integer arithmetic. We looked upon them as a playground for the students to try induction principles in solving concrete problems and, of course, to have some rest before coming back to more abstract concepts.}
 
-It is time to apply our knowledge of induction to natural and integer arithmetic. As earlier, we will assume some facts without a proof, like the \emph{commutativity law} for addition: $n + m = m + n$ for every $m, n \in \Z$. Such facts can be easily derived by induction from the so called \emph{recursive definitions}\footnote{Given the \emph{successor} function $S$ as a primary object ($S 0 = 1$, $S 1 = 2$, etc.), consider the identities $0 + m = m$ and $S n + m = S(n + m)$. One can prove that there exists a unique operation ${+}$ satisfying these identities for every $n, m  \in \N$.} for arithmetical operations. But this topic is a bit bigger than the scope of our Course can contain.
+Пришло время приложить наше знание индукции к натуральной и целочисленной арифметике! Как и ранее, мы примем истинность некоторых фактов без доказательства, например \emph{коммутативный закон} для сложения: $n + m = m + n$ для любых $m, n \in \Z$. Подобные утверждения можно без труда вывести по индукции из так называемых \emph{рекурсивных определений}\footnote{Имея функцию взятия \emph{последователя}  $S$ в качестве главного объекта ($S 0 = 1$, $S 1 = 2$ и т. д.), рассмотрим равенства $0 + m = m$ и $S n + m = S(n + m)$. Доказуемо, что существует уникальная операция ${+}$, удовлетворяющая эти равенства для всех $n, m  \in \N$.} арифметических операций. Однако этот предмет выходит за рамки нашего курса.
 
-\paragraph{Divisibility.} From now on, the term `number' will denote an integer number by default. We say that a number $a$ \emph{divides} a number $b$ if there exists some $k \in \Z$ such that $b = ak$. Conversely, $b$ is said to be \emph{divisible} by $a$ in this case. Also, we call $a$ a \emph{divisor} of $b$ and call $b$ a \emph{multiple} of $a$. We write $a \dvd b$ when $a$ divides $b$.
+\paragraph{Делимость.} Под «числом» мы теперь будем подразумевать число целое (если не оговорено иное). Мы говорим, что число $a$ \emph{делит} число $b$, если существует $k \in \Z$ такое, что $b = ak$. В свою очередь, число $b$ \emph{делится} на число (или числом) $a$. Также мы называем $a$ \emph{делителем} числа $b$, а $b$ --- \emph{кратным} числу $a$. Мы будем писать $a \dvd b$, если $a$ делит $b$.
 
 \mcomm{Most students feel quite uncomfortable with the fact that $0$ divides $0$. They tend to ignore the \emph{definition} in favor of \emph{connotations}: ``as it is not possible to \emph{divide by} zero, zero cannot \emph{divide} anything''. Of course, it is a general problem of mathematical education that the students just do not \emph{read} what is written.  The Instructor should use such examples to demonstrate the importance of clear and, perhaps, \emph{slow} reading in mathematics (likewise the latter is important in philology, according to Nietzsche's famous maxim).}
 \begin{exm}
-	So, $2 \dvd 6$ as $6 = 2 \cdot 3$; $2 \dvd 2$ as $2 = 2 \cdot 1$; $-2 \dvd 6$ as $6 = (-2) \cdot (-3)$; $2 \dvd 0$ as $0 = 2 \cdot 0$; and, finally, $0 \dvd 0$ as $0 = 0 \cdot 2019$. In general, $a \dvd 0$  and $1 \dvd a$ for each $a$ as $0 = a \cdot 0$ and $a = 1 \cdot a$.
+	Итак, $2 \dvd 6$ т.к. $6 = 2 \cdot 3$; $2 \dvd 2$ т.к. $2 = 2 \cdot 1$; $-2 \dvd 6$ т.к. $6 = (-2) \cdot (-3)$; $2 \dvd 0$ т.к. $0 = 2 \cdot 0$; и, наконец, $0 \dvd 0$ т.к. $0 = 0 \cdot 2019$. В общем случае, $a \dvd 0$  и $1 \dvd a$ для всех $a$ т.к. $0 = a \cdot 0$, а $a = 1 \cdot a$.
 \end{exm}
 
 \begin{lemma}\label{L4:l1}
-	For every $a,b,c$, the following hold:
+	Для любых $a,b,c$ верно следующее:
 	\begin{enumerate}
 		\item $a \dvd a$;
-		\item if $a \dvd b$ and $b \dvd c$, then $a \dvd c$;
-		\item if $a \dvd b$ and $b \dvd a$, then $a = \pm b$.
+		\item если $a \dvd b$ и $b \dvd c$, то $a \dvd c$;
+		\item если $a \dvd b$ и $b \dvd a$, то $a = \pm b$.
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
-	The fact that $a = a \cdot 1$ gives us the first statement. For the second one, assume $a \dvd b$ and $b \dvd c$, that is, $b = ak_1$ or $c = bk_2$ for some numbers $k_1, k_2$. Hence we get $c = bk_2 = (a k_1) k_2 = a (k_1 k_2)$, which implies $a \dvd c$. For the final one, assume both $a \dvd b$ and $b \dvd a$. Then $a = b k_1$ and $b = a k_2$ for some $k_1, k_2$. This yields $a = a (k_1 k_2)$. Now, let us see if $a = 0$. If it is so, then $b = 0 \cdot k_2 = 0 = a$.
+	Первое утверждение следует из $a = a \cdot 1$. Для доказательства второго положим $a \dvd b$ и $b \dvd c$, то есть $b = ak_1$ или $c = bk_2$ для некоторых чисел $k_1, k_2$. Тогда имеем $c = bk_2 = (a k_1) k_2 = a (k_1 k_2)$, откуда следует $a \dvd c$. Для последнего, предположим $a \dvd b$ и $b \dvd a$. Тогда $a = b k_1$ и $b = a k_2$ для некоторых $k_1, k_2$. Получаем $a = a (k_1 k_2)$. Теперь посмотрим, верно ли, что $a = 0$. Если да, то $b = 0 \cdot k_2 = 0 = a$.
 	
-	Otherwise, one can cancel $a$ out to obtain $1 = k_1 k_2$. We take it as a fact that $1$ can be factorized either as $1\cdot 1$ or as $(-1) \cdot (-1)$. Thus, either $a = b$ or $a = -b$.
+	В противном случае, можно сократить $a$ и получить $1 = k_1 k_2$. Мы принимаем за данность то, что $1$ может быть разложена как $1\cdot 1$ или $(-1) \cdot (-1)$. Таким образом, либо $a = b$, либо $a = -b$.
 \end{proof}
 
 \begin{lemma}\label{L4:l2}
-	If $a \dvd b$ and $a \dvd c$, then $a \dvd (b + c)$ and $a \dvd (b - c)$.
+	Если $a \dvd b$ и $a \dvd c$, то $a \dvd (b + c)$ и $a \dvd (b - c)$.
 \end{lemma}
 \begin{proof}
-	Assuming $b = ak_1$ and $c = ak_2$, we get $b \pm c = ak_1 + ak_2 = a(k_1 + k_2)$ by applying the distributivity law (taken without a proof).
+	Предположим $b = ak_1$ и $c = ak_2$, тогда $b \pm c = ak_1 + ak_2 = a(k_1 + k_2)$ по закону дистрибутивности (принимаемому без доказательства).
 \end{proof}
 \begin{corr}\label{L4:c3}
-	If $a \dvd (b + c)$ or $a \dvd (b - c) $ and $a \dvd b$, then $a \dvd c$.
+	Если $a \dvd (b + c)$ или $a \dvd (b - c) $ и $a \dvd b$, то $a \dvd c$.
 \end{corr}
 \begin{proof}
-	Clearly, $c = (b + c) - b$ and $c = b - (b - c)$. Then apply Lemma~\ref{L4:l2}.
+	Очевидно, что $c = (b + c) - b$ и $c = b - (b - c)$. Тогда применим лемму~\ref{L4:l2}.
 \end{proof}
 
-Now, let us review the familiar procedure of integer division.
+Теперь рассмотрим знакомую процедуру деления целых чисел.
 \begin{thm}\label{L4:t3}
-	For every natural numbers $a$ and $b \neq 0$, there exists a unique pair $(q,r) \in \N^2$ such that
-	$a = b q + r $ and $0 \leq r < b$.
+	Для любыхх натуральных чисел $a$ и $b \neq 0$, существует уникальная пара $(q,r) \in \N^2$ такая, что
+	$a = b q + r $ и $0 \leq r < b$.
 \end{thm}
 \begin{proof}
-	Consider the set $X = \{ s \in \N \mid a < b s \}$. We take as a fact, that multiplying by a positive number $b$ is \emph{monotonic}, i.\,e., $b x < b y$ when $x < y$. Hence, $b (a + 1) > b a \geq  1 \cdot a = a$ and $a + 1 \in X$. So, $X$ is non-empty. By the Least Number Principle, there exists some $s' = \min X$. If $s' = 0$, then $a < bs' = 0$, which is impossible for a natural $a$. Otherwise, $s' = q + 1$ for some $q \in \N$, where $b q \leq a$. Hence, $0 \leq a - bq$. If $a - bq \geq b$, there would be $a - bs' = a - b(q + 1)  \geq 0$, that is, $a \geq bs'$, which is not the case. Therefore, $0 \leq a - bq < b$ and one can safely put $r = a - bq$. The existence of a required pair is thus proved.
+	Рассмотрим множество $X = \{ s \in \N \mid a < b s \}$. Мы принимаем как данность то, что умножение на положительное число $b$ \emph{монотонно}, т.е. $b x < b y$ при $x < y$. Тогда $b (a + 1) > b a \geq  1 \cdot a = a$ и $a + 1 \in X$. В таком случае, $X$ не пустое. По принципу наименьшего числа, существует $s' = \min X$. Если $s' = 0$, то $a < bs' = 0$, что невозможно для натурального $a$. В ином случае, $s' = q + 1$ для некоторого $q \in \N$, где $b q \leq a$. Тогда $0 \leq a - bq$. Если $a - bq \geq b$, то $a - bs' = a - b(q + 1)  \geq 0$, то есть $a \geq bs'$, что неверно. Таким образом, $0 \leq a - bq < b$ и можно с уверенностью утверждать, что $r = a - bq$. Значит, существование искомой пары доказано.
 	
-	Suppose there are two such pairs $(q,r)$ and $(q',r')$. We have both $a = b q + r$ and $a = b q' + r'$, while $0 \leq r, r' < b$. If $q = q'$, then, clearly, $r = r'$ as well. Otherwise, w.\,l.\,o.\,g.,\footnote{\emph{Without loss of generality}---this means that we are going to consider just one of all possible cases but are sure that all the rest can be treated similarly.} we assume that $q < q'$, that is, $q + 1 \leq q'$. Hence, $r - r' = b q' - b q = b (q' - q) \geq b$. Then $r \geq b + r' \geq b$, which is not so.
+	Предположим теперь, что существуют две такие пары: $(q,r)$ и $(q',r')$. Имеем и $a = b q + r$, и $a = b q' + r'$, в то время как $0 \leq r, r' < b$. Если $q = q'$, то и $r = r'$. В противном случае, б.о.о.,\footnote{\emph{Без ограничения общности} --- это означает, что мы рассматриваем один из многих возможных случаев, но при этом уверены, что об оставшихся случаях можно сказать ровно то же.} предположим $q < q'$, то есть $q + 1 \leq q'$. Тогда $r - r' = b q' - b q = b (q' - q) \geq b$. Значит $r \geq b + r' \geq b$, что не верно.
 \end{proof}
-Such a number $q$ is called the \emph{partial quotient} and $r$ is called the \emph{remainder} after division of $a$ by $b$. This result can be easily generalized to arbitrary integers:
+Такое число $q$ называется \emph{неполным частным}, а $r$ --- \emph{остатком} от деления $a$ на $b$. Данный результат можно легко расширить на произвольные целые числа:
 \begin{corr}\label{L4:c4}
-	For every numbers $a$ and $b \neq 0$, there exists a unique pair $(q,r) \in \Z \times \N$ such that
-	$a = b q + r $ and $0 \leq r < |b|$.
+	Для всех чисел $a$ и $b \neq 0$, существует уникальная пара $(q,r) \in \Z \times \N$ такая, что
+	$a = b q + r $ и $0 \leq r < |b|$.
 \end{corr}
 \begin{proof}
-	By Theorem~\ref{L4:t3}, there exists a pair of naturals $(q',r')$ such that $|a| = |b| q' + r'$, while $0 \leq r' < |b|$. It is clear that $c = |c| \cdot \sgn c$ for any integer $c$. So,
-	$a = \sgn a (\frac{b}{\sgn b} q' + r') = \frac{\sgn a}{\sgn b} q' b + r' \sgn a$. When $a \geq 0$ or $r' = 0$, it suffices to put $(q, r) = (\frac{\sgn a}{\sgn b} q', r')$. Suppose that $a < 0$ and $r' > 0$. Then, we have
+	По теореме~\ref{L4:t3}, существует пара натуральных $(q',r')$ такая, что $|a| = |b| q' + r'$, причем $0 \leq r' < |b|$. Очевидно, что $c = |c| \cdot \sgn c$ для любого целого $c$. Тогда:
+	$a = \sgn a (\frac{b}{\sgn b} q' + r') = \frac{\sgn a}{\sgn b} q' b + r' \sgn a$. Когда $a \geq 0$ или $r' = 0$, достаточно положить, что $(q, r) = (\frac{\sgn a}{\sgn b} q', r')$. Предположим, что $a < 0$ и $r' > 0$. Тогда имеем
 	$$a = -\frac{q'}{\sgn b} b - r' = -\frac{q'}{\sgn b} b - \frac{b}{\sgn b} + \frac{b}{\sgn b} - r' = -\frac{1 +q'}{\sgn b} b + (|b| - r'),$$
-	where $0 < |b| - r' < |b|$. Now, put $(q,r) = (-\frac{1 + q'}{\sgn b} , |b| - r')$.
+	где $0 < |b| - r' < |b|$. Теперь положим $(q,r) = (-\frac{1 + q'}{\sgn b} , |b| - r')$.
 	
-	Let's prove the uniqueness. Suppose that $b q + r = b q' + r'$, while $0 \leq r, r' < |b|$. Then $|r - r'| = |b q' - b q| = |b (q' - q)| = |b| \cdot |q' - q|$. If $q \neq q'$, then $|r - r'| \geq |b|$. W.\,l.\,o.\,g., $r > r'$, whence $r \geq |b| + r' \geq |b|$, which is not the case.
+	Докажем уникальность. Предположим $b q + r = b q' + r'$ при $0 \leq r, r' < |b|$. Тогда $|r - r'| = |b q' - b q| = |b (q' - q)| = |b| \cdot |q' - q|$. Если $q \neq q'$, тогда $|r - r'| \geq |b|$. Б.о.о., $r > r'$, в то время как $r \geq |b| + r' \geq |b|$, что не верно.
 \end{proof}
 
 \begin{exm}
-	One has $-5 = -2 \cdot 3 + 1$ and $-5 = 2 \cdot (-3) + 1$. Please notice that the remainder is never negative.
+	Имеем $-5 = -2 \cdot 3 + 1$ и $-5 = 2 \cdot (-3) + 1$. Заметьте, что остаток никогда не отрицателен.
 \end{exm}
 
-\paragraph{Modular arithmetic.}
+\paragraph{Модульная арифметика.}
 
-Let $m$ be a positive number. We say that $a$ is \emph{congruent} to $b$ \emph{modulo} $m$ if $m \dvd (a - b)$.  We write $a \equiv b \pmod m$ and call the number $m$ a \emph{modulus} in such a case.
+Положим $m$ положительным числом. Мы говорим, что $a$ \emph{сравнимо} с $b$ \emph{по модулю} $m$, если $m \dvd (a - b)$.  Мы записываем это как $a \equiv b \pmod m$ и называем $m$ \emph{модулем}.
 
 \begin{exm}
-	We have $23 \equiv -31 \pmod 9$ since $23 - (-31) = 54$ and $9 \dvd 54$. It holds that $x \equiv y \pmod 2$ iff $x - y$ is even, that is, either both $x$ and $y$ are even or both are odd (they say that $x$ and $y$ have the same \emph{parity} in this case).
+	Имеем $23 \equiv -31 \pmod 9$, потому как $23 - (-31) = 54$ и $9 \dvd 54$. Верно, что $x \equiv y \pmod 2$ тогда и только тогда, когда $x - y$ четно, то есть либо и $x$, и $y$ четны, либо оба нечетны (то есть $x$ и $y$ имеют одинаковую четность).
 \end{exm}
 
 \begin{rem}
-	As each number is divisible by $1$, $x \equiv y \pmod 1$ for all numbers $x$ and $y$. This makes congruence modulo $1$ a trivial, uninteresting property. Therefore, we will usually suppose $m > 1$ in $x \equiv y \pmod m$.
+	Так как любое число делится на $1$, $x \equiv y \pmod 1$ для любых $x$ и $y$. Это делает сравнимость с $1$ тривиальным и малоинтересным свойством. Поэтому мы обыкновенно полагаем, что $m > 1$ в $x \equiv y \pmod m$.
 	
-	While it is possible to consider congruence modulo $0$, where $x \equiv y \pmod 0$ means $0 \dvd (x - y)$, that is, $x - y = 0$, this predicate is no more interesting: every number is only congruent to itself modulo $0$. Congruence for negative moduli is not needed either since $m \dvd (x - y)$ is equivalent to $-m \dvd (x - y)$.
+	В то время как можно рассматривать сравнимость по модулю $0$, где $x \equiv y \pmod 0$ означает $0 \dvd (x - y)$, или $x - y = 0$, данный предикат также малоинтересен: любое число сравнимо по модулю $0$ только с самим собой. В сравнимости по отрицательному модулю тоже нет необходимости, ведь $m \dvd (x - y)$ равнозначно $-m \dvd (x - y)$.
 \end{rem}
 
 \mcomm{In practice, we also used simplified notation $a \equiv b\ (m)$ as well. Many students are already familiar with this concept but prefer to define it in terms of remainders. The Instructor should underline that each of these two equivalent definitions may be preferable to the other one in various situations.}
 
 \begin{lemma}\label{L4:l5}
-	For any numbers $a, b, m$, it holds that $a \equiv b \pmod m$ iff $a$ and $b$ leave the same remainder when divided by $m$.
+	Для любых $a, b, m$, верно, что $a \equiv b \pmod m$ тогда и только тогда, когда $a$ и $b$ дают одинаковый остаток при делении на $m$.
 \end{lemma}
 \begin{proof}
-	Suppose that $m \dvd (a - b)$. By Corollary~\ref{L4:c4}, one have $a = m q + r$ and $b = m q' + r'$, where $0 \leq r, r' < m$. So, $m \dvd (m(q - q') + (r - r'))$. By Corollary~\ref{L4:c3}, this implies $m \dvd (r - r')$. We are done if $r = r'$. Otherwise, w.l.o.g., assume that $r > r'$. Then $r = mk + r'$ for some $k > 0$, whence $r \geq mk \geq m$, which is not so.
+	Предположим $m \dvd (a - b)$. По следствию~\ref{L4:c4}, имеем $a = m q + r$ и $b = m q' + r'$, где $0 \leq r, r' < m$. Тогда $m \dvd (m(q - q') + (r - r'))$. По следствию~\ref{L4:c3}, из этого следует $m \dvd (r - r')$. Если $r = r'$, получаем искомое. В противном случае, б.о.о., предположим $r > r'$. Тогда $r = mk + r'$ для некоторого $k > 0$, и в таком случае $r \geq mk \geq m$, что неверно.
 	
-	For the other direction, suppose that $a$ and $b$ give the same remainder $m$, so $a = m q + r$ and $b = m q' + r$ for some $q$ and $r$. Then $a - b = m(q - q')$, which is clearly a multiple of $m$.
+	Для доказательства импликации в обратную сторону, предположим, что $a$ и $b$ дают одинаковый остаток $m$, так что $a = m q + r$ и $b = m q' + r$ для некоторых $q$ и $r$. Тогда $a - b = m(q - q')$, без сомнения кратное $m$.
 \end{proof}
 
 \begin{corr}\label{L4:c9}
-	No two of the numbers $0, 1,\ldots, m - 1$ are congruent modulo $m$.
+	Никакие два числа из $0, 1,\ldots, m - 1$ не сравнимы по модулю $m$.
 \end{corr}
 
 \begin{corr}\label{L4:rem_congr}
-	Suppose $r$ is the remainder after dividing $a$ by $m$. Then $a \equiv r \pmod m$.
+	Предположим $r$ --- остаток при делении $a$ на $m$. Тогда $a \equiv r \pmod m$.
 \end{corr}
 
 \begin{corr}
-	For any numbers $a, b, m$, the following hold:
+	Для любых $a, b, m$ верно следующее:
 	\begin{enumerate}
 		\item $a \equiv a \pmod m$;
-		\item if $a \equiv b \pmod m$, then $b \equiv a \pmod m$;
-		\item if $a \equiv b \pmod m$ and $b \equiv c \pmod m$, then  $a \equiv c \pmod m$.
+		\item если $a \equiv b \pmod m$, то $b \equiv a \pmod m$;
+		\item если $a \equiv b \pmod m$ и $b \equiv c \pmod m$, то  $a \equiv c \pmod m$.
 	\end{enumerate}
 \end{corr}
-The most interesting and most important point about congruence is that it `respects' the arithmetical operations.
+Наиболее интересным (и возможно даже поразительным) свойством сравнимости является то, что она уважает арифметические операции.
 \begin{lemma}\label{L4:l7}
-	Suppose that $a \equiv b \pmod m$ and $c \equiv d \pmod m$. Then the following hold:
+	Положим $a \equiv b \pmod m$ и $c \equiv d \pmod m$. Тогда верно следующее:
 	\begin{enumerate}
 		\item $a + c \equiv b + d \pmod m$;
 		\item $a c \equiv b  d \pmod m$;
-		\item $a^n \equiv b^n \pmod m$ for every $n \in \N$.
+		\item $a^n \equiv b^n \pmod m$ для всех $n \in \N$.
 	\end{enumerate}
 \end{lemma}
 \begin{proof}
-	For the first statement, let us see that $a + c - (b + d) = (a - b) + (c - d)$. As both these summands are multiples of $m$, the sum is a multiple of $m$ too by Lemma~\ref{L4:l2}.
+	Для первого утверждения заметим, что $a + c - (b + d) = (a - b) + (c - d)$. Так как оба слагаемых кратны $m$, сумма также кратна $m$ по лемме~\ref{L4:l2}.
 	
-	Consider the second one. We know that $a = b + mk_1$ and $c = d + mk_2$ for some numbers $k_1, k_2$. So, $ac = bd + m(b k_2 + d k_1 + m k_1 k_2)$. Hence $m \dvd (ac - b d)$.
+	Рассмотрим второе утверждение. Мы знаем, что $a = b + mk_1$ и $c = d + mk_2$ для некоторых чисел $k_1, k_2$. Тогда $ac = bd + m(b k_2 + d k_1 + m k_1 k_2)$. В таком случае $m \dvd (ac - b d)$.
 	
-	The third is obtained from the second one by a trivial induction on $n$.
+	Третье утверждение можно получить из второго по индукции по $n$.
 \end{proof}
 \begin{exm}
-	This fact simplifies computations modulo $m$ a lot. Indeed, one may freely replace any summand or factor by any other one he sees convenient given the two are congruent modulo $m$. Often, one prefers positive or negative numbers small in their absolute value for this procedure (say, one can replace $99$ by $-1$ in \emph{any} computation modulo $100$ that involves just addition and multiplication).
+	Данное свойство значительно упрощает вычисления по модулю $m$. И правда --- оно дает нам свободу заменить или вынести за скобки любое число, покуда оно сравнимо по модулю $m$. Очень часто предпочитают числа небольшие по абсолютной величине --- неважно, положительные или отрицательные (например, можно заменить $99$ на $-1$ в \emph{любом} вычислении по модулю $100$, включающее только сложение и умножение).
 	
-	Let us compute the remainder after dividing $71^{59}$ by $97$. As $71 \equiv -26 \pmod{97}$, we get
+	Посчитаем остаток при делении $71^{59}$ на $97$. Так как $71 \equiv -26 \pmod{97}$, получаем
 	$$x = 71^{59} \equiv -2^{59}\cdot 13^{59} \equiv -2^{59}\cdot (-4\cdot 21)^{59} \equiv 2^{177} \cdot 3^{59} \cdot 7^{59} \equiv 2^{177} \cdot (3^4)^{14} \cdot 3^3 \cdot (7^2)^{29} \cdot 7  \pmod {97}.$$
-	Furthermore, $7^2 \equiv -48 \equiv -7^2 + 1$, whence $2\cdot7^2 \equiv 1 \pmod{97}$; also, $3^4 \equiv -2^4$, and $27\cdot 7 \equiv 3 \cdot 63 \equiv 3 \cdot (-34) \equiv -102 \equiv -5$. Then,
+	Более того, $7^2 \equiv -48 \equiv -7^2 + 1$, откуда $2\cdot7^2 \equiv 1 \pmod{97}$; также, $3^4 \equiv -2^4$, и $27\cdot 7 \equiv 3 \cdot 63 \equiv 3 \cdot (-34) \equiv -102 \equiv -5$. Тогда
 	\begin{multline*}
 		x \equiv (2\cdot 7^2)^{29} \cdot 2^{148} \cdot 2^{56} \cdot (-5) \equiv 1^{29} \cdot (2^6)^{34} \cdot (-5) \equiv -5 \cdot (-33) ^{34} \equiv -5 \cdot 3^{34} \cdot 11^{34}  \equiv \\
 		-45 \cdot (3^4)^{8} \cdot (11^2)^{17} \equiv -45 \cdot 2^{32} \cdot (3 \cdot 2^3)^{17} \equiv -135 \cdot 2^{83} \cdot (3^4)^4  \equiv -38 \cdot 2^{99} \equiv -19 \cdot (2^6)^{16} \cdot 2^4 \equiv \\
@@ -1351,13 +1351,13 @@ The most interesting and most important point about congruence is that it `respe
 		-5 \cdot 2^{12} \equiv -5 \cdot (2^6)^2 \equiv -5 \cdot 3^2 \cdot 11^2 \equiv
 		-5 \cdot 3^3 \cdot 2^3 \equiv -10 \cdot 108 \equiv -10 \cdot 11 \equiv -13 \equiv 84 \pmod {97}.
 	\end{multline*}
-	So, the remainder in question is $84$. This computation was far from optimal, as we ignored many noticeable facts (like $2^{48} \equiv 1 \pmod {97}$ or $2^{96} \equiv 1 \pmod {97}$). We shall soon see how it is possible to easily prove these. Nevertheless, this tedious computation was very easy in the respect that we had no need to manipulate any number greater than $204$ in absolute value.
+	Итак, искомый остаток --- $84$. Вычисление выше нельзя назвать оптимальный, так как мы опускали много полезных равенств (например, $2^{48} \equiv 1 \pmod {97}$ или $2^{96} \equiv 1 \pmod {97}$). Скоро мы увидим, как легко можно их доказать. Тем не менее, эти весьма обширные выкладки были не в пример просты, ведь нам не пришлось иметь дела с числами, превосходящими $204$ по абсолютному значению.
 \end{exm}
 
-\paragraph{Prime numbers and factorization.} A number $p > 1$ is called \emph{prime} if it is divisible by $\pm 1$ and by $\pm p$ but nothing else. Otherwise, a number greater than $1$ is called \emph{composite}.
+\paragraph{Простые числа и разложение на множители.} Число $p > 1$ называется \emph{простым}, если оно делится на $\pm 1$, на $\pm p$ и ни на что больше. В противном случае, число больше $1$ зовется \emph{составным}.
 
 \begin{exm}
-	The number $101$ is prime, while $91 = 7 \cdot 13$ is composite. The negatives, $0$, and $1$ are neither prime nor composite.
+	Число $101$ простое, в то время как $91 = 7 \cdot 13$ --- составное. Отрицательные числа, $0$ и $1$ не являются ни простыми, ни составными.
 \end{exm}
 
 %\begin{lemma}
@@ -1367,45 +1367,45 @@ The most interesting and most important point about congruence is that it `respe
 %Assuming the contrary and applying the Least Number Principle, consider the least $n > 1$ with does not meet the requirement. Clearly, $n$ is not prime. Hence, it has a divisor $m$ different from $1$ and $n$. As multiplication is monotonic, we get $m < n$, which implies that $m$ is either prime (which is impossible) or is divisible by some prime $p < m$. But then $p \dvd n$ and $p < n$. Thus, $n$ meets the requirement. A contradiction.
 %\end{proof}
 
-A representation of the form $n = p_1^{a_1} p_2^{a_2} \ldots p_s^{a_s}$ for a number $n > 1$, where $p_i$ are pairwise distinct primes and $a_i \in \N$, is called a \emph{(prime) factorization} of $n$. One may naturally suppose that \emph{every} prime number $p$ takes part in a factorization of $n$ but just finitely many of them have non-zero degrees $a$. It is possible to factorize $1$ as well, but each prime shall have degree $0$ then. Two factorization are \emph{distinct} iff some prime number has different degrees in these.
+Представление вида $n = p_1^{a_1} p_2^{a_2} \ldots p_s^{a_s}$ для числа $n > 1$, где $p_i$ --- попарно отличные простые, а $a_i \in \N$, называется \emph{разложением числа $n$ на (простые) множители}. Естественным образом может возникнуть предположение, что в разложении числа $n$ на множители участвует \emph{каждое} простое число $p$, но только конечное количество простых чисел имеют ненулевые степени $a$. Возможно также разложить на множители число $1$, но в таком случае каждое простое число в разложении будет иметь степень $0$. Два разложения на множители \emph{различны}, если и только если хотя бы одно простое число в их разложениях имеет различные степени.
 
 \mcomm{It would be very natural to define a factorization as a function from primes to naturals with a finite support. Unfortunately, we have not enough set theory up to this point to do so. However, the students are usually happy with these ugly notions of `distinct' factorizations etc. for those are intuitive enough.}
 
 \begin{exm}
-	The prime $11$ has degree $0$ in the factorization $3 \cdot 5 \cdot 7$ of the number $105$. One may say $11$ is \emph{absent} from that factorization. The factorizations $2 \cdot 3^2 \cdot 5^3$ and $3^3 \cdot 5^2 \cdot 7$ are distinct.
+	Простое число $11$ имеет степень $0$ в разложении $3 \cdot 5 \cdot 7$ числа $105$. Можно сказать, что $11$ вовсе \emph{отсутствует} в этом разложении. Разложения $2 \cdot 3^2 \cdot 5^3$ и $3^3 \cdot 5^2 \cdot 7$ различны.
 \end{exm}
 
-\begin{thm}[Fundamental Theorem of Arithmetic]\label{L4:t14}
-	For each number $n > 1$, there exists a unique prime factorization.
+\begin{thm}[Основная теорема арифметики]\label{L4:t14}
+	Для любого числа $n > 1$ существует уникальное его разложение на простые множители.
 \end{thm}
 \begin{proof}
-	Firstly, we check existence of a factorization. Assume the contrary and consider the least number $n > 1$ lacking a factorization (such a number must exist by the Least Number Principle). If $n$ is prime, there clearly is a trivial factorization. Hence, $n$ is composite and has a non-trivial divisor $m$, that is, $n = m k$, where $1 < m, k < n$ (as multiplication is monotonic). Then $m = p_1^{a_1} p_2^{a_2} \ldots p_s^{a_s}$ and $k = p_1^{b_1} p_2^{b_2} \ldots p_s^{b_s}$ for some primes $p_1, p_2, \ldots, p_s$ (if $p_i$ is absent from the factorization of, say, $m$, just put $a_i = 0$). We can thus factorize $n$ as $p_1^{a_1 + b_1} p_2^{a_2 + b_2} \ldots p_s^{a_s + b_s}$. A contradiction.
+	Сначала докажем существование. Предположим обратное и рассмотрим наименьшее $n > 1$, не имеющее разложения (такое число должно существовать по принципу наименьшего числа). Если $n$ простое, существует тривиальное разложение. В таком случае $n$ --- составное, и имеет нетривиальный делитель $m$, то есть $n = m k$, где $1 < m, k < n$ (так как умножение монотонно). Тогда $m = p_1^{a_1} p_2^{a_2} \ldots p_s^{a_s}$ и $k = p_1^{b_1} p_2^{b_2} \ldots p_s^{b_s}$ для некоторых простых $p_1, p_2, \ldots, p_s$ (если $p_i$ отсутствует в разложении, скажем, числа $m$, просто положим $a_i = 0$). Тогда мы можем разложить $n$ как $p_1^{a_1 + b_1} p_2^{a_2 + b_2} \ldots p_s^{a_s + b_s}$. Противоречие.
 	
-	Secondly, we should prove that no two factorizations of $n > 1$ are distinct. Assume the contrary and consider the least number $n > 1$ with two distinct factorizations:  $n = p_1^{a_1} p_2^{a_2} \ldots p_s^{a_s} = p_1^{b_1} p_2^{b_2} \ldots p_s^{b_s}$. We have $\min(a_i, b_i) = 0$ for each $i$ as otherwise one can cancel $p_i^{\min(a_i, b_i)}$ out thus decreasing $n$ but keeping the factorizations distinct. Hence, in each factorization, there should be some prime absent from the other (for otherwise at least one of these equals $1$). W.\,l.\,o.\,g., let it be that $a_1 > 0 = b_1$, $a_2 = 0 < b_2$, and $p_1 > p_2$. Consider the number
+	Далее, нам необходимо доказать, что никакие два разложения $n > 1$ не различны. Предположим обратное и рассмотрим наименьшее $n > 1$ с двумя различными разложениями:  $n = p_1^{a_1} p_2^{a_2} \ldots p_s^{a_s} = p_1^{b_1} p_2^{b_2} \ldots p_s^{b_s}$. Имеем $\min(a_i, b_i) = 0$ для всех $i$, так как в противном случае можно сократить $p_i^{\min(a_i, b_i)}$, уменьшив таким образом $n$, но все еще иметь различные разложения. Тогда в каждом разложении должно находиться простое число, отсутствующее в другом (ведь иначе по крайней мере одно из них равно $1$). Б.о.о., положим $a_1 > 0 = b_1$, $a_2 = 0 < b_2$, и $p_1 > p_2$. Рассмотрим число
 	$$m = (p_1 - p_2)p^{a_1 - 1}_1 p_2^{a_2} \ldots p_s^{a_s} = n - p_2 p^{a_1 - 1}_1 p_2^{a_2} \ldots p_s^{a_s} = p_2 (p^{b_1}_1 p_2^{b_2 - 1} \ldots p_s^{b_s} - p^{a_1 - 1}_1 p_2^{a_2} \ldots p_s^{a_s}) > 0.$$
-	Clearly, $m < n$, so $m$ has a unique factorization, which is provided by multiplying some factorization of the number $p^{b_1}_1 p_2^{b_2 - 1} \ldots p_s^{b_s} - p^{a_1 - 1}_1 p_2^{a_2} \ldots p_s^{a_s}$ by $p_2$. As $a_2 = 0$, we have $m = (p_1 - p_2)p^{a_1 - 1}_1 p_3^{a_3} \ldots p_s^{a_s}$, so another factorization of $m$ is provided by multiplying $p^{a_1 - 1}_1 p_3^{a_3} \ldots p_s^{a_s}$ by some factorization of $p_1 - p_2$. Since these two factorizations of $m$ cannot be distinct, $p_2$ must be present in both. So, $p_2 \dvd (p_2 - p_1)$, whence $p_2 \dvd p_1$. This is impossible for $p_1$ and $p_2$ are distinct primes. A contradiction.
+	Очевидно, $m < n$, так что $m$ имеет уникальное разложение, получаемое умножением некоторого разложения $p^{b_1}_1 p_2^{b_2 - 1} \ldots p_s^{b_s} - p^{a_1 - 1}_1 p_2^{a_2} \ldots p_s^{a_s}$ на $p_2$. Так как $a_2 = 0$, имеем $m = (p_1 - p_2)p^{a_1 - 1}_1 p_3^{a_3} \ldots p_s^{a_s}$, так что еще одно разложение $m$ получается умножением $p^{a_1 - 1}_1 p_3^{a_3} \ldots p_s^{a_s}$ на некоторое разложение $p_1 - p_2$. Так как эти два разложения $m$ не могут быть различными, $p_2$ должно состоять в них обоих. Тогда $p_2 \dvd (p_2 - p_1)$, откуда $p_2 \dvd p_1$. Это невозможно, так как $p_1$ и $p_2$ --- различные простые. Противоречие.
 \end{proof}
 
-As we have already said, $1$ has a trivial factorization from which any prime is absent. Zero has infinitely many factorizations, but each containing zero itself: $0 = 673 \cdot 2 \cdot 3 \cdot 23 \cdot 0 \cdot 1$ etc. To factor a negative integer $n$, it is enough to factor its absolute value $|n|$ and multiply the result by $-1$. So, every number $a \neq 0$ can be identified with its prime factorization.
+Как мы уже говорили ранее, $1$ имеет уникальное разложение, в котором отсутствуют все простые числа. Ноль имеет бесконечно много разложений, на каждое из них содержит сам ноль: $0 = 673 \cdot 2 \cdot 3 \cdot 23 \cdot 0 \cdot 1$ и т.д. Чтобы разложить отрицательное $n$, достаточно разложить на простые его абсолютное значение $|n|$ и затем умножить результат на $-1$. Тогда любое число $a \neq 0$ можно идентифицировать по его уникальному разложению.
 
 \begin{thm}
-	There are infinitely many prime numbers.
+	Существует бесконечно много простых чисел.
 \end{thm}
 \begin{proof}
-	Assume it is not so. Clearly, there exists at least one prime. Then some $p_1, p_2, \ldots, p_n$ are the only primes in existence. Consider the number $N = p_1 p_2 \ldots p_n + 1$. Since multiplication is monotonic, $N > p_i \geq 2$ for each $i$. Hence, $N$ is not prime. Because of Theorem~\ref{L4:t14}, $N$ should be a multiple of some prime $p_j$. By Corollary~\ref{L4:c3}, get the impossible conclusion $p_j \dvd 1$. Our assumption thus fails.
+	Предположим обратное. Очевидно, существует хотя бы одно простое. Тогда $p_1, p_2, \ldots, p_n$ --- единственные существующие простые. Рассмотрим число $N = p_1 p_2 \ldots p_n + 1$. Так как умножение монотонно, $N > p_i \geq 2$ для каждого $i$. Тогда $N$ не является простым. По теореме~\ref{L4:t14}, $N$ должно быть кратно некоторому простому $p_j$. По следствию~\ref{L4:c3}, получаем ложное утверждение $p_j \dvd 1$. Таким образом, наше предположение неверно.
 \end{proof}
 
 
 
-\begin{lemma}[Divisibility Criterion]\label{L4:l16}
-	For any non-zero numbers $a$ and $b$, $a$ divides $b$ iff $\alpha_i \leq \beta_i$ for each prime $p_i$, where $\alpha_i$ (or $\beta_i$) is the degree of $p_i$ in the factorization of $a$ (respectively, $b$).
+\begin{lemma}[Признак делимости]\label{L4:l16}
+	Для любых ненулевых $a$ и $b$, $a$ делит $b$ тогда и только тогда, когда $\alpha_i \leq \beta_i$ для всех простых $p_i$, где $\alpha_i$ (или $\beta_i$) --- степень простого $p_i$ в разложении $a$ (и, соответственно, $b$).
 \end{lemma} 
 \begin{proof}
-	Let us factor both $a$ and $b$ to obtain $a = \eps p^{\alpha_1}_1\ldots p^{\alpha_s}_s$ and $b = \delta p^{\beta_1}_1\ldots p^{\beta_s}_s$, where $\eps, \delta = \pm 1$.
+	Разложим $a$ и $b$, и получим $a = \eps p^{\alpha_1}_1\ldots p^{\alpha_s}_s$ и $b = \delta p^{\beta_1}_1\ldots p^{\beta_s}_s$, где $\eps, \delta = \pm 1$.
 	
-	Suppose we have $b = a k$. By factoring $k$, get $k = \pm p^{\gamma_1}_1\ldots p^{\gamma_s}_s$. As the factorization of $b$ is unique, there should be $\beta_i = \alpha_i + \gamma_i \geq \alpha_i$.
+	Предположим, $b = a k$. Раскладывая $k$, получаем $k = \pm p^{\gamma_1}_1\ldots p^{\gamma_s}_s$. Так как разложение $b$ уникально, должно существовать $\beta_i = \alpha_i + \gamma_i \geq \alpha_i$.
 	
-	For the other direction, one may put $\gamma_i = \beta_i - \alpha_i \geq 0$ to see that $b = a \cdot \frac{\delta}{\eps}  p^{\gamma_1}_1\ldots p^{\gamma_s}_s$.
+	Для импликации в обратную сторону, можно положить $\gamma_i = \beta_i - \alpha_i \geq 0$ и увидеть, что $b = a \cdot \frac{\delta}{\eps}  p^{\gamma_1}_1\ldots p^{\gamma_s}_s$.
 \end{proof}
 
 \section{A Few Classical Theorems}
