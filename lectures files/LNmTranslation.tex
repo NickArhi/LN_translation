@@ -1408,80 +1408,80 @@ $$\exists m\  m \in X \to \exists n\, \bigl(n \in X \wedge \forall m\, (m < n \t
 	Для импликации в обратную сторону, можно положить $\gamma_i = \beta_i - \alpha_i \geq 0$ и увидеть, что $b = a \cdot \frac{\delta}{\eps}  p^{\gamma_1}_1\ldots p^{\gamma_s}_s$.
 \end{proof}
 
-\section{A Few Classical Theorems}
+\section{Несколько классических теорем}
 
-We say that a number $d \in \N$ is a \emph{greatest common divisor} of numbers $a$ and $b$ if (1) $d \dvd a$ and $d \dvd b$, and (2) for each $d' \in \N$, from $d' \dvd a$ and $d' \dvd b$, it follows that $d' \dvd d$. We write $\gcd(a, b) = d$ in such a case. In other words, $d$ is such a common divisor of $a$ and $b$ that is a multiple of any (other) common divisor $d'$. A priori, it is not obvious why such a number $d$ exists.
+Мы говорим, что $d \in \N$ является \emph{наибольшим общим делителем} чисел $a$ и $b$, если (1) $d \dvd a$ и $d \dvd b$, и (2) для любых $d' \in \N$, из $d' \dvd a$ и $d' \dvd b$ следует, что $d' \dvd d$. Мы пишем $\text{НОД}(a, b) = d$ в таком случае. Другими словами, $d$ --- такой общий делитель $a$ и $b$, которому кратен любой другой общий делитель $d'$. Априори неочевидно, почему такое число $d$ существует.
 
 \begin{lemma}
-	For every $a$ and $b$, there exists a unique number $d$ such that \ $d = \gcd(a,b)$.
+	Для любых $a$ и $b$, существует уникальное $d$ такое, что $d = \text{НОД}(a,b)$.
 \end{lemma}
 \begin{proof}
-	Firstly, we check uniqueness. If there are two such numbers $d$ and $d'$, we have both $d \dvd d'$ and $d' \dvd d$, whence $d = d'$ by Lemma~\ref{L4:l1}.
+	Докажем уникальность. Если существует два таких числа $d$ и $d'$, имеем и $d \dvd d'$, и $d' \dvd d$, откуда $d = d'$ по лемме~\ref{L4:l1}.
 	
-	Secondly, let us demonstrate existence. If $a = 0$, put $d = |b|$. Clearly, $|b| \dvd 0$ and $|b| \dvd b$. Whenever $d' \dvd b$, we get $d' \dvd d$. The case when $b = 0$ is similar.
+	Теперь докажем существование. Если $a = 0$, положим $d = |b|$. Очевидно, $|b| \dvd 0$ и $|b| \dvd b$. Если $d' \dvd b$, получаем $d' \dvd d$. Случай с $b = 0$ аналогичен.
 	
-	Suppose that neither of $a$ and $b$ is zero. Then factor these to get $a = \eps p^{\alpha_1}_1\ldots p^{\alpha_s}_s$ and $b = \delta p^{\beta_1}_1\ldots p^{\beta_s}_s$. Consider $d = p^{\min(\alpha_1, \beta_1)}_1\ldots p^{\min(\alpha_s, \beta_s)}_s$. By Lemma~\ref{L4:l16}, obtain $d \dvd a$ and $d \dvd b$. Assume both $d' \dvd a$ and $d' \dvd b$ for some $d'  \in \N$. Clearly, $d' \neq 0$, so one factors $d'$ as $p^{\gamma_1}_1\ldots p^{\gamma_s}_s$. Applying Lemma~\ref{L4:l16}, we have both $\gamma_i \leq \alpha_i$ and $\gamma_i \leq \beta_i$, whence $\gamma_i \leq \min(\alpha_i, \beta_i)$ for each $i$. Thus, $d' \dvd d$.
+	Предположим ни $a$, ни $b$ не равны нулю. Тогда разложим их как $a = \eps p^{\alpha_1}_1\ldots p^{\alpha_s}_s$ и $b = \delta p^{\beta_1}_1\ldots p^{\beta_s}_s$. Рассмотрим $d = p^{\min(\alpha_1, \beta_1)}_1\ldots p^{\min(\alpha_s, \beta_s)}_s$. По лемме~\ref{L4:l16}, получим $d \dvd a$ и $d \dvd b$. Предположим и $d' \dvd a$, и $d' \dvd b$ для некоторого $d'  \in \N$. Очевидно, $d' \neq 0$, поэтому можно разложить $d'$ как $p^{\gamma_1}_1\ldots p^{\gamma_s}_s$. Применяя лемму~\ref{L4:l16}, получаем и $\gamma_i \leq \alpha_i$, и $\gamma_i \leq \beta_i$, откуда $\gamma_i \leq \min(\alpha_i, \beta_i)$ для всех $i$. Таким образом, $d' \dvd d$.
 \end{proof}
 
-So, it is easy to find the number $\gcd(a, b)$ given some factorizations of these numbers. But it is not that easy to factor a number. We shall see a more practical way to compute $\gcd(a, b)$ soon.
+Итак, довольно легко найти $\text{НОД}(a, b)$, имея разложения рассматриваемых чисел. Но разложить произвольное число на множители не так легко. Скоро мы познакомимся с более практичным способом вычисления $\text{НОД}(a, b)$.
 
 \begin{exm}
-	Inspecting the proof of the previous lemma, one observes that $\gcd(15, -12) = 3$, $\gcd(-14, -21) = 7$, $\gcd(1, a) = 1$, and $\gcd(0, a) = |a|$ for each $a$. In particular, $\gcd(0, 0) = 0$. Evidently, $\gcd(a, b) = \gcd(|a|,|b|)$.
+	Подробнее изучая доказательство последней леммы, можно обнаружить, что $\text{НОД}(15, -12) = 3$, $\text{НОД}(-14, -21) = 7$, $\text{НОД}(1, a) = 1$, и $\text{НОД}(0, a) = |a|$ для любых $a$. В частности, $\text{НОД}(0, 0) = 0$. Также, $\text{НОД}(a, b) = \text{НОД}(|a|,|b|)$.
 \end{exm}
 
-We say that a number $m \in \N$ is a \emph{least common multiple} of numbers $a$ and $b$ if (1) $a \dvd m$ and $b \dvd m$ and (2) for each $m' \in \N$, from $a \dvd m'$ and $b \dvd m'$, it follows that $m \dvd m'$. We write $\lcm (a, b) = m$ in such a case. In other words, $m$ is such a common multiple of $a$ and $b$ that divides any (other) common multiple $m'$.
+Мы говорим, что число $m \in \N$ --- \emph{наименьшее общее кратное} чисел $a$ и $b$, если (1) $a \dvd m$ и $b \dvd m$, и (2) для всех $m' \in \N$, из $a \dvd m'$ и $b \dvd m'$ следует $m \dvd m'$. В таком случае, мы пишем $\text{НОК}(a, b) = m$. Другими словами, $m$ --- такое общее кратное $a$ и $b$, что оно делит любое (другое) общее кратное $m'$.
 \begin{exc}
-	For each $a$ and $b$, their least common multiple truly exists and is unique, while $\lcm(0, a) = 0$ and $\lcm(a, b) = p^{\max(\alpha_1, \beta_1)}_1\ldots p^{\max(\alpha_s, \beta_s)}_s$ if $a = \eps p^{\alpha_1}_1\ldots p^{\alpha_s}_s$ and $b = \delta p^{\beta_1}_1\ldots p^{\beta_s}_s$.
+	Для всех $a$ и $b$, их НОК действительно существует и уникален, в то время как $\text{НОК}(0, a) = 0$ и $\text{НОК}(a, b) = p^{\max(\alpha_1, \beta_1)}_1\ldots p^{\max(\alpha_s, \beta_s)}_s$, если $a = \eps p^{\alpha_1}_1\ldots p^{\alpha_s}_s$ и $b = \delta p^{\beta_1}_1\ldots p^{\beta_s}_s$.
 \end{exc}
 \mcomm{There is a clear similarity between $\gcd$ and minimum (respectively, $\lcm$ and maximum)---since both are infima for suitable posets (we will elaborate on the idea later). The Instructor might want to highlight this fact.}
-\begin{exc} For every $a, b, c$ the following hold:
+\begin{exc} Для всех $a, b, c$ верно следующее:
 	\begin{enumerate}
-		\item $\gcd(a, a) = |a| = \lcm(a, a)$;
-		\item $\gcd(a, b) = \gcd(b,a)$; $\lcm(a, b) = \lcm(b,a)$;
-		\item $\gcd(a, \gcd(b, c)) = \gcd(\gcd(a, b), c)$; $\lcm(a, \lcm(b, c)) = \lcm(\lcm(a, b), c)$;
-		\item $\gcd(a, \lcm(a, b)) = |a| = \lcm(a, \gcd(a, b))$;
-		\item $\gcd(a,b)\cdot \lcm(a, b) = |ab|$.
+		\item $\text{НОД}(a, a) = |a| = \text{НОК}(a, a)$;
+		\item $\text{НОД}(a, b) = \text{НОД}(b,a)$; $\text{НОК}(a, b) = \text{НОК}(b,a)$;
+		\item $\text{НОД}(a, \text{НОД}(b, c)) = \text{НОД}(\text{НОД}(a, b), c)$; $\text{НОК}(a, \text{НОК}(b, c)) = \text{НОК}(\text{НОК}(a, b), c)$;
+		\item $\text{НОД}(a, \text{НОК}(a, b)) = |a| = \text{НОК}(a,\text{НОД}(a, b))$;
+		\item $\text{НОД}(a,b)\cdot \text{НОК}(a, b) = |ab|$.
 	\end{enumerate}
 \end{exc}
 
 \begin{lemma}
-	For any numbers $a$, $b$, and $q$, $\gcd(a, b) = \gcd(a + bq, b)$.
+	Для любых чисел $a$, $b$, и $q$, $\text{НОД}(a, b) = \text{НОД}(a + bq, b)$.
 \end{lemma}
 \begin{proof}
-	Suppose that $d = \gcd(a,b)$ and $d' = \gcd(a + bq, b)$. Clearly, $d \dvd (a + bq)$ and $d \dvd b$, so $d \dvd d'$ by definition. Conversely, $d' \dvd b$, $d' \dvd bq$, and $d' \dvd a$, for $a = (a + bq) - bq$. Hence, $d' \dvd d$. Therefore, $d = d'$.
+	Предположим, что $d = \text{НОД}(a,b)$ и $d' = \text{НОД}(a + bq, b)$. Очевидно, $d \dvd (a + bq)$ и $d \dvd b$, так что $d \dvd d'$ по определению. Наоборот, $d' \dvd b$, $d' \dvd bq$ и $d' \dvd a$ для $a = (a + bq) - bq$. Значит $d' \dvd d$. Таким образом, $d = d'$.
 \end{proof}
 
 \begin{corr}\label{L5:c_gcd_rem}
-	If $r$ is the remainder after dividing $a$ by $b$, then $\gcd(r, b) = \gcd(a, b)$.
+	Если $r$ --- остаток от деления $a$ на $b$, тогда $\text{НОД}(r, b) = \text{НОД}(a, b)$.
 \end{corr}
 \begin{proof}
-	As $a = bq + r$, get $r = a - bq$, but $\gcd(a - bq, b) = \gcd(a, b)$ by the previous lemma.
+	Так как $a = bq + r$, имеем $r = a - bq$, но $\text{НОД}(a - bq, b) = \text{НОД}(a, b)$ по предыдущей лемме.
 \end{proof}
 
-\paragraph{Coprimes.} Numbers $a$ and $b$ are called \emph{coprime} (to each other) if $\gcd(a, b) = 1$. That is, the only common natural divisor of $a$ and $b$ is $1$.
+\paragraph{Взаимно простые числа.} Числа $a$ и $b$ называются \emph{взаимно простыми}, если $\text{НОД}(a, b) = 1$. То есть, если единственный общий натуральный делитель чисел $a$ и $b$ --- $1$.
 \begin{exm}
-	Clearly, every two distinct primes are coprime. The number $1$ is coprime to any number. The numbers $2^2 \cdot 3$ and $- 5 \cdot 7^3$ are coprime unlike $2^2 \cdot 3$ and $3 \cdot 5$. The number $0$ is coprime to just $\pm 1$.
+	Очевидно, любые два различных простых числа взаимно просты. Число $1$ взаимно просто с любым числом. Числа $2^2 \cdot 3$ и $- 5 \cdot 7^3$ взаимно просты, в отличие от $2^2 \cdot 3$ и $3 \cdot 5$. Число $0$ взаимно просто только с $\pm 1$.
 \end{exm}
 
 \begin{lemma}\label{L5:coprime}
-	For every numbers $a$ and $b$, the following statements are equivalent:
+	Для любых чисел $a$ и $b$, следующие утверждения равнозначны:
 	\begin{enumerate}
-		\item $a$ and $b$ are coprime;
-		\item for every $d \in \N$, if $d \dvd a$ and $d \dvd b$, then $d = 1$;
-		\item for every $n$, if $n \dvd a$ and $n \dvd b$, then $n$ is not prime;
+		\item $a$ и $b$ взаимно просты;
+		\item для любых $d \in \N$, если $d \dvd a$ и $d \dvd b$, то $d = 1$;
+		\item для любых $n$, если $n \dvd a$ и $n \dvd b$, то $n$ не простое;
 	\end{enumerate}
-	and, when $a, b$ are non-zero, also
+	и также, когда $a, b$ не равны нулю:
 	\begin{enumerate}
 		\setcounter{enumi}{3}
-		\item $\min(\alpha, \beta) = 0$ for each prime $p$, where $\alpha$ and $\beta$ are the degrees of $p$ in the factorizations of $a$ and $b$, respectively.
+		\item $\min(\alpha, \beta) = 0$ для любого простого $p$, где $\alpha$ и $\beta$ --- степени $p$ в разложениях $a$ и $b$ соответственно.
 	\end{enumerate}
 \end{lemma}
 
 \begin{corr}
-	If both $a$ and $b$ are non-zero, then the numbers $a' = \frac{a}{\gcd(a, b)}$ and $b' = \frac{b}{\gcd(a, b)}$ are integer and coprime.
+	Если и $a$, и $b$ не равны нулю, то числа $a' = \frac{a}{\text{НОД}(a, b)}$ и $b' = \frac{b}{\text{НОД}(a, b)}$ целые и взаимно просты.
 \end{corr}
 \begin{proof}
-	Let $a = \eps p^{\alpha_1}_1\ldots p^{\alpha_s}_s$ and $b = \delta p^{\beta_1}_1\ldots p^{\beta_s}_s$. Then $a' = \eps p^{\alpha'_1}_1\ldots p^{\alpha'_s}_s$ and $b' = \delta p^{\beta'_1}_1\ldots p^{\beta'_s}_s$, where $\alpha'_i = \alpha_i - \min(\alpha_i, \beta_i)$ and $\beta'_i = \beta_i - \min(\alpha_i, \beta_i)$ for each $i$. As $\alpha_i, \beta_i \geq \min(\alpha_i, \beta_i)$, both the numbers $a', b'$ are integer. Since $\min(\alpha_i, \beta_i)$ is either $\alpha_i$ or $\beta_i$, then $\alpha'_i = 0$ or $\beta'_i = 0$, whence $\min(\alpha'_i, \beta'_i) = 0$. By Lemma~\ref{L5:coprime}, $a'$ and $b'$ are coprime.
+	Пусть $a = \eps p^{\alpha_1}_1\ldots p^{\alpha_s}_s$ и $b = \delta p^{\beta_1}_1\ldots p^{\beta_s}_s$. Тогда $a' = \eps p^{\alpha'_1}_1\ldots p^{\alpha'_s}_s$ и $b' = \delta p^{\beta'_1}_1\ldots p^{\beta'_s}_s$, где $\alpha'_i = \alpha_i - \min(\alpha_i, \beta_i)$ и $\beta'_i = \beta_i - \min(\alpha_i, \beta_i)$ для всех $i$. Так как $\alpha_i, \beta_i \geq \min(\alpha_i, \beta_i)$, оба числа $a', b'$ целые. Так как $\min(\alpha_i, \beta_i)$ является либо $\alpha_i$, либо $\beta_i$, то $\alpha'_i = 0$ или $\beta'_i = 0$, откуда $\min(\alpha'_i, \beta'_i) = 0$. По лемме~\ref{L5:coprime}, $a'$ и $b'$ взаимно просты.
 \end{proof}
 
 %\begin{corr}
@@ -1489,108 +1489,108 @@ We say that a number $m \in \N$ is a \emph{least common multiple} of numbers $a$
 %\end{corr}
 
 \begin{lemma}\label{L5:l2}
-	Suppose that $a \dvd b c$, while $a$ and $b$ are coprime. Then $a \dvd c$.
+	Предположим, что $a \dvd b c$, в то время как $a$ и $b$ взаимно просты. Тогда $a \dvd c$.
 \end{lemma}
 \begin{proof}
-	If $c = 0$ or $a =  \pm 1$, the conclusion is immediate. Assume $c \neq 0$ and $a \neq \pm 1$. Then $\gcd(a,0) = |a| \neq 1 = \gcd(a,b)$, whence $b \neq 0$. Since $bc \neq 0$, $a$ is non-zero as well. Let us factor our numbers: $a = \eps p^{\alpha_1}_1\ldots p^{\alpha_s}_s$, $b = \delta p^{\beta_1}_1\ldots p^{\beta_s}_s$, and $c = \eta p^{\gamma_1}_1\ldots p^{\gamma_s}_s$. From Lemmas~\ref{L4:l16} and~\ref{L5:coprime}, we know that $\alpha_i \leq \beta_i + \gamma_i$ and $\min(\alpha_i, \beta_i) = 0$ for each $i$. If $\alpha_i = 0$, we have $\alpha_i \leq \gamma_i$; otherwise, $\beta_i = 0$ and $\alpha_i \leq 0 + \gamma_i = \gamma_i$ as well. Therefore, $a \dvd c$.
+	Если $c = 0$ или $a =  \pm 1$, вывод непосредственен. Допустим $c \neq 0$ и $a \neq \pm 1$. Тогда $\text{НОД}(a,0) = |a| \neq 1 = \text{НОД}(a,b)$, откуда $b \neq 0$. Так как $bc \neq 0$, $a$ также не равен нулю. Проведем разложения наших чисел: $a = \eps p^{\alpha_1}_1\ldots p^{\alpha_s}_s$, $b = \delta p^{\beta_1}_1\ldots p^{\beta_s}_s$, и $c = \eta p^{\gamma_1}_1\ldots p^{\gamma_s}_s$. Из лемм~\ref{L4:l16} и~\ref{L5:coprime} известно, что $\alpha_i \leq \beta_i + \gamma_i$ и $\min(\alpha_i, \beta_i) = 0$ для всех $i$. Если $\alpha_i = 0$, имеем $\alpha_i \leq \gamma_i$; в противном случае, $\beta_i = 0$ и точно так же $\alpha_i \leq 0 + \gamma_i = \gamma_i$. Таким образом, $a \dvd c$.
 \end{proof}
-\noindent This means that one can sometimes cancel numbers out from congruences.
+\noindent Это означает, что иногда в сравнимостях числа можно сокращать.
 \begin{corr}\label{L5:c_cancel}
-	If $a x \equiv a y \pmod m$ and $\gcd(a, m) = 1$, then $x \equiv y \pmod m$.
+	Если $a x \equiv a y \pmod m$ и $\text{НОД}(a, m) = 1$, то $x \equiv y \pmod m$.
 \end{corr}
 \begin{proof}
-	Indeed, from $m \dvd a(x - y)$,  it follows $m \dvd (x - y)$.
+	Действительно, из $m \dvd a(x - y)$ следует $m \dvd (x - y)$.
 \end{proof}
 
 \begin{exc}\label{L5:gcd_copirme1}
-	If $a$ and $b$ are coprime, then $\gcd(ac, b) = \gcd(c, b)$.
+	Если $a$ и $b$ взаимно просты, то $\text{НОД}(ac, b) = \text{НОД}(c, b)$.
 \end{exc}
 
 \begin{exc}\label{L5:gcd_copirme2}
-	If $a$ and $b$ are coprime, then $\gcd(ab, c) = \gcd(a,c) \cdot \gcd(b,c)$.
+	Если $a$ и $b$ взаимно просты, то $\text{НОД}(ab, c) = \text{НОД}(a,c) \cdot \text{НОД}(b,c)$.
 \end{exc}
 
-\noindent The following fact of fundamental import establishes a link between divisibility and addition.
-\begin{thm}[B\'ezout's Identity]\label{L5:t1}
-	Let numbers $a$ and $b$ be coprime. Then there exist numbers $u$ and $v$ such that $a u + b v = 1$.
+\noindent Следующий факт фундаментального значения устанавливает связь между делимостью и сложением.
+\begin{thm}[Тождество Безу]\label{L5:t1}
+	Пусть числа $a$ и $b$ взаимно просты. Тогда существуют числа $u$ и $v$ такие, что $a u + b v = 1$.
 \end{thm}
 \begin{proof}
-	Consider the set $X = \{ d \in \N_+  \mid  d = a s + b t\ \mbox{for some}\ s, t \in \Z \}$. Clearly, at least one of $a$ and $b$ is non-zero. Let it be $a$. Then $d = a \sgn a + b \cdot 0 = |a| > 0$, so $X$ is non-empty. By the Least Number Principle, the exists some $d = \min X$ and numbers $s,t$ so that $d = a s + b t > 0$.
+	Рассмотрим множество $X = \{ d \in \N_+  \mid  d = a s + b t\ \text{для некоторых}\ s, t \in \Z \}$. Очевидно, хотя бы одно из чисел $a$ и $b$ не равно нулю. Пусть это число --- $a$. Тогда $d = a \sgn a + b \cdot 0 = |a| > 0$, то есть $X$ не пуст. По принципу наименьшего числа, существуют некоторые $d = \min X$ и числа $s,t$ такие, что $d = a s + b t > 0$.
 	
-	Let us divide $a$ by $d$ to obtain $q, r$ such that $a = d q + r$ and $0 \leq r < d$. We get
+	Разделим $a$ на $d$, чтобы получить $q, r$ такие, что $a = d q + r$ и $0 \leq r < d$. Получаем
 	$$r = a - d q = a - (a s + b t) q = a (1 - sq) + b(-tq).$$
-	Therefore, either $r \in X$ or $r = 0$. The former case is not possible since $r < d = \min X$. Hence, $r = 0$ and $d \dvd a$. One can prove that $d \dvd b$ in a similar way.
+	Таким образом, либо $r \in X$, либо $r = 0$. Первый случай невозможен, так как $r < d = \min X$. Значит $r = 0$ и $d \dvd a$. Утверждение $d \dvd b$ можно доказать аналогичным образом.
 	
-	So, $d > 0$ is a common divisor of coprime numbers. Hence, $a s + b t = d = 1$.
+	Итак, $d > 0$ --- общий делитель взаимно простых чисел. Отсюда $a s + b t = d = 1$.
 \end{proof}
 
 \begin{corr}\label{L5:bezout_int}
-	For every numbers $a$ and $b$, there exist numbers $u$ and $v$ such that \ $a u + b v = \gcd(a,b)$.
+	Для любых чисел $a$ и $b$, существуют числа $u$ и $v$ такие, что $a u + b v = \text{НОД}(a,b)$.
 \end{corr}
 \begin{proof}
-	This is trivial when either number is zero. Otherwise, the numbers $a' = \frac{a}{\gcd(a, b)}$ and $b' = \frac{b}{\gcd(a, b)}$ are coprime integers. Applying B\'ezout's Identity, obtain some $u$ and $v$ such that $a'u + b'v = 1$. Then multiply both sides by $\gcd(a,b)$ to get $a u + b v = \gcd(a, b)$.
+	Доказательство тривиально в случае, если какое-либо из чисел равно нулю. В противном случае, числа $a' = \frac{a}{\text{НОД}(a, b)}$ и $b' = \frac{b}{\text{НОД}(a, b)}$ --- взаимно простые целые числа. Применяя тождество Безу, получаем некоторые $u$ и $v$ такие, что $a'u + b'v = 1$. Умножим затем обе части уравнения на $\text{НОД}(a,b)$, чтобы получить $a u + b v = \text{НОД}(a, b)$.
 \end{proof}
 
-Unlike rationals or reals, one cannot turn an arbitrary integer $b \neq 0$ into $1$ by multiplying it by some integer $c$. Hence, it is not generally possible to construct an \emph{integer} $\frac{a}{b}$ such that $\frac{a}{b} b = a$. But this may be possible modulo $m$.
+В отличие от рациональных или вещественных чисел, невозможно превратить произвольное целое $b \neq 0$ в $1$, умножив его на некоторое целое $c$. Поэтому в общем случае невозможно построить \emph{целое} $\frac{a}{b}$ такое, что $\frac{a}{b} b = a$. Но иногда это возможно сделать по модулю $m$.
 \begin{corr}\label{L5:c2}
-	Let $a$ and $m > 1$ be some numbers. There exists $x$ such that $a x \equiv 1 \pmod m$ iff $a$ and $m$ are coprime.
+	Пусть $a$ и $m > 1$ --- некоторые числа. Существует $x$ такой, что $a x \equiv 1 \pmod m$ тогда и только тогда, когда $a$ и $m$ взаимно просты.
 \end{corr}
 \begin{proof}
-	If $a$ and $m$ are coprime, we obtain $1 = a x + m y$ for some $x, y$ by applying Theorem~\ref{L5:t1}. Then $m \dvd (a x - 1)$.
+	Если $a$ и $m$ взаимно просты, получаем $1 = a x + m y$ для некоторых $x, y$ путем применения теоремы~\ref{L5:t1}. Тогда $m \dvd (a x - 1)$.
 	
-	Conversely, if $m \dvd (a x - 1)$, then $ax + m y = 1$ for some $y$. For any $d \in \N$, from $d \dvd a$ and $d \dvd m$, it clearly follows that $d \dvd 1$, that is, $d = 1$; hence, $a$ and $m$ are coprime.
+	И наоборот, если $m \dvd (a x - 1)$, то $ax + m y = 1$ для некоторого $y$. Для любых $d \in \N$, из $d \dvd a$ и $d \dvd m$ ясно следует $d \dvd 1$, то есть $d = 1$; таким образом, $a$ и $m$ взаимно просты.
 \end{proof}
-\noindent The number $x$ is then called a \emph{(multiplicative) inverse} of $a$ modulo $m$.
+\noindent Число $x$ тогда называется \emph{обратным (по умножению)} числу $a$ по модулю $m$.
 \begin{exm}
-	As $15$ and $14$ are coprime, there should be some $x$ such that $14 x \equiv 1 \pmod {15}$. Using Lemma~\ref{L4:l7}, one sees that $14 x \equiv -x \pmod {15}$. So, it suffices to take $-1$ (or $15 - 1 = 14$) for $x$. We shall see a uniform way to find the inverse $x$ in the next section.
+	Так как $15$ и $14$ взаимно просты, должен существовать некоторый $x$ такой, что $14 x \equiv 1 \pmod {15}$. Применяя лемму~\ref{L4:l7}, можно увидеть, что $14 x \equiv -x \pmod {15}$. Тогда достаточно взять $-1$ (или $15 - 1 = 14$) за $x$. В следующем параграфе мы увидим общий способ нахождения $x$.
 \end{exm}
 
 
-\paragraph{Theorems of Euler's and Fermat's.} Let $m$ be greater than $1$. Consider the numbers $1, 2, \ldots, m - 1$. Some of these (including $1$ and $m-1$, of course) are coprime with $m$. Let $q_1, \ldots, q_s$ be all such integers. The number $s$ thereof is denoted by $\phi(m)$. For this number depends on $m$, one may consider the function $\phi$ returning $s$ given $m$. This function is called \emph{Euler's totient function}.
+\paragraph{Теоремы Эйлера и Ферма.} Пусть $m$ больше, чем $1$. Рассмотрим числа $1, 2, \ldots, m - 1$. Некоторые из них (включая $1$ и $m-1$, конечно) взаимно просты с $m$. Пусть $q_1, \ldots, q_s$ --- все такие числа. Число $s$ тогда обозначается как $\phi(m)$. Так как это число зависит от $m$, можно рассмотреть функцию $\phi$, возвращающую $s$ по данному $m$. Эта функция называется \emph{функцией Эйлера}.
 
 \begin{exm}
-	One has $\phi(9) = 6$ for $1, 2, 4, 5, 7, 8$ are the only positive numbers lesser than $9$ and coprime to it. Clearly, $\phi(p) = p - 1$ for every prime $p$. We shall derive a general formula for $\phi$ later.
+	Имеем $\phi(9) = 6$, так как $1, 2, 4, 5, 7, 8$ единственные положительные числа, меньшие чем и взаимно простые с $9$. Очевидно, $\phi(p) = p - 1$ для всех простых $p$. Позже мы выведем общую формулу для вычисления $\phi$.
 \end{exm}
 
-\begin{thm}[Euler's Theorem]
-	If $a$ and $m > 1$ are coprime, then $a^{\phi(m)} \equiv 1 \pmod m$.
+\begin{thm}[Теорема Эйлера]
+	Если $a$ и $m > 1$ взаимно просты, то $a^{\phi(m)} \equiv 1 \pmod m$.
 \end{thm}
 \begin{proof}
-	Let $s$ be $\phi(m)$ and consider the numbers $q_1, \ldots, q_s$ discussed in the above. By Corollary~\ref{L4:c9}, $q_i \not\equiv q_j \pmod m$ if $i \neq j$. But then $a q_i \not\equiv a q_j \pmod m$, as Corollary~\ref{L5:c_cancel} implies. This means the numbers $a q_1, \ldots, a q_s$ have $s$ pairwise distinct remainders when divided by $m$. Let us denote these remainders by $r_1,\ldots, r_s$ respectively. Obviously, $0 \leq r_i \leq m - 1$ for each $i$.
+	Пусть $s$ --- $\phi(m)$. Рассмотрим числа $q_1, \ldots, q_s$, обсуждавшиеся выше. По следствию~\ref{L4:c9}, $q_i \not\equiv q_j \pmod m$, если $i \neq j$. Но тогда $a q_i \not\equiv a q_j \pmod m$, как следует из следствия~\ref{L5:c_cancel}. Это означает, что числа $a q_1, \ldots, a q_s$ имеют $s$ попарно различных остатоков при делении на $m$. Обозначим эти остатки как $r_1,\ldots, r_s$ соответственно. Очевидно, $0 \leq r_i \leq m - 1$ для всех $i$.
 	
-	Consider an arbitrary natural divisor $d$ of both $m$ and $a q_i$. It is easy to see that $a$ and $d$ are coprime, as it follows that $d' \dvd a$ and $d' \dvd m$ from $d' \dvd  a$ and $d' \dvd d$. Then $d \dvd a q_i$ implies $d \dvd q_i$ by Lemma~\ref{L5:l2}. For $m$ and $q_i$ being coprime, we obtain $d = 1$, that is, $a q_i$ and $m$ are coprime as well. 
+	Рассмотрим произвольный натуральный делитель $d$ чисел $m$ и $a q_i$ одновременно. Нетрудно увидеть, что $a$ и $d$ взаимно просты, так как $d' \dvd a$ и $d' \dvd m$, что следует из $d' \dvd  a$ и $d' \dvd d$. Тогда $d \dvd a q_i$ влечет $d \dvd q_i$ по лемме~\ref{L5:l2}. Поскольку $m$ и $q_i$ взаимно просты, получаем $d = 1$, то есть $a q_i$ и $m$ также взаимно просты. 
 	
-	On the other hand, $\gcd(r_i, m) = \gcd(a q_i, m) = 1$ by Corollary~\ref{L5:c_gcd_rem}. Thus, $r_1, \ldots, r_s$ are pairwise distinct numbers from the set $\{1,\ldots, m-1\}$, each being coprime with $m$. But $q_1, \ldots, q_s$ are the only such numbers. This means that $\{r_1, \ldots, r_s \} = \{q_1, \ldots, q_s\}$ (but not necessarily that $q_i = r_i$ for every $i$).
+	С другой стороны, $\text{НОД}(r_i, m) = \text{НОД}(a q_i, m) = 1$ по следствию~\ref{L5:c_gcd_rem}. Таким образом, $r_1, \ldots, r_s$ --- попарно различные числа из множества $\{1,\ldots, m-1\}$, каждое из которых взаимно просто с $m$. Однако $q_1, \ldots, q_s$ --- единственные такие числа. Это означает, что $\{r_1, \ldots, r_s \} = \{q_1, \ldots, q_s\}$ (но необязательно, что $q_i = r_i$ для всех $i$).
 	
-	Finally, we obtain
+	В конце концов, получаем
 	$$r_1\cdot \ldots \cdot r_s \equiv a q_1 \cdot \ldots \cdot a q_s \equiv a^s \cdot q_1 \cdot \ldots \cdot q_s \equiv a^s \cdot r_1 \cdot \ldots \cdot r_s \pmod m.$$
-	Applying Corollary~\ref{L5:c_cancel} to each $r_i$, we cancel them out to get $1 \equiv a^s \pmod m$, which was to be proved.
+	Применяя следствие~\ref{L5:c_cancel} для каждого $r_i$, сокращаем их, чтобы получить $1 \equiv a^s \pmod m$, что и требовалось доказать.
 \end{proof}
 
-\begin{corr}[Fermat's Little Theorem]
-	If $p$ is prime and $p \ndvd a$, then $a^{p - 1} \equiv 1 \pmod p$.
+\begin{corr}[Малая теорема Ферма]
+	Если $p$ просто, и $p \ndvd a$, то $a^{p - 1} \equiv 1 \pmod p$.
 \end{corr}
 \begin{proof}
-	For $p$ is prime, $\phi(p) = p - 1$ and $\gcd(p, a)$ is either $1$ or $p$; but $p \ndvd a$, hence $\gcd(p,a) = 1$.
+	Так как $p$ просто, $\phi(p) = p - 1$ и $\text{НОД}(p, a)$ равен либо $1$, либо $p$; но $p \ndvd a$, откуда $\text{НОД}(p,a) = 1$.
 \end{proof}
 \begin{rem}
-	Another equivalent statement of Fermat's Little Theorem is as follows:
+	Эквивалентное утверждение малой теоремы Ферма выглядит следующим образом:
 	\begin{quote}
-		If $p$ is prime, then $a^p \equiv a \pmod p$.
+		Если $p$ простое, то $a^p \equiv a \pmod p$.
 	\end{quote}
 \end{rem}
-\noindent  These theorems could be handy in modular calculations and spare us a great deal of work.
+\noindent  Эти теоремы могут здорово облегчить нам жизнь во время модульных вычислений.
 \begin{corr}
-	If $\gcd(a, m) = 1$, $x, y \geq 0$, and $x \equiv y \pmod {\phi(m)}$, then $a^x \equiv a^y \pmod m$.
+	Если $\text{НОД}(a, m) = 1$, $x, y \geq 0$ и $x \equiv y \pmod {\phi(m)}$, то $a^x \equiv a^y \pmod m$.
 \end{corr}
 \begin{proof}
-	We have both $x = k\phi(m) + r$ and $y = l\phi(m) + r$, where $0 \leq r < m$. Then
+	Имеем одновременно $x = k\phi(m) + r$ и $y = l\phi(m) + r$, где $0 \leq r < m$. Тогда
 	$$a^x \equiv a^{k\phi(m) + r} \equiv (a^{\phi(m)})^k a^r \equiv 1^k \cdot a^r \equiv a^r \equiv 1^l \cdot a^r \equiv (a^{\phi(m)})^l a^r \equiv a^{l\phi(m) + r} \equiv a^y \pmod m.$$
 \end{proof}
 \begin{exm}
-	What is the last digit of the number $1234567^N$ in decimal notation, where $N = {\underbrace{11\ldots1}_{2019}}$?
+	Укажите последнюю цифру числа $1234567^N$ в десятичной системе счисления, где $N = {\underbrace{11\ldots1}_{2019}}$.
 	
-	Clearly, that last digit is just the remainder after dividing $1234567^N$ by $10$. It is easy to see that $\phi(10) = 4$, but $N \equiv 100K + 11 \equiv 0 + 11 \equiv 3 \pmod 4$. Therefore, $1234567^N \equiv 7^N \equiv 7^3 \equiv (-3)^2 \cdot 7 \equiv -7 \equiv 3 \pmod{10}$.
+	Очевидно, что последняя цифра числа это то же самое, что его остаток от деления на $10$. Нетрудно увидеть, что $\phi(10) = 4$, а $N \equiv 100K + 11 \equiv 0 + 11 \equiv 3 \pmod 4$. Тогда $1234567^N \equiv 7^N \equiv 7^3 \equiv (-3)^2 \cdot 7 \equiv -7 \equiv 3 \pmod{10}$.
 \end{exm}
 
 
